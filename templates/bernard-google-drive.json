@@ -1,0 +1,2706 @@
+{
+  "name": "Jono Catliff Google Drive",
+  "nodes": [
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.mimeType }}",
+                    "rightValue": "application/vnd.google-apps.form",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "e5d6ee3f-5348-416b-88d7-80b3c40b172b"
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "3467d169-bf20-4876-8540-860775b6ac65",
+                    "leftValue": "={{ $json.mimeType }}",
+                    "rightValue": "application/vnd.google-apps.drawing",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "05c26dc9-3205-4338-af21-dacd6961f436",
+                    "leftValue": "={{ $json.mimeType }}",
+                    "rightValue": "application/vnd.google-apps.site",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "ca3cb7f0-9d62-411d-8536-9becfce36689",
+                    "leftValue": "={{ $json.mimeType }}",
+                    "rightValue": "image/jpeg",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "48ffe6d0-ce17-41ae-945d-1b9016cd6440",
+                    "leftValue": "={{ $json.mimeType }}",
+                    "rightValue": "image/png",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "eb0b6771-5962-4b29-beaa-e073f51f556a",
+                    "leftValue": "={{ $json.mimeType }}",
+                    "rightValue": "audio/mpeg",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "7ac310c2-2e38-41a4-957c-6e1e3585f15f",
+                    "leftValue": "={{ $json.mimeType }}",
+                    "rightValue": "video/mp4",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              }
+            }
+          ]
+        },
+        "options": {
+          "fallbackOutput": "extra"
+        }
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        1120,
+        768
+      ],
+      "id": "424586ba-847e-4f5b-b648-ba68b31564cd",
+      "name": "Switch"
+    },
+    {
+      "parameters": {
+        "operation": "download",
+        "fileId": {
+          "__rl": true,
+          "value": "={{ $json.id }}",
+          "mode": "id"
+        },
+        "options": {
+          "googleFileConversion": {
+            "conversion": {
+              "docsToFormat": "application/pdf",
+              "slidesToFormat": "application/pdf",
+              "sheetsToFormat": "application/pdf"
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        1328,
+        80
+      ],
+      "id": "22305b73-3576-460e-8d35-a52167bb782b",
+      "name": "Download file",
+      "alwaysOutputData": true,
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "ZaOlVV9Vir66eGGe",
+          "name": "Jono"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "operation": "pdf",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1,
+      "position": [
+        1712,
+        80
+      ],
+      "id": "db3c6744-26d8-4889-802d-5feac7d44a3c",
+      "name": "Extract from File"
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "fileId": {
+          "__rl": true,
+          "value": "={{ $json.id }}",
+          "mode": "id"
+        },
+        "newUpdatedFileName": "={{ $('Edit Fields').item.json['file name'] }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        3536,
+        80
+      ],
+      "id": "742e76c8-7109-4d15-81e2-aed171870c1e",
+      "name": "Rename File",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "ZaOlVV9Vir66eGGe",
+          "name": "Jono"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4.1-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4.1-MINI"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=You're an intelligent assistant trained to review classify Google Sheets/Docs/Slides/PDF files (provided in plain text format), and:\n1. Identify the right category (i.e. accounting, recruitment, etc)\n2. Output the right folder ID associated with that category\n3. Rename the file using a standard naming convention below.\n\nYour task:\n\nAccurately classify the file into one of the categories below based on its content.\n\nRename the file using this format:\n[Short Description, 1–7 words] - [MM/DD/YYYY]\n\n🔍 Categories (Use these precisely):\n1. Accounting\n→ Financial statements, profit & loss, balance sheets, tax documents, receipts, expense tracking, bookkeeping sheets, invoice logs.\nExamples: “Q1 Profit & Loss,” “Invoice Summary,” “Receipt Uploads”\nFolder ID: 19d8XLf1NCC4qODZlqrPpz60LD26UuYOB\n\n2. Recruitment\n→ Resumes, candidate tracking, interview notes, job descriptions, hiring funnels, applicant spreadsheets.\nExamples: “Applicant Tracker,” “Marketing Hire Resume,” “Interview Feedback”\nFolder ID: 1A3QcMwYT0hIOGJg5hlk6rKCaG88wghao\n\n3. Sales\n→ Sales pipelines, closed deals, quotes, client contracts, revenue tracking, CRM exports, sales forecasts.\nExamples: “Sales Forecast Q3,” “Contract Tracker,” “Lead Pipeline”\nFolder ID: 16YoJ7jNBWgSN0gSX2f9eXbQa18CuEOya\n\n4. Marketing\n→ Ad performance, campaign planning, UTM tracking, SEO audits, content calendars, marketing analytics, paid media logs.\nExamples: “Google Ads Results,” “Content Calendar,” “SEO Audit Sheet”\nFolder ID: 1jxplP6Fyowgi0DdVXTEFv8Xd5eQj1cyB\n\n5. Content\n→ YouTube scripts, content ideas, editing pipelines, publishing schedules, thumbnails, video planning, blog outlines.\nExamples: “YouTube Video Ideas,” “Post Schedule,” “Podcast Episode Tracker”\nFolder ID: 1oAjy31ahTI7eG5gDi9uZHNCFmSh2mPwk\n\n6. Community\n→ Skool analytics, member tracking, level systems, post engagement, leaderboard data, community events.\nExamples: “Skool Engagement,” “Member Levels,” “AMA Schedule”\nFolder ID: 1ZdM4bn8HVTSW5i_b22VuPKucv0Ablw4D\n\n7. Consulting\n→ Client deliverables, call notes, internal project tracking for paid consulting work, scope documents.\nExamples: “Client Deliverables Tracker,” “Consulting Call Notes,” “Project Scope Sheet”\nFolder ID: 1DhM7Nkjyu_89dkaSQxLMEOpSYtgORev-\n\n8. Incorporation\n→ Corporate resolutions, share registers, director filings, CRA/IRS forms, shareholder agreements, sensitive legal docs.\nExamples: “Incorporation Docs,” “Shareholder Log,” “Annual Filing”\nFolder ID: 1AvoAyDVdhVgiWBoaLn41b3eS11mh0FNn\n\n9. Personal\n→ Non-business files: travel plans, budgeting, personal notes, fitness, hobbies, gift lists.\nExamples: “Trip Budget,” “Workout Plan,” “Gift Tracker”\nFolder ID: 1BXc3WALw3cGYwVm7eTLTKVQW5GzZVIHn\n\n10. Miscellaneous\n→ Anything that clearly doesn’t belong to the categories above or lacks context.\nFolder ID: 1dbUs1rjfPmQ6QuTKCPJdkMpKsSCFr4yf\n\n11. DJing.ca \n→ Anything that has to do with DJs, photography, and videography for weddings, corporate parties or events.\nFolder ID: 1oW9m4Dig8TeebRMfgC7RO5U978Pjrudw\n\nOutput Format:\nCategory: [Chosen Category]\nNew File Name: [Description] - [MM/DD/YYYY]\n\nHere's the current title:\n{{ $('Download file').item.json.name }}\nIf this title is good, please incorporate it in the name",
+              "role": "system"
+            },
+            {
+              "content": "={{ $('Extract from File').item.json.text }}\nCreated at: {{ $('Download file').item.json.createdTime }}"
+            },
+            {
+              "content": "Please output the data in JSON format with the following structure:\n{\n\"title\": \"\",\n\"category\": \"\",\n\"folder_id\": \"\"\n}"
+            }
+          ]
+        },
+        "jsonOutput": true,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        2112,
+        80
+      ],
+      "id": "1da4818f-52b4-4b48-af65-9de808c9f0bb",
+      "name": "Message a model",
+      "credentials": {
+        "openAiApi": {
+          "id": "X5OhJruK6AtqRLZh",
+          "name": "OpenAi account 5"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "810a42e0-0ffb-4e1e-a4cb-51cdc6c07e2a",
+              "leftValue": "={{ $json.mimeType }}",
+              "rightValue": "application/vnd.google-apps.document",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            },
+            {
+              "id": "17464e93-b4c2-429b-9ee2-74a8a4b13978",
+              "leftValue": "={{ $json.mimeType }}",
+              "rightValue": "application/vnd.google-apps.spreadsheet",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            },
+            {
+              "id": "a99abeac-2c1c-42f8-ad57-23849572bc2b",
+              "leftValue": "={{ $json.mimeType }}",
+              "rightValue": "application/vnd.google-apps.presentation",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            },
+            {
+              "id": "f91bd042-419c-4884-b856-3661c0b8a680",
+              "leftValue": "={{ $json.mimeType }}",
+              "rightValue": "application/pdf",
+              "operator": {
+                "type": "string",
+                "operation": "equals",
+                "name": "filter.operator.equals"
+              }
+            }
+          ],
+          "combinator": "or"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        896,
+        448
+      ],
+      "id": "329d5cef-aa5d-4e06-849c-76459b84a097",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "d2224065-425d-427f-96f9-5096de1bcb87",
+              "name": "folder",
+              "value": "={{ $('Message a model').item.json.message.content.folder_id }}",
+              "type": "string"
+            },
+            {
+              "id": "b9cb6504-b79b-45d2-9143-b04a7e32e0c9",
+              "name": "id",
+              "value": "={{ $('Download file').item.json.id }}",
+              "type": "string"
+            },
+            {
+              "id": "dc92f0fc-e2d1-444e-82de-8219cf67e526",
+              "name": "file name",
+              "value": "={{ $json.message.content.file_name }}",
+              "type": "string"
+            },
+            {
+              "id": "c769accd-ca75-44d1-bdbc-c35812366f39",
+              "name": "category",
+              "value": "={{ $json.message.content.category }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2480,
+        80
+      ],
+      "id": "86d3aabe-273c-4f29-a2cd-71bc676b1f16",
+      "name": "Edit Fields2"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "d2224065-425d-427f-96f9-5096de1bcb87",
+              "name": "folder",
+              "value": "=1a5Yjyb6zvfncWOUFt0V61m05Q2I142Lv",
+              "type": "string"
+            },
+            {
+              "id": "89bbc772-46fd-4fe6-b865-a8cd679f780c",
+              "name": "id",
+              "value": "={{ $json.id }}",
+              "type": "string"
+            },
+            {
+              "id": "d3f996f5-7a19-4079-9db2-acea0000fbc9",
+              "name": "file name",
+              "value": "={{ $('Search files and folders').item.json.name }}",
+              "type": "string"
+            },
+            {
+              "id": "0bd39b5e-7f41-40f5-80d5-c9a3256d3b6a",
+              "name": "category",
+              "value": "={{ $json.message.content.category }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1328,
+        256
+      ],
+      "id": "593527a2-d258-4f4b-8f73-7538c56ac003",
+      "name": "Edit Fields3"
+    },
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyHour"
+            }
+          ]
+        },
+        "triggerOn": "specificFolder",
+        "folderToWatch": {
+          "__rl": true,
+          "value": "=root",
+          "mode": "id"
+        },
+        "event": "fileCreated",
+        "options": {
+          "fileType": "all"
+        }
+      },
+      "type": "n8n-nodes-base.googleDriveTrigger",
+      "typeVersion": 1,
+      "position": [
+        688,
+        448
+      ],
+      "id": "e5484063-a568-41ab-b8d0-7704a4dfad3b",
+      "name": "Google Drive Trigger",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "ZaOlVV9Vir66eGGe",
+          "name": "Jono"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "amount": 1,
+        "unit": "days"
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        1136,
+        80
+      ],
+      "id": "9681c07a-7584-4ea2-9cf0-66b2f0f0457f",
+      "name": "Wait",
+      "webhookId": "35d3bec3-b019-4332-8f44-bc9659be34e2",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "d2224065-425d-427f-96f9-5096de1bcb87",
+              "name": "folder",
+              "value": "=1OyeMpGz2h0H56K8wemJLEc0f9mnSrvWQ",
+              "type": "string"
+            },
+            {
+              "id": "0229954e-0980-454b-94a1-76c61ca71cf0",
+              "name": "id",
+              "value": "={{ $json.id }}",
+              "type": "string"
+            },
+            {
+              "id": "b97aa359-bffb-4df2-8f25-b4675d626533",
+              "name": "file name",
+              "value": "={{ $('Search files and folders').item.json.name }}",
+              "type": "string"
+            },
+            {
+              "id": "1a225fa1-1bfa-444e-91b0-e57e8aa8cc3b",
+              "name": "category",
+              "value": "={{ $json.message.content.category }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1328,
+        416
+      ],
+      "id": "385dd32a-a124-4f38-8117-cbd388adc0ea",
+      "name": "Edit Fields4"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "d2224065-425d-427f-96f9-5096de1bcb87",
+              "name": "folder",
+              "value": "=1rTglk2ifQ5h6nODBNiEWfAjkyaIKvXyb",
+              "type": "string"
+            },
+            {
+              "id": "d5fe1af9-b359-4147-8880-23605e19f3dd",
+              "name": "id",
+              "value": "={{ $json.id }}",
+              "type": "string"
+            },
+            {
+              "id": "7ee53696-8f1a-42eb-8230-877ece2db20e",
+              "name": "file name",
+              "value": "={{ $('Search files and folders').item.json.name }}",
+              "type": "string"
+            },
+            {
+              "id": "59a5cb5e-5497-41cf-a5bb-92072fc27513",
+              "name": "category",
+              "value": "={{ $json.message.content.category }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1328,
+        576
+      ],
+      "id": "0b9c43e3-3398-478b-81c0-0f9b8a1ce34a",
+      "name": "Edit Fields5"
+    },
+    {
+      "parameters": {
+        "resource": "image",
+        "operation": "analyze",
+        "modelId": {
+          "__rl": true,
+          "value": "chatgpt-4o-latest",
+          "mode": "list",
+          "cachedResultName": "CHATGPT-4O-LATEST"
+        },
+        "text": "=You're an intelligent assistant trained to analyze and classify image files, assign the correct category folder, and rename the file using a consistent naming convention.\n\n🔧 Your task:\nAnalyze the image and classify it into one of the categories below, or return N/A if it cannot be confidently categorized.\n\nAssign the correct folder ID that corresponds to the chosen category.\n\nRename the image file using this format:\n\"[Short Description (1–7 words)] - [MM/DD/YYYY]\"\n\nIf the current title ({{ $json.Name }}) is appropriate and descriptive, use it in the new name.\n\n🔍 Categories (Use these precisely):\nAccounting\n→ Financial documents like receipts, invoices, tax forms, balance sheets, or expense tracking.\n🗂 Folder ID: 19d8XLf1NCC4qODZlqrPpz60LD26UuYOB\n\nRecruitment\n→ Resumes, job applications, interview notes, or applicant tracking visuals.\n🗂 Folder ID: 1A3QcMwYT0hIOGJg5hlk6rKCaG88wghao\n\nSales\n→ Contracts, quotes, sales forecasts, CRM screenshots, or deal summaries.\n🗂 Folder ID: 16YoJ7jNBWgSN0gSX2f9eXbQa18CuEOya\n\nMarketing\n→ Ad creative, campaign performance charts, SEO visuals, content calendars.\n🗂 Folder ID: 1jxplP6Fyowgi0DdVXTEFv8Xd5eQj1cyB\n\nContent\n→ Thumbnails, YouTube assets, video planning, blog graphics.\n🗂 Folder ID: 1oAjy31ahTI7eG5gDi9uZHNCFmSh2mPwk\n\nCommunity\n→ Skool screenshots, engagement metrics, member dashboards.\n🗂 Folder ID: 1ZdM4bn8HVTSW5i_b22VuPKucv0Ablw4D\n\nConsulting\n→ Client deliverables, project visuals, call summaries.\n🗂 Folder ID: 1DhM7Nkjyu_89dkaSQxLMEOpSYtgORev-\n\nIncorporation\n→ Legal filings, share certificates, government documents.\n🗂 Folder ID: 1AvoAyDVdhVgiWBoaLn41b3eS11mh0FNn\n\nPersonal\n→ Fitness charts, travel photos, personal memos, gifts, or unrelated images.\n🗂 Folder ID: 1BXc3WALw3cGYwVm7eTLTKVQW5GzZVIHn\n\nMiscellaneous\n→ Doesn't clearly fit any category above, but still work/business-related.\n🗂 Folder ID: 1dbUs1rjfPmQ6QuTKCPJdkMpKsSCFr4yf\n\nDJing.ca\n→ Wedding/event photography, DJ-related visuals, or corporate booking media.\n🗂 Folder ID: 1oW9m4Dig8TeebRMfgC7RO5U978Pjrudw\n\n🚫 Fallback Category\nIf the image cannot be confidently categorized, assign:\n\nCategory: N/A\n\nFolder ID: leave blank or omit\n\n📤 Output Format\nCategory: [Chosen Category or N/A]\nFolder ID: [Folder ID or blank if N/A]\nNew File Name: [Short Description or {{ $json.Name }}] - [MM/DD/YYYY]\n",
+        "inputType": "base64",
+        "options": {
+          "detail": "auto"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        1712,
+        752
+      ],
+      "id": "06366d6d-93f5-4dc5-a4e0-08b09f5040a1",
+      "name": "Analyze image",
+      "credentials": {
+        "openAiApi": {
+          "id": "X5OhJruK6AtqRLZh",
+          "name": "OpenAi account 5"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "download",
+        "fileId": {
+          "__rl": true,
+          "value": "={{ $json.id }}",
+          "mode": "id"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        1328,
+        752
+      ],
+      "id": "38b4ebeb-f149-4c27-adb1-0f538a0a8ee6",
+      "name": "Download file2",
+      "alwaysOutputData": true,
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "ZaOlVV9Vir66eGGe",
+          "name": "Jono"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4.1-nano",
+          "mode": "list",
+          "cachedResultName": "GPT-4.1-NANO"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "You're an intelligent bot that's capable of pulling out the category, folder id, and name from text",
+              "role": "system"
+            },
+            {
+              "content": "={{ $json.content }}\nCreated at: {{ $('Download file2').item.json.createdTime }}"
+            },
+            {
+              "content": "Please output the data in the following JSON format:\n{\n\"category\": \"\",\n\"folder_id\": \"\",\n\"file_name\"\n}",
+              "role": "assistant"
+            }
+          ]
+        },
+        "jsonOutput": true,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        1920,
+        752
+      ],
+      "id": "36dc5de6-cf1c-418e-8ac6-3acd78ad31e3",
+      "name": "Message a model1",
+      "credentials": {
+        "openAiApi": {
+          "id": "X5OhJruK6AtqRLZh",
+          "name": "OpenAi account 5"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "d2224065-425d-427f-96f9-5096de1bcb87",
+              "name": "folder",
+              "value": "={{ $('Message a model1').item.json.message.content.folder_id }}",
+              "type": "string"
+            },
+            {
+              "id": "d5fe1af9-b359-4147-8880-23605e19f3dd",
+              "name": "id",
+              "value": "={{ $('Download file2').item.json.id }}",
+              "type": "string"
+            },
+            {
+              "id": "fec59957-84a3-49dd-b5db-15cada3548ca",
+              "name": "file name",
+              "value": "={{ $json.message.content.file_name }}",
+              "type": "string"
+            },
+            {
+              "id": "164158b4-0196-4efe-8597-55436aa07f69",
+              "name": "category",
+              "value": "={{ $json.message.content.category }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2480,
+        656
+      ],
+      "id": "ea473771-c8f9-4643-9192-98cb04bd0916",
+      "name": "Edit Fields6"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "ce8059a8-dd34-49db-8d6b-b3c3d207214a",
+              "leftValue": "={{ $json.message.content.category }}",
+              "rightValue": "N/A",
+              "operator": {
+                "type": "string",
+                "operation": "notEquals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        2272,
+        752
+      ],
+      "id": "1a3b37f0-444d-4a3e-9794-f80f087f66be",
+      "name": "If1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "d2224065-425d-427f-96f9-5096de1bcb87",
+              "name": "folder",
+              "value": "=1oo4VfiK5it0NMnvNy6e74rhCTxZl4kt9",
+              "type": "string"
+            },
+            {
+              "id": "d5fe1af9-b359-4147-8880-23605e19f3dd",
+              "name": "id",
+              "value": "={{ $('Download file2').item.json.id }}",
+              "type": "string"
+            },
+            {
+              "id": "28ab12c9-b8fd-41e7-8fcc-126c4a2774d9",
+              "name": "file name",
+              "value": "={{ $json.message.content.file_name }}",
+              "type": "string"
+            },
+            {
+              "id": "de068a53-3be7-4c86-b681-2c94f4601e04",
+              "name": "category",
+              "value": "={{ $json.message.content.category }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2480,
+        816
+      ],
+      "id": "fd7c019f-dd6f-4b79-9837-90d068685c13",
+      "name": "Edit Fields7"
+    },
+    {
+      "parameters": {
+        "operation": "download",
+        "fileId": {
+          "__rl": true,
+          "value": "={{ $json.id }}",
+          "mode": "id"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        1328,
+        1056
+      ],
+      "id": "98d6bcfd-5695-4eb7-b69c-bbf6b098df3e",
+      "name": "Download file3",
+      "alwaysOutputData": true,
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "ZaOlVV9Vir66eGGe",
+          "name": "Jono"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "resource": "audio",
+        "operation": "transcribe",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        1712,
+        1056
+      ],
+      "id": "cedf636b-a45b-4ec7-a43f-f3c8860f9df7",
+      "name": "Transcribe a recording",
+      "credentials": {
+        "openAiApi": {
+          "id": "X5OhJruK6AtqRLZh",
+          "name": "OpenAi account 5"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1_Ohq31UuJvxaWUjzgbOdW2fm7c5ayjPjPMM8dOop4b0",
+          "mode": "list",
+          "cachedResultName": "Content Google Drive Organization",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1_Ohq31UuJvxaWUjzgbOdW2fm7c5ayjPjPMM8dOop4b0/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1_Ohq31UuJvxaWUjzgbOdW2fm7c5ayjPjPMM8dOop4b0/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Date": "={{ new Date($now).toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' }) }}",
+            "File Name": "={{ $json.name }}",
+            "View Link": "=https://drive.google.com/file/d/{{ $json.id }}/view",
+            "Location Link": "=https://drive.google.com/drive/u/0/folders/{{ $('Edit Fields').item.json.folder }}",
+            "Approved": "FALSE",
+            "Location": "={{ $('Edit Fields').item.json.category }}",
+            "File Type": "={{ (() => {\n  const mimeMap = {\n    \"application/vnd.google-apps.document\": \"Google Docs\",\n    \"application/vnd.google-apps.spreadsheet\": \"Google Sheets\",\n    \"application/vnd.google-apps.presentation\": \"Google Slides\",\n    \"application/pdf\": \"PDF\",\n    \"image/jpeg\": \"JPEG Image\",\n    \"image/png\": \"PNG Image\",\n    \"text/plain\": \"Text File\",\n    \"video/mp4\": \"MP4 Video\"\n  };\n  const mimeType = $json.mimeType || $json['mime_type'] || '';\n  return mimeMap[mimeType] || mimeType || \"Unknown File Type\";\n})() }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Date",
+              "displayName": "Date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "File Name",
+              "displayName": "File Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "View Link",
+              "displayName": "View Link",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Location",
+              "displayName": "Location",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Location Link",
+              "displayName": "Location Link",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "File Type",
+              "displayName": "File Type",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Approved",
+              "displayName": "Approved",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.6,
+      "position": [
+        3744,
+        80
+      ],
+      "id": "60e80c2c-31b8-47bf-888e-8d3c9d3c1dea",
+      "name": "Add Item To Google Sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "oHG2DldApzJrCoBY",
+          "name": "Google Sheets account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4.1-nano",
+          "mode": "list",
+          "cachedResultName": "GPT-4.1-NANO"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=You're an intelligent assistant trained to summarize an audio file",
+              "role": "system"
+            },
+            {
+              "content": "={{ $json.text }}"
+            },
+            {
+              "content": "=Please output the data in the following JSON format:\n{\n\"summary\": \"\"\n}"
+            }
+          ]
+        },
+        "jsonOutput": true,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        1920,
+        1056
+      ],
+      "id": "ea8c999d-52b5-4a8c-8f9f-afdbef33def0",
+      "name": "Message a model2",
+      "credentials": {
+        "openAiApi": {
+          "id": "X5OhJruK6AtqRLZh",
+          "name": "OpenAi account 5"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "d2224065-425d-427f-96f9-5096de1bcb87",
+              "name": "folder",
+              "value": "={{ $json.message.content.folder_id }}",
+              "type": "string"
+            },
+            {
+              "id": "d5fe1af9-b359-4147-8880-23605e19f3dd",
+              "name": "id",
+              "value": "={{ $('Download file3').item.json.id }}",
+              "type": "string"
+            },
+            {
+              "id": "0d1e8dc9-2d5a-42cf-9bb9-6cbedd1b6e3b",
+              "name": "file name",
+              "value": "={{ $json.message.content.file_name }}",
+              "type": "string"
+            },
+            {
+              "id": "69aefbc4-b0fe-4b9d-8420-4aab1fe6dee5",
+              "name": "category",
+              "value": "={{ $json.message.content.category }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2880,
+        960
+      ],
+      "id": "fc2c6968-e35a-4d1a-a844-7ca4e44420e5",
+      "name": "Edit Fields8"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "ce8059a8-dd34-49db-8d6b-b3c3d207214a",
+              "leftValue": "={{ $json.message.content.category }}",
+              "rightValue": "N/A",
+              "operator": {
+                "type": "string",
+                "operation": "notEquals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        2656,
+        1056
+      ],
+      "id": "fad2cffa-ac1d-4640-98f5-5abba6d0a2f6",
+      "name": "If2"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "d2224065-425d-427f-96f9-5096de1bcb87",
+              "name": "folder",
+              "value": "=1oo4VfiK5it0NMnvNy6e74rhCTxZl4kt9",
+              "type": "string"
+            },
+            {
+              "id": "d5fe1af9-b359-4147-8880-23605e19f3dd",
+              "name": "id",
+              "value": "={{ $('Download file3').item.json.id }}",
+              "type": "string"
+            },
+            {
+              "id": "6f875e0e-4ca4-4de1-809e-298f72e4c4c0",
+              "name": "file name",
+              "value": "={{ $json.message.content.file_name }}",
+              "type": "string"
+            },
+            {
+              "id": "f2ea6ca1-f535-4aac-a9cc-5bb0ffabafb8",
+              "name": "category",
+              "value": "={{ $json.message.content.category }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2880,
+        1120
+      ],
+      "id": "6d4c9a42-356a-4aa1-b25c-2487f9c19d80",
+      "name": "Edit Fields9"
+    },
+    {
+      "parameters": {
+        "operation": "download",
+        "fileId": {
+          "__rl": true,
+          "value": "={{ $json.id }}",
+          "mode": "id"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        1328,
+        1376
+      ],
+      "id": "a3d161d5-c3a9-4704-85bb-66e02d67760d",
+      "name": "Download file4",
+      "alwaysOutputData": true,
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "ZaOlVV9Vir66eGGe",
+          "name": "Jono"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "resource": "video",
+        "operation": "analyze",
+        "modelId": {
+          "__rl": true,
+          "value": "models/gemini-1.5-pro",
+          "mode": "list",
+          "cachedResultName": "models/gemini-1.5-pro"
+        },
+        "inputType": "binary",
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.googleGemini",
+      "typeVersion": 1,
+      "position": [
+        1712,
+        1376
+      ],
+      "id": "6121c046-2f19-4dcc-8dc2-5c8917172554",
+      "name": "Analyze video",
+      "credentials": {
+        "googlePalmApi": {
+          "id": "zsyWni9B539LIqDP",
+          "name": "Google Gemini(PaLM) Api account 3"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4.1-nano",
+          "mode": "list",
+          "cachedResultName": "GPT-4.1-NANO"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=You're an intelligent assistant trained to summarize an video files",
+              "role": "system"
+            },
+            {
+              "content": "={{ $json.content.parts[0].text }}"
+            },
+            {
+              "content": "=Please output the data in the following JSON format:\n{\n\"summary\": \"\",\n}"
+            }
+          ]
+        },
+        "jsonOutput": true,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        1920,
+        1376
+      ],
+      "id": "afd4546c-bda4-4778-9c9e-3d6b740ef6de",
+      "name": "Message a model4",
+      "credentials": {
+        "openAiApi": {
+          "id": "X5OhJruK6AtqRLZh",
+          "name": "OpenAi account 5"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4.1-nano",
+          "mode": "list",
+          "cachedResultName": "GPT-4.1-NANO"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=You're an intelligent assistant trained to analyze and classify an audio file, which could be anything from music, to a customer service call, assign the correct category folder, and rename the file using a consistent naming convention.\n\n🔧 Your task:\nAnalyze the audio file and classify it into one of the categories below, or return N/A if it cannot be confidently categorized.\n\nAssign the correct folder ID that corresponds to the chosen category.\n\nRename the audio file using this format:\n\"[Short Description (1–7 words)] - [MM/DD/YYYY]\"\n\nIf the current title ({{ $json.Name }}) is appropriate and descriptive, use it in the new name.\n\n🔍 Categories (Use these precisely):\nAccounting\n→ Financial documents like receipts, invoices, tax forms, balance sheets, or expense tracking.\n🗂 Folder ID: 19d8XLf1NCC4qODZlqrPpz60LD26UuYOB\n\nRecruitment\n→ Resumes, job applications, interview notes, or applicant tracking visuals.\n🗂 Folder ID: 1A3QcMwYT0hIOGJg5hlk6rKCaG88wghao\n\nSales\n→ Contracts, quotes, sales forecasts, CRM screenshots, sales calls, or deal summaries.\n🗂 Folder ID: 16YoJ7jNBWgSN0gSX2f9eXbQa18CuEOya\n\nMarketing\n→ Ad creative, campaign performance charts, SEO visuals, content calendars.\n🗂 Folder ID: 1jxplP6Fyowgi0DdVXTEFv8Xd5eQj1cyB\n\nContent\n→ Thumbnails, YouTube assets, video planning, blog graphics.\n🗂 Folder ID: 1oAjy31ahTI7eG5gDi9uZHNCFmSh2mPwk\n\nCommunity\n→ Skool screenshots, engagement metrics, member dashboards.\n🗂 Folder ID: 1ZdM4bn8HVTSW5i_b22VuPKucv0Ablw4D\n\nConsulting\n→ Client deliverables, project visuals, call summaries.\n🗂 Folder ID: 1DhM7Nkjyu_89dkaSQxLMEOpSYtgORev-\n\nIncorporation\n→ Legal filings, share certificates, government documents.\n🗂 Folder ID: 1AvoAyDVdhVgiWBoaLn41b3eS11mh0FNn\n\nPersonal\n→ Fitness charts, travel photos, personal memos, gifts, or other person audio files.\n🗂 Folder ID: 1BXc3WALw3cGYwVm7eTLTKVQW5GzZVIHn\n\nMiscellaneous\n→ Doesn't clearly fit any category above, but still work/business-related.\n🗂 Folder ID: 1dbUs1rjfPmQ6QuTKCPJdkMpKsSCFr4yf\n\nDJing.ca\n→ Wedding/event photography, DJ-related visuals, or corporate booking media.\n🗂 Folder ID: 1oW9m4Dig8TeebRMfgC7RO5U978Pjrudw\n\n🚫 Fallback Category\nIf the audio file cannot be confidently categorized, assign:\n\nCategory: N/A\n\nFolder ID: leave blank or omit\n\n📤 Output Format\nCategory: [Chosen Category or N/A]\nFolder ID: [Folder ID or blank if N/A]\nNew File Name: [Short Description or {{ $json.Name }}] - [MM/DD/YYYY]\n",
+              "role": "system"
+            },
+            {
+              "content": "={{ $json.message.content.summary }}\nCreated at: {{ $('Download file3').item.json.createdTime }}"
+            },
+            {
+              "content": "Please output the data in the following JSON format:\n{\n\"category\": \"\",\n\"folder_id\": \"\",\n\"file_name\"\n}",
+              "role": "assistant"
+            }
+          ]
+        },
+        "jsonOutput": true,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        2288,
+        1056
+      ],
+      "id": "b10b55f8-7bac-48e3-85de-bbea9ac20f9a",
+      "name": "Message a model5",
+      "credentials": {
+        "openAiApi": {
+          "id": "X5OhJruK6AtqRLZh",
+          "name": "OpenAi account 5"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "d2224065-425d-427f-96f9-5096de1bcb87",
+              "name": "folder",
+              "value": "={{ $json.message.content.folder_id }}",
+              "type": "string"
+            },
+            {
+              "id": "d5fe1af9-b359-4147-8880-23605e19f3dd",
+              "name": "id",
+              "value": "={{ $('Download file4').item.json.id }}",
+              "type": "string"
+            },
+            {
+              "id": "746c5f94-9859-46d2-a2e9-ab38aed7e9e8",
+              "name": "file name",
+              "value": "={{ $json.message.content.file_name }}",
+              "type": "string"
+            },
+            {
+              "id": "60f2d6af-6330-4619-b5cd-ef2f893619cc",
+              "name": "category",
+              "value": "={{ $json.message.content.category }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2880,
+        1280
+      ],
+      "id": "26172084-1ae7-4187-b199-9831a86062fc",
+      "name": "Edit Fields10"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "ce8059a8-dd34-49db-8d6b-b3c3d207214a",
+              "leftValue": "={{ $json.message.content.category }}",
+              "rightValue": "N/A",
+              "operator": {
+                "type": "string",
+                "operation": "notEquals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        2656,
+        1376
+      ],
+      "id": "b57b6430-1228-41b7-ad68-7b7e46343771",
+      "name": "If3"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "d2224065-425d-427f-96f9-5096de1bcb87",
+              "name": "folder",
+              "value": "=1oo4VfiK5it0NMnvNy6e74rhCTxZl4kt9",
+              "type": "string"
+            },
+            {
+              "id": "d5fe1af9-b359-4147-8880-23605e19f3dd",
+              "name": "id",
+              "value": "={{ $('Download file2').item.json.id }}",
+              "type": "string"
+            },
+            {
+              "id": "57587399-13ac-41eb-b302-fb3f291f50d2",
+              "name": "file name",
+              "value": "={{ $json.message.content.file_name }}",
+              "type": "string"
+            },
+            {
+              "id": "df6aa772-e731-4ad6-a1f1-f116813f58e0",
+              "name": "category",
+              "value": "={{ $json.message.content.category }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2880,
+        1440
+      ],
+      "id": "a0936a11-a11e-40a7-ae1d-6227746b67a1",
+      "name": "Edit Fields11"
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4.1-nano",
+          "mode": "list",
+          "cachedResultName": "GPT-4.1-NANO"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=You're an intelligent assistant trained to analyze and classify an video file, which could be anything from music, to a customer service call, assign the correct category folder, and rename the file using a consistent naming convention.\n\n🔧 Your task:\nAnalyze the video file and classify it into one of the categories below, or return N/A if it cannot be confidently categorized.\n\nAssign the correct folder ID that corresponds to the chosen category.\n\nRename the video file using this format:\n\"[Short Description (1–7 words)] - [MM/DD/YYYY]\"\n\nIf the current title ({{ $json.Name }}) is appropriate and descriptive, use it in the new name.\n\n🔍 Categories (Use these precisely):\nAccounting\n→ Financial documents like receipts, invoices, tax forms, balance sheets, or expense tracking.\n🗂 Folder ID: 19d8XLf1NCC4qODZlqrPpz60LD26UuYOB\n\nRecruitment\n→ Resumes, job applications, interview notes, or applicant tracking visuals.\n🗂 Folder ID: 1A3QcMwYT0hIOGJg5hlk6rKCaG88wghao\n\nSales\n→ Contracts, quotes, sales forecasts, CRM screenshots, sales calls, or deal summaries.\n🗂 Folder ID: 16YoJ7jNBWgSN0gSX2f9eXbQa18CuEOya\n\nMarketing\n→ Ad creative, campaign performance charts, SEO visuals, content calendars.\n🗂 Folder ID: 1jxplP6Fyowgi0DdVXTEFv8Xd5eQj1cyB\n\nContent\n→ Thumbnails, YouTube assets, video planning, blog graphics.\n🗂 Folder ID: 1oAjy31ahTI7eG5gDi9uZHNCFmSh2mPwk\n\nCommunity\n→ Skool screenshots, engagement metrics, member dashboards.\n🗂 Folder ID: 1ZdM4bn8HVTSW5i_b22VuPKucv0Ablw4D\n\nConsulting\n→ Client deliverables, project visuals, call summaries.\n🗂 Folder ID: 1DhM7Nkjyu_89dkaSQxLMEOpSYtgORev-\n\nIncorporation\n→ Legal filings, share certificates, government documents.\n🗂 Folder ID: 1AvoAyDVdhVgiWBoaLn41b3eS11mh0FNn\n\nPersonal\n→ Fitness charts, travel photos, personal memos, gifts, or other person video files.\n🗂 Folder ID: 1BXc3WALw3cGYwVm7eTLTKVQW5GzZVIHn\n\nMiscellaneous\n→ Doesn't clearly fit any category above, but still work/business-related.\n🗂 Folder ID: 1dbUs1rjfPmQ6QuTKCPJdkMpKsSCFr4yf\n\nDJing.ca\n→ Wedding/event photography, DJ-related visuals, or corporate booking media.\n🗂 Folder ID: 1oW9m4Dig8TeebRMfgC7RO5U978Pjrudw\n\n🚫 Fallback Category\nIf the video file cannot be confidently categorized, assign:\n\nCategory: N/A\n\nFolder ID: leave blank or omit\n\n📤 Output Format\nCategory: [Chosen Category or N/A]\nFolder ID: [Folder ID or blank if N/A]\nNew File Name: [Short Description or {{ $json.Name }}] - [MM/DD/YYYY]\n",
+              "role": "system"
+            },
+            {
+              "content": "={{ $json.message.content.summary }}\nCreated at: {{ $('Download file4').item.json.createdTime }}"
+            },
+            {
+              "content": "Please output the data in the following JSON format:\n{\n\"category\": \"\",\n\"folder_id\": \"\",\n\"file_name\"\n}",
+              "role": "assistant"
+            }
+          ]
+        },
+        "jsonOutput": true,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        2288,
+        1376
+      ],
+      "id": "b6c783e1-9b5e-4647-ad97-ef335d819067",
+      "name": "Message a model6",
+      "credentials": {
+        "openAiApi": {
+          "id": "X5OhJruK6AtqRLZh",
+          "name": "OpenAi account 5"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "d2224065-425d-427f-96f9-5096de1bcb87",
+              "name": "folder",
+              "value": "=1uu1TEtbEd4xY98jMQ6X0GYLFV3c9_xA5",
+              "type": "string"
+            },
+            {
+              "id": "d5fe1af9-b359-4147-8880-23605e19f3dd",
+              "name": "id",
+              "value": "={{ $json.id }}",
+              "type": "string"
+            },
+            {
+              "id": "2657ad47-f6bf-4ca6-b3a1-44bff919e4d1",
+              "name": "file name",
+              "value": "={{ $json.name }}",
+              "type": "string"
+            },
+            {
+              "id": "37b29bf7-2951-433d-bf7a-5234edba66fb",
+              "name": "category",
+              "value": "Miscellaneous",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1328,
+        1552
+      ],
+      "id": "3b06bacb-a7de-47e1-9b62-0ee931ba8b6d",
+      "name": "Edit Fields12"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "d2224065-425d-427f-96f9-5096de1bcb87",
+              "name": "folder",
+              "value": "={{ $json.folder }}",
+              "type": "string"
+            },
+            {
+              "id": "b9cb6504-b79b-45d2-9143-b04a7e32e0c9",
+              "name": "id",
+              "value": "={{ $json.id }}",
+              "type": "string"
+            },
+            {
+              "id": "b6a936ce-9fc3-480c-a7d8-30e0cce1a741",
+              "name": "file name",
+              "value": "={{ $json['file name'] }}",
+              "type": "string"
+            },
+            {
+              "id": "bd1d0f3e-5019-42cc-91a7-72997e9cc3bd",
+              "name": "category",
+              "value": "={{ $json.category }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        3136,
+        80
+      ],
+      "id": "f1d6dcf9-78c3-4d21-b427-e52dddaa1595",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "operation": "move",
+        "fileId": {
+          "__rl": true,
+          "value": "={{ $json.id }}",
+          "mode": "id"
+        },
+        "driveId": {
+          "__rl": true,
+          "value": "={{ $json.folder }}",
+          "mode": "id"
+        },
+        "folderId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "root",
+          "cachedResultName": "/ (Root folder)"
+        }
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        3344,
+        80
+      ],
+      "id": "28cd32f9-eee7-4475-a477-c1f40ab4d615",
+      "name": "Move file1",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "ZaOlVV9Vir66eGGe",
+          "name": "Jono"
+        }
+      },
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "ec8071b9-b315-46c2-bc32-dc87cf0d827a",
+              "leftValue": "={{ $json.name }}",
+              "rightValue": "b",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1536,
+        80
+      ],
+      "id": "8288d8ee-114e-4c5e-a054-167b9744fa75",
+      "name": "If4"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "d2224065-425d-427f-96f9-5096de1bcb87",
+              "name": "folder",
+              "value": "=1uu1TEtbEd4xY98jMQ6X0GYLFV3c9_xA5",
+              "type": "string"
+            },
+            {
+              "id": "d5fe1af9-b359-4147-8880-23605e19f3dd",
+              "name": "id",
+              "value": "={{ $('Google Drive Trigger').item.json.id }}",
+              "type": "string"
+            },
+            {
+              "id": "2657ad47-f6bf-4ca6-b3a1-44bff919e4d1",
+              "name": "file name",
+              "value": "={{ $('Google Drive Trigger').item.json.name }}",
+              "type": "string"
+            },
+            {
+              "id": "37b29bf7-2951-433d-bf7a-5234edba66fb",
+              "name": "category",
+              "value": "Miscellaneous",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1328,
+        1712
+      ],
+      "id": "505f6387-076e-405e-906e-e739cd3b33ce",
+      "name": "Edit Fields13"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "4c90e996-be0c-47e7-b754-ae44271fef77",
+              "leftValue": "={{ $json.name }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1536,
+        752
+      ],
+      "id": "5575e4f2-3f96-4382-8874-79462d740915",
+      "name": "If5"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "99cece0e-49be-43d2-98fa-f5c630c09259",
+              "leftValue": "={{ $json.name }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1536,
+        1056
+      ],
+      "id": "06f954bc-1a15-4170-9a4f-cf7b3cb4a7f5",
+      "name": "If6"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "84e5676a-c112-4ebe-8df5-e815c57e4232",
+              "leftValue": "={{ $json.name }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1536,
+        1376
+      ],
+      "id": "c9213297-18d4-49db-b5c7-cead32ba0488",
+      "name": "If7"
+    },
+    {
+      "parameters": {
+        "resource": "fileFolder",
+        "queryString": "=.mp3",
+        "limit": 5,
+        "filter": {
+          "driveId": {
+            "mode": "list",
+            "value": "My Drive"
+          },
+          "folderId": {
+            "mode": "list",
+            "value": "root",
+            "cachedResultName": "/ (Root folder)"
+          },
+          "whatToSearch": "files"
+        },
+        "options": {
+          "fields": [
+            "mimeType",
+            "name",
+            "webViewLink",
+            "id",
+            "shared"
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        896,
+        624
+      ],
+      "id": "7ec8804e-18f3-4609-b670-f9e1a0cca0ba",
+      "name": "Search files and folders",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "ZaOlVV9Vir66eGGe",
+          "name": "Jono"
+        }
+      },
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "content": "Update ChatGPT prompt to include your folders, the description of the folder, and the folder ID",
+        "height": 176,
+        "width": 272,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        2112,
+        0
+      ],
+      "typeVersion": 1,
+      "id": "8d322e92-1afa-4a1c-b568-2a5cfac4e7c7",
+      "name": "Sticky Note"
+    },
+    {
+      "parameters": {
+        "content": "Update ChatGPT prompt to include your folders, the description of the folder, and the folder ID",
+        "height": 176,
+        "width": 272,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        2288,
+        1296
+      ],
+      "typeVersion": 1,
+      "id": "dcbc7cc4-ed11-418d-adfd-0337255ec9c7",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {
+        "content": "Update ChatGPT prompt to include your folders, the description of the folder, and the folder ID",
+        "height": 176,
+        "width": 272,
+        "color": 2
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        2288,
+        976
+      ],
+      "typeVersion": 1,
+      "id": "606dc51a-0ee8-45e3-88fe-bb58eff037d5",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "content": "Update ChatGPT prompt to include your folders, the description of the folder, and the folder ID",
+        "height": 256,
+        "width": 166,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1680,
+        592
+      ],
+      "typeVersion": 1,
+      "id": "8817b382-5440-4b91-bf3a-74fcdea71bef",
+      "name": "Sticky Note3"
+    },
+    {
+      "parameters": {
+        "content": "## Setup Instructions\na) Change your ChatGPT prompt in all the purple highlighted nodes\n\nb) Add in all your API keys:\n1. Google Drive\n2. Google Sheets\n3. ChatGPT\n4. Gemini\n\nYou have two triggers. The first is for files that will enter your Drive in the future. The second is for all your past files\n\n",
+        "height": 336,
+        "width": 304
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        688,
+        80
+      ],
+      "typeVersion": 1,
+      "id": "323b8666-e2f6-4ebf-b476-a67db4372e56",
+      "name": "Sticky Note4"
+    },
+    {
+      "parameters": {
+        "content": "",
+        "height": 96,
+        "width": 1440,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1136,
+        80
+      ],
+      "typeVersion": 1,
+      "id": "ecccfe95-12c8-44d6-ac94-9c84e322ccdb",
+      "name": "Sticky Note5"
+    },
+    {
+      "parameters": {
+        "content": "",
+        "height": 96,
+        "width": 1248,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1328,
+        752
+      ],
+      "typeVersion": 1,
+      "id": "47886512-56dd-4941-8c5e-0685296d284f",
+      "name": "Sticky Note6"
+    },
+    {
+      "parameters": {
+        "content": "",
+        "height": 96,
+        "width": 1648,
+        "color": 2
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1328,
+        1056
+      ],
+      "typeVersion": 1,
+      "id": "08d803ab-6271-4202-ad53-9a43f97b8a46",
+      "name": "Sticky Note7"
+    },
+    {
+      "parameters": {
+        "content": "",
+        "height": 96,
+        "width": 1648,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1328,
+        1376
+      ],
+      "typeVersion": 1,
+      "id": "62ed451c-2cb1-42c2-97b5-3d8ee659fb09",
+      "name": "Sticky Note8"
+    },
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "hours"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        688,
+        624
+      ],
+      "id": "37094878-48df-4c0f-8f65-b8bcb8b2654a",
+      "name": "Schedule Trigger",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "content": "PDFs, Google Slides, Google Sheets, Google Docs",
+        "height": 80,
+        "width": 368,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1136,
+        48
+      ],
+      "typeVersion": 1,
+      "id": "74ddc736-a2ef-4619-9167-fa4ea9b0c32f",
+      "name": "Sticky Note9"
+    },
+    {
+      "parameters": {
+        "content": "Audio",
+        "height": 80,
+        "width": 150,
+        "color": 2
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1328,
+        1024
+      ],
+      "typeVersion": 1,
+      "id": "51e42ec4-0542-4342-88cf-acd63e0b5589",
+      "name": "Sticky Note10"
+    },
+    {
+      "parameters": {
+        "content": "Video",
+        "height": 80,
+        "width": 150,
+        "color": 4
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1328,
+        1344
+      ],
+      "typeVersion": 1,
+      "id": "942af164-6a2b-4558-bfba-80c4d6bd6511",
+      "name": "Sticky Note12"
+    },
+    {
+      "parameters": {
+        "content": "Images",
+        "height": 80,
+        "width": 150,
+        "color": 5
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        1328,
+        720
+      ],
+      "typeVersion": 1,
+      "id": "abba0731-f9ac-4f15-93a8-3560f431b10d",
+      "name": "Sticky Note13"
+    }
+  ],
+  "pinData": {
+    "Google Drive Trigger": [
+      {
+        "json": {
+          "exportLinks": {
+            "application/x-vnd.oasis.opendocument.spreadsheet": "https://docs.google.com/spreadsheets/export?id=1tUy4Ki9KhiJ4t_hBhYoWchWJ6BHnfUGzjaWR7RdYlcA&exportFormat=ods",
+            "text/tab-separated-values": "https://docs.google.com/spreadsheets/export?id=1tUy4Ki9KhiJ4t_hBhYoWchWJ6BHnfUGzjaWR7RdYlcA&exportFormat=tsv",
+            "application/pdf": "https://docs.google.com/spreadsheets/export?id=1tUy4Ki9KhiJ4t_hBhYoWchWJ6BHnfUGzjaWR7RdYlcA&exportFormat=pdf",
+            "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet": "https://docs.google.com/spreadsheets/export?id=1tUy4Ki9KhiJ4t_hBhYoWchWJ6BHnfUGzjaWR7RdYlcA&exportFormat=xlsx",
+            "text/csv": "https://docs.google.com/spreadsheets/export?id=1tUy4Ki9KhiJ4t_hBhYoWchWJ6BHnfUGzjaWR7RdYlcA&exportFormat=csv",
+            "application/zip": "https://docs.google.com/spreadsheets/export?id=1tUy4Ki9KhiJ4t_hBhYoWchWJ6BHnfUGzjaWR7RdYlcA&exportFormat=zip",
+            "application/vnd.oasis.opendocument.spreadsheet": "https://docs.google.com/spreadsheets/export?id=1tUy4Ki9KhiJ4t_hBhYoWchWJ6BHnfUGzjaWR7RdYlcA&exportFormat=ods"
+          },
+          "parents": [
+            "0AGFfE4jRlum6Uk9PVA"
+          ],
+          "lastModifyingUser": {
+            "displayName": "Jonathan Catliff",
+            "kind": "drive#user",
+            "me": true,
+            "permissionId": "02256737817753985539",
+            "emailAddress": "jonocatliff@gmail.com",
+            "photoLink": "https://lh3.googleusercontent.com/a/ACg8ocKXEbY3abGXVtxb0ZA6zde1PTbCqbRuxYtA_JK7OUpOma1L3WBT=s64"
+          },
+          "owners": [
+            {
+              "displayName": "Jonathan Catliff",
+              "kind": "drive#user",
+              "me": true,
+              "permissionId": "02256737817753985539",
+              "emailAddress": "jonocatliff@gmail.com",
+              "photoLink": "https://lh3.googleusercontent.com/a/ACg8ocKXEbY3abGXVtxb0ZA6zde1PTbCqbRuxYtA_JK7OUpOma1L3WBT=s64"
+            }
+          ],
+          "permissions": [
+            {
+              "kind": "drive#permission",
+              "id": "02256737817753985539",
+              "type": "user",
+              "emailAddress": "jonocatliff@gmail.com",
+              "role": "owner",
+              "displayName": "Jonathan Catliff",
+              "photoLink": "https://lh3.googleusercontent.com/a/ACg8ocKXEbY3abGXVtxb0ZA6zde1PTbCqbRuxYtA_JK7OUpOma1L3WBT=s64",
+              "deleted": false,
+              "pendingOwner": false
+            },
+            {
+              "kind": "drive#permission",
+              "id": "13072481319810303463",
+              "type": "user",
+              "emailAddress": "paula@automatable.co",
+              "role": "writer",
+              "displayName": "paula",
+              "photoLink": "https://lh3.googleusercontent.com/a-/ALV-UjWpMdPZ9irfdlN-Kz6L-hHlYurT2TuoHIEoUt2gzHOtdqtzjg=s64",
+              "deleted": false,
+              "pendingOwner": false
+            },
+            {
+              "kind": "drive#permission",
+              "id": "12649186007202207737",
+              "type": "user",
+              "emailAddress": "aghaasaaad@gmail.com",
+              "role": "writer",
+              "displayName": "aghaasaaad",
+              "photoLink": "https://lh3.googleusercontent.com/a-/ALV-UjXPqA2Dfl2MJ-TOVo7UeWHNsHLQRXRn8ICCVJ_MMAPo6oX-AgYo=s64",
+              "deleted": false,
+              "pendingOwner": false
+            }
+          ],
+          "spaces": [
+            "drive"
+          ],
+          "capabilities": {
+            "canAcceptOwnership": false,
+            "canAddChildren": false,
+            "canAddMyDriveParent": false,
+            "canChangeCopyRequiresWriterPermission": true,
+            "canChangeItemDownloadRestriction": true,
+            "canChangeSecurityUpdateEnabled": false,
+            "canChangeViewersCanCopyContent": true,
+            "canComment": true,
+            "canCopy": true,
+            "canDelete": true,
+            "canDisableInheritedPermissions": false,
+            "canDownload": true,
+            "canEdit": true,
+            "canEnableInheritedPermissions": true,
+            "canListChildren": false,
+            "canModifyContent": true,
+            "canModifyContentRestriction": true,
+            "canModifyEditorContentRestriction": true,
+            "canModifyOwnerContentRestriction": true,
+            "canModifyLabels": false,
+            "canMoveChildrenWithinDrive": false,
+            "canMoveItemIntoTeamDrive": true,
+            "canMoveItemOutOfDrive": true,
+            "canMoveItemWithinDrive": true,
+            "canReadLabels": false,
+            "canReadRevisions": true,
+            "canRemoveChildren": false,
+            "canRemoveContentRestriction": false,
+            "canRemoveMyDriveParent": true,
+            "canRename": true,
+            "canShare": true,
+            "canTrash": true,
+            "canUntrash": true
+          },
+          "permissionIds": [
+            "02256737817753985539",
+            "13072481319810303463",
+            "12649186007202207737"
+          ],
+          "linkShareMetadata": {
+            "securityUpdateEligible": false,
+            "securityUpdateEnabled": true
+          },
+          "downloadRestrictions": {
+            "itemDownloadRestriction": {
+              "restrictedForReaders": false,
+              "restrictedForWriters": false
+            },
+            "effectiveDownloadRestrictionWithContext": {
+              "restrictedForReaders": false,
+              "restrictedForWriters": false
+            }
+          },
+          "kind": "drive#file",
+          "id": "1tUy4Ki9KhiJ4t_hBhYoWchWJ6BHnfUGzjaWR7RdYlcA",
+          "name": "Top Questions On Skool Calls",
+          "mimeType": "application/vnd.google-apps.spreadsheet",
+          "starred": false,
+          "trashed": false,
+          "explicitlyTrashed": false,
+          "version": "368",
+          "webViewLink": "https://docs.google.com/spreadsheets/d/1tUy4Ki9KhiJ4t_hBhYoWchWJ6BHnfUGzjaWR7RdYlcA/edit?usp=drivesdk",
+          "iconLink": "https://drive-thirdparty.googleusercontent.com/16/type/application/vnd.google-apps.spreadsheet",
+          "hasThumbnail": true,
+          "thumbnailLink": "https://lh3.googleusercontent.com/drive-storage/AJQWtBPb2orlEQzLT0eHnHtzPpOyTq55hH0xOuMv3acqAqoWDCOiVdOJSRU4nGFFNn1oV0JeDDrRoX_GpUQOMd3Ql47tvm4Cdw54nx4xLDKNS-UXaOMvCS2tPXcwg_KvrEk=s220",
+          "thumbnailVersion": "175",
+          "viewedByMe": true,
+          "viewedByMeTime": "2025-07-28T23:55:32.333Z",
+          "createdTime": "2025-05-15T12:51:23.625Z",
+          "modifiedTime": "2025-07-28T23:55:32.333Z",
+          "modifiedByMeTime": "2025-07-28T23:55:32.333Z",
+          "modifiedByMe": true,
+          "shared": true,
+          "ownedByMe": true,
+          "viewersCanCopyContent": true,
+          "copyRequiresWriterPermission": false,
+          "writersCanShare": true,
+          "size": "10584",
+          "quotaBytesUsed": "10584",
+          "isAppAuthorized": false,
+          "inheritedPermissionsDisabled": false
+        }
+      }
+    ]
+  },
+  "connections": {
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields3",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Edit Fields4",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Edit Fields5",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Download file2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Download file2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Download file3",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Download file4",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Edit Fields12",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Download file": {
+      "main": [
+        [
+          {
+            "node": "If4",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        []
+      ]
+    },
+    "Extract from File": {
+      "main": [
+        [
+          {
+            "node": "Message a model",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Message a model": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields2": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Google Drive Trigger": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Download file",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields3": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields4": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields5": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Download file2": {
+      "main": [
+        [
+          {
+            "node": "If5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Analyze image": {
+      "main": [
+        [
+          {
+            "node": "Message a model1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Message a model1": {
+      "main": [
+        [
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields6",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Edit Fields7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields6": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields7": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Download file3": {
+      "main": [
+        [
+          {
+            "node": "If6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Rename File": {
+      "main": [
+        [
+          {
+            "node": "Add Item To Google Sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Transcribe a recording": {
+      "main": [
+        [
+          {
+            "node": "Message a model2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Message a model2": {
+      "main": [
+        [
+          {
+            "node": "Message a model5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If2": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields8",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Edit Fields9",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields8": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields9": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Download file4": {
+      "main": [
+        [
+          {
+            "node": "If7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Message a model4": {
+      "main": [
+        [
+          {
+            "node": "Message a model6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Analyze video": {
+      "main": [
+        [
+          {
+            "node": "Message a model4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Message a model5": {
+      "main": [
+        [
+          {
+            "node": "If2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If3": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields10",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Edit Fields11",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Message a model6": {
+      "main": [
+        [
+          {
+            "node": "If3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields10": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields11": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields12": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Move file1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Move file1": {
+      "main": [
+        [
+          {
+            "node": "Rename File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If4": {
+      "main": [
+        [
+          {
+            "node": "Extract from File",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Edit Fields13",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields13": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If5": {
+      "main": [
+        [
+          {
+            "node": "Analyze image",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Edit Fields13",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If6": {
+      "main": [
+        [
+          {
+            "node": "Transcribe a recording",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Edit Fields13",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If7": {
+      "main": [
+        [
+          {
+            "node": "Analyze video",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Edit Fields13",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Search files and folders": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Search files and folders",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "747306c8-db4c-4748-b560-1cad414bc7f2",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "d2017cc6d1e4b956d269a8123bffa72fb7aaa41ad37a73b7c0fb64c7d0e2edae"
+  },
+  "id": "j0bVdmBvFScm4oY8",
+  "tags": []
+}
