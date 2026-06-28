@@ -1,0 +1,2784 @@
+{
+  "name": "Apex27 2.0",
+  "nodes": [
+    {
+      "parameters": {
+        "path": "apex27_sharpes",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        0,
+        1344
+      ],
+      "id": "23ae75b1-139f-4af5-af41-33a96fb5aed2",
+      "name": "Webhook",
+      "webhookId": "86fa22a2-5a72-4962-b97e-74ec6e0149e5",
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.query.operation }}",
+                    "rightValue": "searchContact",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "f698abd5-e057-48ce-8764-035ec7388fa9"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "searchContact"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "749e4be2-7f2c-40f0-9cc1-fbd16e3c6dc5",
+                    "leftValue": "={{ $json.query.operation }}",
+                    "rightValue": "createContact",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "createContact"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "f262b3ce-5c59-460a-81ca-9503c0c2023f",
+                    "leftValue": "={{ $json.query.operation }}",
+                    "rightValue": "updateContact",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "updateContact"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "6c8f209a-de2f-469e-bbb0-15082f274f54",
+                    "leftValue": "={{ $json.query.operation }}",
+                    "rightValue": "searchListings",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "searchListings"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "3c42a470-6869-42c4-a728-86b5d5afd164",
+                    "leftValue": "={{ $json.query.operation }}",
+                    "rightValue": "createLead",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "createLead"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "bfeff0fd-f4ac-44a4-bf60-a98e25d352bd",
+                    "leftValue": "={{ $json.query.operation }}",
+                    "rightValue": "checkValuationAvailability",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "checkValuationAvailability"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "98785219-3cdb-4abd-a48d-e1f087ba235f",
+                    "leftValue": "={{ $json.query.operation }}",
+                    "rightValue": "checkViewingAvailability",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "checkViewingAvailability"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "b6ddcdee-2d30-4220-b43a-9c674d8a3b15",
+                    "leftValue": "={{ $json.query.operation }}",
+                    "rightValue": "checkWorkingHour",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "checkWorkingHour"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "69aec8f7-7f88-4f5c-ae54-3a7150c5bc5f",
+                    "leftValue": "={{ $json.query.operation }}",
+                    "rightValue": "bookProvisionalViewing",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "bookProvisionalViewing"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "dc344243-51bb-4e9c-8911-8332418bb903",
+                    "leftValue": "={{ $json.query.operation }}",
+                    "rightValue": "createTask",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "createTask"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "65b53fe3-f47a-4fed-af06-03604c4cc7e7",
+                    "leftValue": "={{ $json.query.operation }}",
+                    "rightValue": "logCallHistory",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "logCallHistory"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "fc8292cb-fd3e-436f-a7c5-cb8ea3ec3500",
+                    "leftValue": "={{ $json.query.operation }}",
+                    "rightValue": "sendNotification",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "sendNotification"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "2dbe4f2b-024b-4f05-ba42-42ce3a767317",
+                    "leftValue": "={{ $json.query.operation }}",
+                    "rightValue": "getBranchList",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "getBranchList"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 3
+                },
+                "conditions": [
+                  {
+                    "id": "2f6f3032-5e60-458c-92f7-9b5f85d4e4c5",
+                    "leftValue": "={{ $json.query.operation }}",
+                    "rightValue": "findAgentByPostcode",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "findAgentByPostcode"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.4,
+      "position": [
+        224,
+        1152
+      ],
+      "id": "a514044e-ce48-42d3-978b-428549481686",
+      "name": "Switch"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "8f797e32-82b4-422e-bff7-9bd3c84a2f85",
+              "name": "query.firstName",
+              "value": "={{ $json.query.firstName }}",
+              "type": "string"
+            },
+            {
+              "id": "0ad2fa53-07f4-41b5-ac20-2709475ba6f0",
+              "name": "query.lastName",
+              "value": "={{ $json.query.lastName }}",
+              "type": "string"
+            },
+            {
+              "id": "7ae2f088-c0d9-4c7c-a318-fd48dcd97af6",
+              "name": "query.email",
+              "value": "={{ $json.query.email }}",
+              "type": "string"
+            },
+            {
+              "id": "71de2011-d59b-4ced-babd-a4787b826840",
+              "name": "query.e164",
+              "value": "={{ $json.query.e164 }}",
+              "type": "string"
+            },
+            {
+              "id": "65cf4dcc-6339-4920-94c1-bef80ceb1226",
+              "name": "query.isLettingsApplicant",
+              "value": "={{ $json.query.isLettingsApplicant }}",
+              "type": "string"
+            },
+            {
+              "id": "cfa50c28-ca36-449f-a867-ae366ade4191",
+              "name": "query.phoneConsent",
+              "value": "={{ $json.query.phoneConsent }}",
+              "type": "string"
+            },
+            {
+              "id": "e9552b6e-097c-4394-84e0-d8b1ac29e1af",
+              "name": "query.smsConsent",
+              "value": "={{ $json.query.smsConsent }}",
+              "type": "string"
+            },
+            {
+              "id": "395a3359-c698-488d-92c8-be826a585964",
+              "name": "query.emailConsent",
+              "value": "={{ $json.query.emailConsent }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1344,
+        288
+      ],
+      "id": "ab61810e-36ea-48e8-b786-e9dcbc5755cb",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "c480e926-cc98-4ecd-9561-1bf3a1713e65",
+              "name": "query.e164",
+              "value": "={{ $json.query.e164 }}",
+              "type": "string"
+            },
+            {
+              "id": "e94f76fb-ec22-4b6e-8026-b91a38e599ca",
+              "name": "query.email",
+              "value": "={{ $json.query.email }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        448,
+        -32
+      ],
+      "id": "74a490c0-20e8-4933-aa36-4da3bec806b4",
+      "name": "Edit Fields1"
+    },
+    {
+      "parameters": {
+        "jsCode": "// n8n Code Node - Decode URL-encoded values in object\n// This code processes data from a previous node and decodes URL-encoded strings\n\n// Get input data from previous node\nconst items = $input.all();\n\n// Function to recursively decode URL-encoded values in an object\nfunction decodeObjectValues(obj) {\n  if (typeof obj !== 'object' || obj === null) {\n    return obj;\n  }\n  \n  if (Array.isArray(obj)) {\n    return obj.map(item => decodeObjectValues(item));\n  }\n  \n  const decodedObj = {};\n  for (const [key, value] of Object.entries(obj)) {\n    if (typeof value === 'string') {\n      // Decode URL-encoded string\n      decodedObj[key] = decodeURIComponent(value);\n    } else if (typeof value === 'object' && value !== null) {\n      // Recursively decode nested objects\n      decodedObj[key] = decodeObjectValues(value);\n    } else {\n      decodedObj[key] = value;\n    }\n  }\n  \n  return decodedObj;\n}\n\n// Process each item and decode URL-encoded values\nconst processedItems = items.map(item => {\n  return {\n    json: decodeObjectValues(item.json)\n  };\n});\n\nreturn processedItems;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        672,
+        -32
+      ],
+      "id": "d738191a-73d6-4e9f-833b-0ba01c9c2924",
+      "name": "Code in JavaScript"
+    },
+    {
+      "parameters": {
+        "jsCode": "// n8n Code Node - Decode URL-encoded values in object\n// This code processes data from a previous node and decodes URL-encoded strings\n\n// Get input data from previous node\nconst items = $input.all();\n\n// Function to recursively decode URL-encoded values in an object\nfunction decodeObjectValues(obj) {\n  if (typeof obj !== 'object' || obj === null) {\n    return obj;\n  }\n  \n  if (Array.isArray(obj)) {\n    return obj.map(item => decodeObjectValues(item));\n  }\n  \n  const decodedObj = {};\n  for (const [key, value] of Object.entries(obj)) {\n    if (typeof value === 'string') {\n      // Decode URL-encoded string\n      decodedObj[key] = decodeURIComponent(value);\n    } else if (typeof value === 'object' && value !== null) {\n      // Recursively decode nested objects\n      decodedObj[key] = decodeObjectValues(value);\n    } else {\n      decodedObj[key] = value;\n    }\n  }\n  \n  return decodedObj;\n}\n\n// Process each item and decode URL-encoded values\nconst processedItems = items.map(item => {\n  return {\n    json: decodeObjectValues(item.json)\n  };\n});\n\nreturn processedItems;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1568,
+        288
+      ],
+      "id": "1449bc38-562e-4469-90ba-daaaf1e51437",
+      "name": "Code in JavaScript1"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "588d6ef3-8f36-4343-9935-cd24fc9d7076",
+              "name": "query.firstName",
+              "value": "={{ $json.query.firstName }}",
+              "type": "string"
+            },
+            {
+              "id": "ddbeeeae-81e4-4a4e-a909-cde9288af445",
+              "name": "query.lastName",
+              "value": "={{ $json.query.lastName }}",
+              "type": "string"
+            },
+            {
+              "id": "c80dae8f-f269-4e25-8ee2-2ca19b8dcae6",
+              "name": "query.email",
+              "value": "={{ $json.query.email }}",
+              "type": "string"
+            },
+            {
+              "id": "3f48cda1-51e2-48e9-8ca6-3cbfdb10edd9",
+              "name": "query.occupation",
+              "value": "={{ $json.query.occupation }}",
+              "type": "string"
+            },
+            {
+              "id": "fdd87b06-c8cb-4208-bb79-cd7e97441ee0",
+              "name": "query.isLettingsApplicant",
+              "value": "={{ $json.query.isLettingsApplicant }}",
+              "type": "string"
+            },
+            {
+              "id": "fc600f53-2317-414f-b1e7-23f0fc9b8bd2",
+              "name": "query.contactId",
+              "value": "={{ $json.query.contactId }}",
+              "type": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1568,
+        480
+      ],
+      "id": "ac1be05c-ff1e-4e6b-a290-51398beb7ad8",
+      "name": "Edit Fields2"
+    },
+    {
+      "parameters": {
+        "jsCode": "// n8n Code Node - Decode URL-encoded values and convert boolean strings\n// This code processes data from a previous node and decodes URL-encoded strings\n// Get input data from previous node\nconst items = $input.all();\n\n// Function to recursively decode URL-encoded values in an object\nfunction decodeObjectValues(obj) {\n  if (typeof obj !== 'object' || obj === null) {\n    return obj;\n  }\n  \n  if (Array.isArray(obj)) {\n    return obj.map(item => decodeObjectValues(item));\n  }\n  \n  const decodedObj = {};\n  for (const [key, value] of Object.entries(obj)) {\n    if (typeof value === 'string') {\n      // Decode URL-encoded string\n      let decodedValue = decodeURIComponent(value);\n      \n      // Convert boolean strings to actual booleans\n      if (decodedValue === 'true') {\n        decodedObj[key] = true;\n      } else if (decodedValue === 'false') {\n        decodedObj[key] = false;\n      } else {\n        decodedObj[key] = decodedValue;\n      }\n    } else if (typeof value === 'object' && value !== null) {\n      // Recursively decode nested objects\n      decodedObj[key] = decodeObjectValues(value);\n    } else {\n      decodedObj[key] = value;\n    }\n  }\n  \n  return decodedObj;\n}\n\n// Process each item and decode URL-encoded values\nconst processedItems = items.map(item => {\n  return {\n    json: decodeObjectValues(item.json)\n  };\n});\n\nreturn processedItems;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1792,
+        480
+      ],
+      "id": "363cd6b1-be38-493d-92f0-d13a16a9ad53",
+      "name": "Code in JavaScript2"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "f937a161-2116-4fe8-8917-b4e42de73840",
+              "name": "query.city",
+              "value": "={{ $json.query.city }}",
+              "type": "string"
+            },
+            {
+              "id": "0179d702-06e2-4a04-a230-771a781c581e",
+              "name": "query.postalCode",
+              "value": "={{ $json.query.postalCode }}",
+              "type": "string"
+            },
+            {
+              "id": "ef75af47-a94f-41ad-a613-c150e95f01f9",
+              "name": "query.minBeds",
+              "value": "={{ $json.query.minBeds }}",
+              "type": "string"
+            },
+            {
+              "id": "824b3993-b0c1-4e62-b049-d0d28d52c2b5",
+              "name": "query.maxPrice",
+              "value": "={{ $json.query.maxPrice }}",
+              "type": "string"
+            },
+            {
+              "id": "90b93b2e-a643-425c-891f-d8bb6aa524c1",
+              "name": "query.transactionType",
+              "value": "={{ $json.query.transactionType }}",
+              "type": "string"
+            },
+            {
+              "id": "0be8c76b-e8c6-4589-bb83-ab837631405d",
+              "name": "query.propertyType",
+              "value": "={{ $json.query.propertyType }}",
+              "type": "string"
+            },
+            {
+              "id": "a23cc7f2-5a2c-4cff-b813-b7b8ada6d377",
+              "name": "query.includeImages",
+              "value": "={{ $json.query.includeImages }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1120,
+        672
+      ],
+      "id": "0e7d5a80-1aa0-428e-9251-86bd46c2c918",
+      "name": "Edit Fields3"
+    },
+    {
+      "parameters": {
+        "jsCode": "// n8n Code Node - Decode URL-encoded values in object\n// This code processes data from a previous node and decodes URL-encoded strings\n\n// Get input data from previous node\nconst items = $input.all();\n\n// Function to recursively decode URL-encoded values in an object\nfunction decodeObjectValues(obj) {\n  if (typeof obj !== 'object' || obj === null) {\n    return obj;\n  }\n  \n  if (Array.isArray(obj)) {\n    return obj.map(item => decodeObjectValues(item));\n  }\n  \n  const decodedObj = {};\n  for (const [key, value] of Object.entries(obj)) {\n    if (typeof value === 'string') {\n      // Decode URL-encoded string\n      decodedObj[key] = decodeURIComponent(value);\n    } else if (typeof value === 'object' && value !== null) {\n      // Recursively decode nested objects\n      decodedObj[key] = decodeObjectValues(value);\n    } else {\n      decodedObj[key] = value;\n    }\n  }\n  \n  return decodedObj;\n}\n\n// Process each item and decode URL-encoded values\nconst processedItems = items.map(item => {\n  return {\n    json: decodeObjectValues(item.json)\n  };\n});\n\nreturn processedItems;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1344,
+        672
+      ],
+      "id": "af22b3aa-341f-4ab1-b112-5bb5dd2a7a87",
+      "name": "Code in JavaScript3"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "bbda377b-ccd4-4ddd-a297-6e2783fbc344",
+              "name": "query.branchId",
+              "value": "={{ $json.query.branchId }}",
+              "type": "string"
+            },
+            {
+              "id": "5f749953-9a5c-4916-8dd4-f670b511928d",
+              "name": "query.contactId",
+              "value": "={{ $json.query.contactId }}",
+              "type": "string"
+            },
+            {
+              "id": "d95788fa-8984-4381-83f0-b6d1eb9baeff",
+              "name": "query.listingId",
+              "value": "={{ $json.query.listingId }}",
+              "type": "string"
+            },
+            {
+              "id": "46b67d87-681b-4a17-8cb8-f12a2ecff368",
+              "name": "query.listingId",
+              "value": "={{ $json.query.listingId }}",
+              "type": "string"
+            },
+            {
+              "id": "8e5f99b3-745a-4072-8299-ea378b981844",
+              "name": "query.status",
+              "value": "={{ $json.query.status }}",
+              "type": "string"
+            },
+            {
+              "id": "265039f1-3d34-4811-abb6-c90e64a65564",
+              "name": "query.source",
+              "value": "={{ $json.query.source }}",
+              "type": "string"
+            },
+            {
+              "id": "db2e06d4-14bc-4672-858f-bb864be490df",
+              "name": "query.howDidYouHear",
+              "value": "={{ $json.query.howDidYouHear }}",
+              "type": "string"
+            },
+            {
+              "id": "91bd6ec4-9b37-4c4e-b262-840a9a4fe363",
+              "name": "query.requestViewing",
+              "value": "={{ $json.query.requestViewing }}",
+              "type": "string"
+            },
+            {
+              "id": "e9bf451e-1180-4293-b332-22e701fea723",
+              "name": "query.requestListingDetails",
+              "value": "={{ $json.query.requestListingDetails }}",
+              "type": "string"
+            },
+            {
+              "id": "05be627f-0cda-438f-91e4-8abcda16c73a",
+              "name": "query.adults",
+              "value": "={{ $json.query.adults }}",
+              "type": "string"
+            },
+            {
+              "id": "d4f5770d-bc6f-444a-8bcc-53cf934cd28a",
+              "name": "query.children",
+              "value": "={{ $json.query.children }}",
+              "type": "string"
+            },
+            {
+              "id": "98c54e92-5611-489a-adf4-46a50e2766c1",
+              "name": "query.employment_status",
+              "value": "={{ $json.query.employment_status }}",
+              "type": "string"
+            },
+            {
+              "id": "f8c8613b-855f-4158-b320-5d7df4dab618",
+              "name": "query.occupations",
+              "value": "={{ $json.query.occupations }}",
+              "type": "string"
+            },
+            {
+              "id": "58971b14-0f08-4cf9-9a9b-fc6105b32a74",
+              "name": "query.income_confirmed_30x",
+              "value": "={{ $json.query.income_confirmed_30x }}",
+              "type": "string"
+            },
+            {
+              "id": "0d561474-efcc-441f-989f-cfdf09a50c9a",
+              "name": "query.council_assistance",
+              "value": "={{ $json.query.council_assistance }}",
+              "type": "string"
+            },
+            {
+              "id": "3c6e8663-af0e-44e8-8931-e8c14767a62e",
+              "name": "query.adverse_credit",
+              "value": "={{ $json.query.adverse_credit }}",
+              "type": "string"
+            },
+            {
+              "id": "8bb49c36-5542-4797-b9d8-2522fcf50d07",
+              "name": "query.pets_details",
+              "value": "={{ $json.query.pets_details }}",
+              "type": "string"
+            },
+            {
+              "id": "ac6bb6a5-6f93-4d37-bcdd-a11dfd02da5d",
+              "name": "query.ideal_move_date",
+              "value": "={{ $json.query.ideal_move_date }}",
+              "type": "string"
+            },
+            {
+              "id": "a910cac8-75e4-4a10-9a7b-615f728e2ea8",
+              "name": "query.furnished_unfurnished",
+              "value": "={{ $json.query.furnished_unfurnished }}",
+              "type": "string"
+            },
+            {
+              "id": "84ef06c6-39d2-4e4e-8491-9cb8c07415e0",
+              "name": "query.call_summary",
+              "value": "={{ $json.query.call_summary }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1280,
+        880
+      ],
+      "id": "128191e5-fe82-42db-a3e8-e895b28505fe",
+      "name": "Edit Fields4"
+    },
+    {
+      "parameters": {
+        "jsCode": "// n8n Code Node - Decode URL-encoded values in object\n// This code processes data from a previous node and decodes URL-encoded strings\n\n// Get input data from previous node\nconst items = $input.all();\n\n// Function to recursively decode URL-encoded values in an object\nfunction decodeObjectValues(obj) {\n  if (typeof obj !== 'object' || obj === null) {\n    return obj;\n  }\n  \n  if (Array.isArray(obj)) {\n    return obj.map(item => decodeObjectValues(item));\n  }\n  \n  const decodedObj = {};\n  for (const [key, value] of Object.entries(obj)) {\n    if (typeof value === 'string') {\n      // Decode URL-encoded string\n      decodedObj[key] = decodeURIComponent(value);\n    } else if (typeof value === 'object' && value !== null) {\n      // Recursively decode nested objects\n      decodedObj[key] = decodeObjectValues(value);\n    } else {\n      decodedObj[key] = value;\n    }\n  }\n  \n  return decodedObj;\n}\n\n// Process each item and decode URL-encoded values\nconst processedItems = items.map(item => {\n  return {\n    json: decodeObjectValues(item.json)\n  };\n});\n\nreturn processedItems;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1520,
+        864
+      ],
+      "id": "45eab5d0-48e9-4b04-ae44-25586eaf5172",
+      "name": "Code in JavaScript4"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "173254df-1424-4032-b88e-99792363b959",
+              "name": "query.postalCode",
+              "value": "={{ $json.query.postalCode }}",
+              "type": "string"
+            },
+            {
+              "id": "f4ef2639-1fa2-4cbb-8216-49f1b26026fc",
+              "name": "query.date_start",
+              "value": "={{ $json.query.date_start }}",
+              "type": "string"
+            },
+            {
+              "id": "fd239b4d-7e9e-41e1-9e81-58a0d2162e34",
+              "name": "query.date_end",
+              "value": "={{ $json.query.date_end }}",
+              "type": "string"
+            },
+            {
+              "id": "f5fd7314-de0a-4678-a5e4-1a67b873425d",
+              "name": "query.time_start",
+              "value": "={{ $json.query.time_start }}",
+              "type": "string"
+            },
+            {
+              "id": "cddf8fb7-dfaf-4c64-8ea3-4b8c748df508",
+              "name": "query.time_end",
+              "value": "={{ $json.query.time_end }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1568,
+        1248
+      ],
+      "id": "bcd26497-7e67-46de-82e7-e11644005fb1",
+      "name": "Edit Fields5"
+    },
+    {
+      "parameters": {
+        "jsCode": "// n8n Code Node - Decode URL-encoded values in object\n// This code processes data from a previous node and decodes URL-encoded strings\n\n// Get input data from previous node\nconst items = $input.all();\n\n// Function to recursively decode URL-encoded values in an object\nfunction decodeObjectValues(obj) {\n  if (typeof obj !== 'object' || obj === null) {\n    return obj;\n  }\n  \n  if (Array.isArray(obj)) {\n    return obj.map(item => decodeObjectValues(item));\n  }\n  \n  const decodedObj = {};\n  for (const [key, value] of Object.entries(obj)) {\n    if (typeof value === 'string') {\n      // Decode URL-encoded string\n      decodedObj[key] = decodeURIComponent(value);\n    } else if (typeof value === 'object' && value !== null) {\n      // Recursively decode nested objects\n      decodedObj[key] = decodeObjectValues(value);\n    } else {\n      decodedObj[key] = value;\n    }\n  }\n  \n  return decodedObj;\n}\n\n// Process each item and decode URL-encoded values\nconst processedItems = items.map(item => {\n  return {\n    json: decodeObjectValues(item.json)\n  };\n});\n\nreturn processedItems;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1792,
+        1248
+      ],
+      "id": "28d5b7e8-e6f0-468e-afe1-92f469ea8ace",
+      "name": "Code in JavaScript5"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "bbffc82e-4e08-46a6-a6dc-6580d85b1840",
+              "name": "query.listing_id",
+              "value": "={{ $json.query.listing_id }}",
+              "type": "string"
+            },
+            {
+              "id": "e7af41fb-db1a-43c2-afac-6974341132c8",
+              "name": "query.date_start",
+              "value": "={{ $json.query.date_start }}",
+              "type": "string"
+            },
+            {
+              "id": "b2c086fe-0c94-4e81-a8fa-4901bb27da95",
+              "name": "query.date_end",
+              "value": "={{ $json.query.date_end }}",
+              "type": "string"
+            },
+            {
+              "id": "36fea473-d5f7-432a-9ca5-9abe3df4b7a9",
+              "name": "query.time_start",
+              "value": "={{ $json.query.time_start }}",
+              "type": "string"
+            },
+            {
+              "id": "6203d5d1-d767-4f0b-a4b1-b70c2ae2c146",
+              "name": "query.time_end",
+              "value": "={{ $json.query.time_end }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1568,
+        2016
+      ],
+      "id": "21f5bf7a-a2a2-4648-a2c1-da3180262ec2",
+      "name": "Edit Fields6"
+    },
+    {
+      "parameters": {
+        "jsCode": "// n8n Code Node - Decode URL-encoded values in object\n// This code processes data from a previous node and decodes URL-encoded strings\n\n// Get input data from previous node\nconst items = $input.all();\n\n// Function to recursively decode URL-encoded values in an object\nfunction decodeObjectValues(obj) {\n  if (typeof obj !== 'object' || obj === null) {\n    return obj;\n  }\n  \n  if (Array.isArray(obj)) {\n    return obj.map(item => decodeObjectValues(item));\n  }\n  \n  const decodedObj = {};\n  for (const [key, value] of Object.entries(obj)) {\n    if (typeof value === 'string') {\n      // Decode URL-encoded string\n      decodedObj[key] = decodeURIComponent(value);\n    } else if (typeof value === 'object' && value !== null) {\n      // Recursively decode nested objects\n      decodedObj[key] = decodeObjectValues(value);\n    } else {\n      decodedObj[key] = value;\n    }\n  }\n  \n  return decodedObj;\n}\n\n// Process each item and decode URL-encoded values\nconst processedItems = items.map(item => {\n  return {\n    json: decodeObjectValues(item.json)\n  };\n});\n\nreturn processedItems;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1792,
+        2016
+      ],
+      "id": "660fb70c-b16f-4996-a5af-fce1d1479e31",
+      "name": "Code in JavaScript6"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "03a97753-6d8e-40dc-97d9-e22bfeddc677",
+              "name": "query.listing_id",
+              "value": "={{ $json.query.listing_id }}",
+              "type": "number"
+            },
+            {
+              "id": "0bd20452-b85d-43dd-83ef-6ddb45bdab0c",
+              "name": "query.contactId",
+              "value": "={{ $json.query.contactId }}",
+              "type": "number"
+            },
+            {
+              "id": "b94118cb-1bec-450d-a6ff-189b58c712fd",
+              "name": "query.agent_user_id",
+              "value": "={{ $json.query.agent_user_id }}",
+              "type": "number"
+            },
+            {
+              "id": "9e00d3e6-7e59-4a23-9006-452099f978ab",
+              "name": "query.start_timestamp",
+              "value": "={{ $json.query.start_timestamp }}",
+              "type": "string"
+            },
+            {
+              "id": "f92430bb-8378-414e-ab65-747ea0dcc80f",
+              "name": "query.end_timestamp",
+              "value": "={{ $json.query.end_timestamp }}",
+              "type": "string"
+            },
+            {
+              "id": "1b8c7095-14dd-47f6-a2b6-e29e00151df1",
+              "name": "query.move_date",
+              "value": "={{ $json.query.move_date }}",
+              "type": "string"
+            },
+            {
+              "id": "0278b5bb-c770-4eea-95f4-7010d65b71b8",
+              "name": "query.email_confirm",
+              "value": "={{ $json.query.email_confirm }}",
+              "type": "string"
+            },
+            {
+              "id": "d47b7801-c97b-4692-b238-9c858f5e646b",
+              "name": "query.sms_confirm",
+              "value": "={{ $json.query.sms_confirm }}",
+              "type": "string"
+            },
+            {
+              "id": "695e88bf-f5d3-47a2-9806-583aa13ecac3",
+              "name": "query.sms_confirm",
+              "value": "={{ $json.query.sms_confirm }}",
+              "type": "string"
+            },
+            {
+              "id": "37d002f5-3cdc-45a7-be78-92197bead2fe",
+              "name": "query.isAccompanied",
+              "value": "={{ $json.query.isAccompanied }}",
+              "type": "string"
+            },
+            {
+              "id": "b04947af-e727-4280-8aa3-89e687b4259c",
+              "name": "query.outcome",
+              "value": "={{ $json.query.outcome }}",
+              "type": "number"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1344,
+        1632
+      ],
+      "id": "45f9dc4c-fd3b-4c38-bf06-e29d79e7d6d8",
+      "name": "Edit Fields7"
+    },
+    {
+      "parameters": {
+        "jsCode": "// n8n Code Node - Decode URL-encoded values in object\n// This code processes data from a previous node and decodes URL-encoded strings\n\n// Get input data from previous node\nconst items = $input.all();\n\n// Function to recursively decode URL-encoded values in an object\nfunction decodeObjectValues(obj) {\n  if (typeof obj !== 'object' || obj === null) {\n    return obj;\n  }\n  \n  if (Array.isArray(obj)) {\n    return obj.map(item => decodeObjectValues(item));\n  }\n  \n  const decodedObj = {};\n  for (const [key, value] of Object.entries(obj)) {\n    if (typeof value === 'string') {\n      // Decode URL-encoded string\n      decodedObj[key] = decodeURIComponent(value);\n    } else if (typeof value === 'object' && value !== null) {\n      // Recursively decode nested objects\n      decodedObj[key] = decodeObjectValues(value);\n    } else {\n      decodedObj[key] = value;\n    }\n  }\n  \n  return decodedObj;\n}\n\n// Process each item and decode URL-encoded values\nconst processedItems = items.map(item => {\n  return {\n    json: decodeObjectValues(item.json)\n  };\n});\n\nreturn processedItems;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1568,
+        1632
+      ],
+      "id": "e4752ce9-e9c3-4573-835a-9a91f10e3c3c",
+      "name": "Code in JavaScript7"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "06069110-772d-457e-a601-e712483264db",
+              "name": "query.agent_user_id",
+              "value": "={{ $json.query.agent_user_id }}",
+              "type": "string"
+            },
+            {
+              "id": "64786a20-0d95-42d9-85a1-b52e32007c22",
+              "name": "query.contactId",
+              "value": "={{ $json.query.contactId }}",
+              "type": "string"
+            },
+            {
+              "id": "f5e18fb8-0f70-4342-a111-2d66e4bd8805",
+              "name": "query.priority",
+              "value": "={{ $json.query.priority }}",
+              "type": "string"
+            },
+            {
+              "id": "a1d6c0fc-9879-4e22-a723-0b0bd5588f5d",
+              "name": "query.caller_name",
+              "value": "={{ $json.query.caller_name }}",
+              "type": "string"
+            },
+            {
+              "id": "33184b72-5ac7-411d-8825-aef3235b6353",
+              "name": "query.call_summary",
+              "value": "={{ $json.query.call_summary }}",
+              "type": "string"
+            },
+            {
+              "id": "a79de309-8028-441d-8747-1ce0b5805017",
+              "name": "query.timestamp",
+              "value": "={{ $json.query.timestamp }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1568,
+        1440
+      ],
+      "id": "56f6db4f-5e11-4339-a122-6bd0f5981b25",
+      "name": "Edit Fields8"
+    },
+    {
+      "parameters": {
+        "jsCode": "// n8n Code Node - Decode URL-encoded values in object\n// This code processes data from a previous node and decodes URL-encoded strings\n\n// Get input data from previous node\nconst items = $input.all();\n\n// Function to recursively decode URL-encoded values in an object\nfunction decodeObjectValues(obj) {\n  if (typeof obj !== 'object' || obj === null) {\n    return obj;\n  }\n  \n  if (Array.isArray(obj)) {\n    return obj.map(item => decodeObjectValues(item));\n  }\n  \n  const decodedObj = {};\n  for (const [key, value] of Object.entries(obj)) {\n    if (typeof value === 'string') {\n      // Decode URL-encoded string\n      decodedObj[key] = decodeURIComponent(value);\n    } else if (typeof value === 'object' && value !== null) {\n      // Recursively decode nested objects\n      decodedObj[key] = decodeObjectValues(value);\n    } else {\n      decodedObj[key] = value;\n    }\n  }\n  \n  return decodedObj;\n}\n\n// Process each item and decode URL-encoded values\nconst processedItems = items.map(item => {\n  return {\n    json: decodeObjectValues(item.json)\n  };\n});\n\nreturn processedItems;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1792,
+        1440
+      ],
+      "id": "2fc16fb3-016a-44ac-ba33-428a55072c38",
+      "name": "Code in JavaScript8"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "10077193-8c55-4552-8292-e760cdcfa559",
+              "name": "query.listingId",
+              "value": "={{ $json.query.listingId }}",
+              "type": "string"
+            },
+            {
+              "id": "9d5c0117-e112-4e8d-8947-1f702efc36bc",
+              "name": "query.timestamp",
+              "value": "={{ $json.query.timestamp }}",
+              "type": "string"
+            },
+            {
+              "id": "31c0c126-b3d3-4292-9207-c7c625c8a154",
+              "name": "query.call_summary",
+              "value": "={{ $json.query.call_summary }}",
+              "type": "string"
+            },
+            {
+              "id": "a47f4002-fcd0-431e-a834-3003dc57af98",
+              "name": "query.recording_url",
+              "value": "={{ $json.query.recording_url }}",
+              "type": "string"
+            },
+            {
+              "id": "cd43c3c9-93b9-4969-8aba-784b454893ce",
+              "name": "query.contactId",
+              "value": "={{ $json.query.contactId }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1568,
+        1824
+      ],
+      "id": "a9ad2ea0-d45c-41ef-acc7-9c1fa606a9d0",
+      "name": "Edit Fields9"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "1aeddea7-5686-4a67-af96-4f136602e258",
+              "name": "query.postalCode",
+              "value": "={{ $json.query.postalCode }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1568,
+        2400
+      ],
+      "id": "76ab67aa-dd79-4f07-b6f7-67b3527c0b2c",
+      "name": "Edit Fields10"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "abad65fd-a5b2-4fdf-aa72-4eeacf824322",
+              "name": "=workingDays",
+              "value": "[  \"Monday\", \"Tuesday\", \"Wednesday\", \"Thursday\", \"Friday\", \"Saturday\"  ]",
+              "type": "array"
+            },
+            {
+              "id": "77cc5c12-9e44-489e-89ae-5403a71914db",
+              "name": "startHour",
+              "value": 8,
+              "type": "number"
+            },
+            {
+              "id": "81c10854-c2a6-4883-bfb6-fae89a2ddbd8",
+              "name": "endHour",
+              "value": 20,
+              "type": "number"
+            },
+            {
+              "id": "48d88f88-5daa-478c-9793-637fbfb0bcbb",
+              "name": "timezone",
+              "value": "Europe/London",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1792,
+        1056
+      ],
+      "id": "08564347-0865-40ee-b951-94fcf777770b",
+      "name": "Input Working Time/Days"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Input: array of working schedule objects\nconst schedules = $input.all();\n\nfunction isWithinWorkingHours(schedule) {\n  const timezone = schedule.json.timezone;\n  \n  // Get current time in the specified timezone\n  const now = new Date();\n  \n  // Get the current day of week\n  const dayFormatter = new Intl.DateTimeFormat('en-US', {\n    timeZone: timezone,\n    weekday: 'long'\n  });\n  const currentDay = dayFormatter.format(now);\n  \n  // Get the current hour (0-23)\n  const timeFormatter = new Intl.DateTimeFormat('en-US', {\n    timeZone: timezone,\n    hour: 'numeric',\n    hour12: false\n  });\n  const timeString = timeFormatter.format(now);\n  const currentHour = parseInt(timeString, 10);\n  \n  // Check if current day is in working days\n  if (!schedule.json.workingDays.includes(currentDay)) {\n    return false;\n  }\n  \n  // Check if current hour is within working hours\n  // If endHour is 19, it means up to and including 18:xx (before 19:00)\n  const startHour = schedule.json.startHour;\n  const endHour = schedule.json.endHour;\n  \n  return currentHour >= startHour && currentHour < endHour;\n}\n\n// Process each schedule and return array of results\nreturn schedules.map(schedule => ({\n  json: {\n    isWithinWorkingHours: isWithinWorkingHours(schedule),\n    currentTimezone: schedule.json.timezone,\n    schedule: schedule.json\n  }\n}));"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2016,
+        1056
+      ],
+      "id": "6019dd6d-3a81-465c-a537-fba098596d22",
+      "name": "IsWorkingTimeTrue/False"
+    },
+    {
+      "parameters": {
+        "url": "https://api.apex27.co.uk/contacts",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "e164",
+              "value": "={{ $json.query.e164 }}"
+            },
+            {
+              "name": "email",
+              "value": "={{ $json.query.email }}"
+            },
+            {
+              "name": "single",
+              "value": "1"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-Api-Key",
+              "value": "936a81e5d333a1bc0e25bd7a21295848"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "fullResponse": true
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        1568,
+        -288
+      ],
+      "id": "823a3316-c980-49a8-a037-e09d495daf26",
+      "name": "GetContacts"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.apex27.co.uk/contacts",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-Api-Key",
+              "value": "936a81e5d333a1bc0e25bd7a21295848"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "firstName",
+              "value": "={{ $json.query.firstName }}"
+            },
+            {
+              "name": "lastName",
+              "value": "={{ $json.query.lastName }}"
+            },
+            {
+              "name": "email",
+              "value": "={{ $json.query.email }}"
+            },
+            {
+              "name": "mobile",
+              "value": "={{ $json.query.e164 }}"
+            },
+            {
+              "name": "isLettingsApplicant",
+              "value": "={{ $json.query.isLettingsApplicant }}"
+            },
+            {
+              "name": "source",
+              "value": "AI Receptionist"
+            },
+            {
+              "name": "phoneConsent",
+              "value": "={{ $json.query.phoneConsent }}"
+            },
+            {
+              "name": "smsConsent",
+              "value": "={{ $json.query.smsConsent }}"
+            },
+            {
+              "name": "emailConsent",
+              "value": "={{ $json.query.emailConsent }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        2016,
+        288
+      ],
+      "id": "d7f9e11b-0820-47c6-aa72-1bd0bf236d72",
+      "name": "CreateContact"
+    },
+    {
+      "parameters": {
+        "method": "PUT",
+        "url": "=https://api.apex27.co.uk/contacts/{{ $json.query.contactId }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-Api-Key",
+              "value": "936a81e5d333a1bc0e25bd7a21295848"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "firstName",
+              "value": "={{ $json.query.firstName }}"
+            },
+            {
+              "name": "lastName",
+              "value": "={{ $json.query.lastName }}"
+            },
+            {
+              "name": "email",
+              "value": "={{ $json.query.email }}"
+            },
+            {
+              "name": "occupation",
+              "value": "={{ $json.query.occupation }}"
+            },
+            {
+              "name": "isLettingsApplicant",
+              "value": "={{ $json.query.isLettingsApplicant }}"
+            },
+            {
+              "name": "source",
+              "value": "AI Receptionist Update"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "fullResponse": true
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        2016,
+        480
+      ],
+      "id": "87fc3639-6cd4-4607-94ad-77551357414b",
+      "name": "updateContact"
+    },
+    {
+      "parameters": {
+        "url": "https://api.apex27.co.uk/listings",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {}
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-Api-Key",
+              "value": "936a81e5d333a1bc0e25bd7a21295848"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "fullResponse": true
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        1568,
+        672
+      ],
+      "id": "0707d83d-e3c5-4510-bab4-f650d6241565",
+      "name": "searchListing"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.apex27.co.uk/leads",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-Api-Key",
+              "value": "936a81e5d333a1bc0e25bd7a21295848"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={  \n    \"branchId\": {{ $json.query.branchId }},\n    \"contactId\": {{ $json.query.contactId }},\n    \"listingId\": {{ $json.query.listingId }},\n    \"status\": \"{{ $json.query.status }}\",\n    \"source\": \"{{ $json.query.source }}\",\n    \"howDidYouHear\": {{ $json.query.howDidYouHear }},\n    \"requestViewing\": {{ $json.query.requestViewing }},\n    \"requestValuation\": {{ $json.query.requestViewing }},\n    \"requestListingDetails\": {{ $json.query.requestListingDetails }},\n    \"notes\": \"--- AI QUALIFICATION REPORT ---\\n   Property: \\n   Occupants: {{ $json.query.adults }} Adults, {{ $json.query.children }} Children\\n   Employment: {{ $json.query.employment_status }} ({{ $json.query.occupations }})\\n   Income Check: \\n {{ $json.query.income_confirmed_30x }}  Council Assistance: {{ $json.query.council_assistance }}\\n   Adverse Credit: {{ $json.query.adverse_credit }}\\n   Pets: {{ $json.query.pets_details }}\\n   Move Date: {{ $json.query.ideal_move_date }}\\n   Preference: {{ $json.query.furnished_unfurnished }}\\n   ----------------------------------\\n   Call Summary: {{ $json.query.call_summary }}\"\n}",
+        "options": {
+          "response": {
+            "response": {
+              "fullResponse": true
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        1776,
+        864
+      ],
+      "id": "bcf633d3-0316-4f6a-92d2-8f30dfc3a29d",
+      "name": "createLead"
+    },
+    {
+      "parameters": {
+        "url": "https://api.apex27.co.uk/availability/valuations",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "postal_code",
+              "value": "={{ $json.query.postalCode }}"
+            },
+            {
+              "name": "date_start",
+              "value": "={{ $json.query.date_start }}"
+            },
+            {
+              "name": "date_end",
+              "value": "={{ $json.query.date_end }}"
+            },
+            {
+              "name": "time_start",
+              "value": "={{ $json.query.time_start }}"
+            },
+            {
+              "name": "time_end",
+              "value": "={{ $json.query.time_end }}"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-Api-Key",
+              "value": "936a81e5d333a1bc0e25bd7a21295848"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "fullResponse": true
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        2016,
+        1248
+      ],
+      "id": "e4761b52-da7b-49a9-b4e4-012dd5311e32",
+      "name": "availabilityValuations"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.apex27.co.uk/tasks",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-Api-Key",
+              "value": "936a81e5d333a1bc0e25bd7a21295848"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={  \"assignedTo\": {{ $json.query.agent_user_id }},  \"createdBy\": {{ $json.query.agent_user_id }},  \"contactId\": {{ $json.query.contactId }},  \"priority\": {{ $json.query.priority }},  \"description\": \"Call Message: {{ $json.query.caller_name }}\",  \"notes\": \"Message captured by Anna: {{ $json.query.call_summary }}\",  \"dtsDue\": \"{{ $json.query.timestamp }}\"}",
+        "options": {
+          "response": {
+            "response": {
+              "fullResponse": true
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        2016,
+        1440
+      ],
+      "id": "1590bf78-9802-468d-a31e-bb43718e43d0",
+      "name": "createTask"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://api.apex27.co.uk/listings/{{ $json.query.listing_id }}/viewings",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-Api-Key",
+              "value": "936a81e5d333a1bc0e25bd7a21295848"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"contactId\": {{ $json.query.contactId }},\n  \"userId\": {{ $json.query.agent_user_id }},\n  \"event\": {\n    \"dtsStart\": \"{{ $json.query.start_timestamp }}\",\n    \"dtsEnd\": \"{{ $json.query.end_timestamp }}\",\n    \"description\": \"Provisional viewing booked by Anna AI Receptionist.\",\n    \"confirmations\": {\n      \"email\": {{ $json.query.email_confirm }},\n      \"sms\": {{ $json.query.sms_confirm }}\n    }\n  },\n  \"isAccompanied\": {{ $json.query.isAccompanied }},\n  \"contactComments\": \"Qualified by Anna: Income confirmed, no CCJs/IVAs. Ideal move date: {{ $json.query.move_date }}.\"\n  \n}",
+        "options": {
+          "response": {
+            "response": {
+              "fullResponse": true
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        2016,
+        1632
+      ],
+      "id": "54b7d397-85e4-42b9-9f6f-a8fe0f260dda",
+      "name": "createAppointment"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "=https://api.apex27.co.uk/contacts/{{ $json.query.contactId }}/call-logs",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-Api-Key",
+              "value": "936a81e5d333a1bc0e25bd7a21295848"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={  \"method\": 7,  \"inbound\": true,  \"listingId\": {{ $json.query.listingId }},  \"dtsCallTaken\": \"{{ $json.query.timestamp }}\",  \"details\": \"Anna AI Receptionist: {{ $json.query.call_summary }}\",  \"audioRecordingUrl\": \"{{ $json.query.recording_url }}\",  \"pinned\": false}",
+        "options": {
+          "response": {
+            "response": {
+              "fullResponse": true
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        2016,
+        1824
+      ],
+      "id": "71477bd5-2703-45c1-a717-8a23d115185c",
+      "name": "createContactCallLogs"
+    },
+    {
+      "parameters": {
+        "url": "https://api.apex27.co.uk/availability/viewings",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "listing_id",
+              "value": "={{ $json.query.listing_id }}"
+            },
+            {
+              "name": "date_start",
+              "value": "={{ $json.query.date_start }}"
+            },
+            {
+              "name": "date_end",
+              "value": "={{ $json.query.date_end }}"
+            },
+            {
+              "name": "time_start",
+              "value": "={{ $json.query.time_start }}"
+            },
+            {
+              "name": "time_end",
+              "value": "={{ $json.query.time_end }}"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-Api-Key",
+              "value": "936a81e5d333a1bc0e25bd7a21295848"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "fullResponse": true
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        2016,
+        2016
+      ],
+      "id": "8a218e95-5167-4b15-aa43-43cf68c340ac",
+      "name": "availabilityViewings"
+    },
+    {
+      "parameters": {
+        "url": "https://api.apex27.co.uk/users",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "postal_code",
+              "value": "={{ $json.query.postalCode }}"
+            }
+          ]
+        },
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-Api-Key",
+              "value": "936a81e5d333a1bc0e25bd7a21295848"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "fullResponse": true
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        2016,
+        2400
+      ],
+      "id": "45a9dba8-31fe-4292-9c42-045f01a0d8a1",
+      "name": "getUsers"
+    },
+    {
+      "parameters": {
+        "url": "https://api.apex27.co.uk/branches",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-Api-Key",
+              "value": "936a81e5d333a1bc0e25bd7a21295848"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "fullResponse": true
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        2016,
+        2592
+      ],
+      "id": "8fc284b9-9079-448c-95b8-ad32f83a3a24",
+      "name": "getBranches"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.apex27.co.uk/notifications",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-Api-Key",
+              "value": "936a81e5d333a1bc0e25bd7a21295848"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={  \"branchId\": {{ $json.query.branchId }},  \"contactId\": {{ $json.query.contactId }},  \"notifyBranch\": true,  \"title\": \"📞 New Message from {{ $json.query.caller_name }}\",  \"body\": \"Anna has taken a message: {{ $json.query.call_summary }}\",  \"icon\": \"phone\"}",
+        "options": {
+          "response": {
+            "response": {
+              "fullResponse": true
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        2016,
+        2208
+      ],
+      "id": "68406e9e-3b67-415f-8b47-5563ffcde8b6",
+      "name": "createNotification"
+    },
+    {
+      "parameters": {
+        "jsCode": "// n8n Code Node - Decode URL-encoded values in object\n// This code processes data from a previous node and decodes URL-encoded strings\n\n// Get input data from previous node\nconst items = $input.all();\n\n// Function to recursively decode URL-encoded values in an object\nfunction decodeObjectValues(obj) {\n  if (typeof obj !== 'object' || obj === null) {\n    return obj;\n  }\n  \n  if (Array.isArray(obj)) {\n    return obj.map(item => decodeObjectValues(item));\n  }\n  \n  const decodedObj = {};\n  for (const [key, value] of Object.entries(obj)) {\n    if (typeof value === 'string') {\n      // Decode URL-encoded string\n      decodedObj[key] = decodeURIComponent(value);\n    } else if (typeof value === 'object' && value !== null) {\n      // Recursively decode nested objects\n      decodedObj[key] = decodeObjectValues(value);\n    } else {\n      decodedObj[key] = value;\n    }\n  }\n  \n  return decodedObj;\n}\n\n// Process each item and decode URL-encoded values\nconst processedItems = items.map(item => {\n  return {\n    json: decodeObjectValues(item.json)\n  };\n});\n\nreturn processedItems;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1792,
+        2400
+      ],
+      "id": "4134495b-d792-4eda-bac1-13d186b4133e",
+      "name": "Code in JavaScript9"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "0c24239d-728e-41e0-972a-bd2a1384e730",
+              "name": "query.contactId",
+              "value": "={{ $json.query.contactId }}",
+              "type": "string"
+            },
+            {
+              "id": "951331d1-b340-442f-b3a2-833a68cb358b",
+              "name": "query.caller_name",
+              "value": "={{ $json.query.caller_name }}",
+              "type": "string"
+            },
+            {
+              "id": "98bb5432-4868-4bda-9bab-92ecf4d3e440",
+              "name": "query.call_summary",
+              "value": "={{ $json.query.call_summary }}",
+              "type": "string"
+            },
+            {
+              "id": "08a10547-f532-475d-ad3c-697b4693410c",
+              "name": "query.branchId",
+              "value": "={{ $json.query.branchId }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1568,
+        2208
+      ],
+      "id": "2a5e3e85-59c4-4eca-b79c-5968a6169eb3",
+      "name": "Edit Fields11"
+    },
+    {
+      "parameters": {
+        "jsCode": "// n8n Code Node - Decode URL-encoded values in object\n// This code processes data from a previous node and decodes URL-encoded strings\n\n// Get input data from previous node\nconst items = $input.all();\n\n// Function to recursively decode URL-encoded values in an object\nfunction decodeObjectValues(obj) {\n  if (typeof obj !== 'object' || obj === null) {\n    return obj;\n  }\n  \n  if (Array.isArray(obj)) {\n    return obj.map(item => decodeObjectValues(item));\n  }\n  \n  const decodedObj = {};\n  for (const [key, value] of Object.entries(obj)) {\n    if (typeof value === 'string') {\n      // Decode URL-encoded string\n      decodedObj[key] = decodeURIComponent(value);\n    } else if (typeof value === 'object' && value !== null) {\n      // Recursively decode nested objects\n      decodedObj[key] = decodeObjectValues(value);\n    } else {\n      decodedObj[key] = value;\n    }\n  }\n  \n  return decodedObj;\n}\n\n// Process each item and decode URL-encoded values\nconst processedItems = items.map(item => {\n  return {\n    json: decodeObjectValues(item.json)\n  };\n});\n\nreturn processedItems;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1792,
+        2208
+      ],
+      "id": "2f9fd70d-9358-47a4-b75d-0cc7ee48c828",
+      "name": "Code in JavaScript10"
+    },
+    {
+      "parameters": {
+        "jsCode": "// n8n Code Node - Decode URL-encoded values in object\n// This code processes data from a previous node and decodes URL-encoded strings\n\n// Get input data from previous node\nconst items = $input.all();\n\n// Function to recursively decode URL-encoded values in an object\nfunction decodeObjectValues(obj) {\n  if (typeof obj !== 'object' || obj === null) {\n    return obj;\n  }\n  \n  if (Array.isArray(obj)) {\n    return obj.map(item => decodeObjectValues(item));\n  }\n  \n  const decodedObj = {};\n  for (const [key, value] of Object.entries(obj)) {\n    if (typeof value === 'string') {\n      // Decode URL-encoded string\n      decodedObj[key] = decodeURIComponent(value);\n    } else if (typeof value === 'object' && value !== null) {\n      // Recursively decode nested objects\n      decodedObj[key] = decodeObjectValues(value);\n    } else {\n      decodedObj[key] = value;\n    }\n  }\n  \n  return decodedObj;\n}\n\n// Process each item and decode URL-encoded values\nconst processedItems = items.map(item => {\n  return {\n    json: decodeObjectValues(item.json)\n  };\n});\n\nreturn processedItems;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1792,
+        1824
+      ],
+      "id": "006f1805-a462-4abf-88c6-136a1e016c49",
+      "name": "Code in JavaScript11"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1.5,
+      "position": [
+        2240,
+        1248
+      ],
+      "id": "047e80e9-c485-4669-8bf3-b5b6a872136f",
+      "name": "Respond to Webhook"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Get the e164 value from the input\nconst phoneNumber = $input.item.json.query.e164;\n\n// Remove all spaces\nconst cleanedPhone = phoneNumber.replace(/\\s/g, '');\n\n// Return the cleaned phone number\nreturn {\n  query: {\n    e164: cleanedPhone,\n    email: $input.item.json.query.email\n  }\n};"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1344,
+        -272
+      ],
+      "id": "7ab07bbc-a7a6-486d-807e-02921eee011a",
+      "name": "Code in JavaScript12",
+      "onError": "continueErrorOutput"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Parse the JSON data\nconst responseData = JSON.parse($input.item.json.data);\n\n// Check if contact exists\nif (!responseData || responseData.length === 0) {\n  // No contact found - unknown caller\n  return {\n    contactFound: false,\n    verification: {\n      status: \"unknown\",\n      message: \"No contact record found for this phone number\"\n    },\n    promptForAI: `Hello! I don't have your contact information on file. To assist you better, could you please provide:\n- Your full name\n- Your email address\n- The reason for your call\n\nI'll connect you with the appropriate team member.`\n  };\n}\n\n// Contact found - extract information\nconst contact = responseData[0];\n\nconst aiReceptionistData = {\n  contactFound: true,\n  \n  verification: {\n    status: \"found\",\n    name: `${contact.firstName} ${contact.lastName}`,\n    location: `${contact.city}, ${contact.country}`,\n    phone: contact.mobile,\n    email: contact.email,\n    postalCode: contact.postalCode,\n    contactId: contact.id\n  },\n  \n  routing: {\n    assignedAgent: `${contact.user.firstName} ${contact.user.lastName}`,\n    agentEmail: contact.user.email,\n    branch: contact.branch.name,\n    branchPhone: contact.branch.phone\n  },\n  \n  preferences: {\n    preferredMethod: contact.preferredContactMethod === 1 ? 'Phone' : 'Email',\n    canContact: {\n      phone: contact.phoneConsent,\n      sms: contact.smsConsent,\n      email: contact.emailConsent\n    }\n  },\n  \n  promptForAI: `Hello! I see you're calling from ${contact.mobile}. To verify your identity, could you please confirm your full name and postal code?\n\nExpected: ${contact.firstName} ${contact.lastName}, ${contact.postalCode}\nAssigned to: ${contact.user.firstName} ${contact.user.lastName} at ${contact.branch.name} branch.`\n};\n\nreturn aiReceptionistData;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2016,
+        -288
+      ],
+      "id": "e936aa7b-ca60-49ff-8785-026c96316d87",
+      "name": "Code in JavaScript13"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "b1c9fee3-827c-41e2-91cb-253a86a59bf4",
+              "leftValue": "={{ $('Code in JavaScript').item.json.query.e164 }}",
+              "rightValue": "null",
+              "operator": {
+                "type": "string",
+                "operation": "notExists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        1568,
+        -96
+      ],
+      "id": "e4400cfc-f9d2-4cff-9870-d98616c30268",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "jsCode": "return [\n  {\n    json: {\n      message: \"Can you manually provide your number while I try again add +44 to the beginning?\"\n    }\n  }\n];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1792,
+        -96
+      ],
+      "id": "d1feebcf-b447-435e-9208-65e15508ca4e",
+      "name": "Code in JavaScript14"
+    },
+    {
+      "parameters": {
+        "jsCode": "const results = [];\n\n// Loop through every item received from the previous node\nfor (const item of $input.all()) {\n  const raw = item.json.query.e164 || \"\";\n  const email = item.json.query.email;\n  \n  // 1. Clean the number (remove non-digits)\n  let digits = raw.replace(/\\D/g, '');\n\n  // 2. Standardize to the UK \"0\" format\n  let nationalBase = digits;\n  if (digits.startsWith('44')) {\n    nationalBase = '0' + digits.slice(2);\n  } else if (!digits.startsWith('0') && digits.length === 10) {\n    nationalBase = '0' + digits;\n  }\n\n  // 3. Define the different UK formats\n  const variations = [\n    nationalBase,                                        // 01394432013\n    \"+44\" + nationalBase.slice(1),                      // +441394432013\n    nationalBase.slice(0, 5) + \" \" + nationalBase.slice(5), // 01394 432013\n    \"+44 \" + nationalBase.slice(1, 5) + \" \" + nationalBase.slice(5) // +44 1394 432013\n  ];\n\n  // 4. Create the specific structure n8n requires: { json: { ... } }\n  variations.forEach(v => {\n    results.push({\n      json: {\n        query: {\n          e164: v,\n          email: email\n        }\n      }\n    });\n  });\n}\n\nreturn results;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        896,
+        -32
+      ],
+      "id": "bc2aff57-bce3-4090-b241-80d9ebe19e21",
+      "name": "Code in JavaScript15"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        1120,
+        -32
+      ],
+      "id": "3169e1d6-4e61-4c62-ba26-f3b73cd54f51",
+      "name": "Loop Over Items"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "dab8f441-d101-4f01-b4d7-0b7318cae89e",
+              "leftValue": "={{ $json.data }}",
+              "rightValue": "[]",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        1792,
+        -288
+      ],
+      "id": "0eb80795-bff9-4bef-8f0e-b863fffe44d6",
+      "name": "If1"
+    },
+    {
+      "parameters": {
+        "jsCode": "// n8n Code Node - Property Data Extractor\n// Paste this directly into your n8n Code node\n\n// Get the data from n8n input\nconst rawData = $input.first().json.data;\n\n// Parse the JSON string to get properties array\nconst propertiesData = JSON.parse(rawData);\n\n// Extract essential info for each property\nconst outputData = propertiesData.map(prop => ({\n  // Property Identity\n  id: prop.id,\n  reference: prop.fullReference,\n  \n  // Address\n  address: prop.displayAddress,\n  city: prop.city,\n  county: prop.county,\n  postal_code: prop.postalCode,\n  country: prop.country,\n  \n  // Property Details\n  property_type: prop.propertyType,\n  transaction_type: prop.transactionType,\n  bedrooms: prop.bedrooms,\n  bathrooms: prop.bathrooms,\n  receptions: prop.receptions,\n  \n  // Price & Tenure\n  price: prop.price,\n  currency: prop.priceCurrency,\n  tenure: prop.tenure,\n  rent_frequency: prop.rentFrequency,\n  \n  // Status\n  status: prop.status,\n  sale_progression: prop.saleProgression,\n  \n  // Location\n  latitude: prop.latitude,\n  longitude: prop.longitude,\n  \n  // Dates\n  date_created: prop.dtsCreated,\n  date_updated: prop.dtsUpdated,\n  date_of_instruction: prop.dateOfInstruction,\n  \n  // Agent Info\n  branch_id: prop.branch?.id,\n  branch_name: prop.branch?.name,\n  agent_id: prop.user?.id,\n  agent_name: `${prop.user?.firstName || ''} ${prop.user?.lastName || ''}`.trim(),\n  agent_email: prop.user?.email\n}));\n\n// Return the extracted data\nreturn outputData.map(property => ({ json: property }));"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1792,
+        672
+      ],
+      "id": "e68a0ba7-a4bd-4b91-a624-604f6043ef32",
+      "name": "Code in JavaScript16"
+    },
+    {
+      "parameters": {
+        "jsCode": "// n8n Code Node - Property Matcher\n// Filters properties based on search criteria\n\n// Get search query from Edit Fields node\nconst searchQuery = $('Edit Fields3').first().json.query;\n\n// Get all properties from previous Code node\nconst allProperties = $('Code in JavaScript16').all().map(item => item.json);\n\n// Helper function to check if property matches criteria\nfunction matchesQuery(property, query) {\n  let score = 0;\n  let maxScore = 0;\n  \n  // City match (highest priority)\n  if (query.city) {\n    maxScore += 10;\n    if (property.city && property.city.toLowerCase().includes(query.city.toLowerCase())) {\n      score += 10;\n    }\n  }\n  \n  // Postal code match\n  if (query.postalCode) {\n    maxScore += 5;\n    if (property.postal_code && property.postal_code.toLowerCase().includes(query.postalCode.toLowerCase())) {\n      score += 5;\n    }\n  }\n  \n  // Transaction type match (sale/rent)\n  if (query.transactionType) {\n    maxScore += 8;\n    if (property.transaction_type === query.transactionType) {\n      score += 8;\n    }\n  }\n  \n  // Property type match\n  if (query.propertyType) {\n    maxScore += 6;\n    const queryType = query.propertyType.toLowerCase();\n    const propType = (property.property_type || '').toLowerCase();\n    \n    // Exact match\n    if (propType === queryType) {\n      score += 6;\n    }\n    // Partial match (e.g., \"flat\" matches \"apartment\")\n    else if (\n      (queryType === 'flat' && propType === 'apartment') ||\n      (queryType === 'apartment' && propType === 'flat') ||\n      propType.includes(queryType) ||\n      queryType.includes(propType)\n    ) {\n      score += 4;\n    }\n  }\n  \n  // Minimum bedrooms\n  if (query.minBeds) {\n    maxScore += 5;\n    const minBeds = parseInt(query.minBeds);\n    if (property.bedrooms >= minBeds) {\n      score += 5;\n    } else if (property.bedrooms >= minBeds - 1) {\n      // Close match (1 bedroom less)\n      score += 3;\n    }\n  }\n  \n  // Maximum price\n  if (query.maxPrice) {\n    maxScore += 5;\n    const maxPrice = parseFloat(query.maxPrice);\n    const propPrice = parseFloat(property.price);\n    if (propPrice <= maxPrice) {\n      score += 5;\n    } else if (propPrice <= maxPrice * 1.2) {\n      // Within 20% of max price\n      score += 3;\n    }\n  }\n  \n  return { score, maxScore, percentage: maxScore > 0 ? (score / maxScore) * 100 : 0 };\n}\n\n// Score all properties\nconst scoredProperties = allProperties.map(property => {\n  const match = matchesQuery(property, searchQuery);\n  return {\n    ...property,\n    match_score: match.score,\n    match_percentage: Math.round(match.percentage),\n    is_match: match.percentage >= 50 // Consider it a match if 50% or more criteria met\n  };\n});\n\n// Sort by match score (highest first)\nscoredProperties.sort((a, b) => b.match_score - a.match_score);\n\n// Prepare output - always return ALL properties, sorted by match percentage\nconst output = scoredProperties.map(property => ({\n  // Core property features\n  id: property.id,\n  reference: property.reference,\n  address: property.address,\n  city: property.city,\n  county: property.county,\n  postal_code: property.postal_code,\n  property_type: property.property_type,\n  transaction_type: property.transaction_type,\n  bedrooms: property.bedrooms,\n  bathrooms: property.bathrooms,\n  price: property.price,\n  currency: property.currency,\n  \n  // Branch and agent (visible)\n  branch_name: property.branch_name,\n  agent_name: property.agent_name,\n  \n  // Match info\n  match_percentage: property.match_percentage,\n  is_match: property.is_match,\n  \n  // Branch ID (secretly included in output but not prominently displayed)\n  _branch_id: property.branch_id,\n  \n  // All other fields\n  ...property\n}));\n\n// Return all properties sorted by match percentage (highest first)\nreturn output.map(property => ({ json: property }));"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2016,
+        672
+      ],
+      "id": "a85d5c81-20e6-4320-bc34-c1e79ab54d0c",
+      "name": "Code in JavaScript17"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Get the items - adjust based on your n8n setup\nconst items = $input.all();\n\n// Function to convert string booleans to actual booleans\nfunction convertStringBooleans(obj) {\n  if (Array.isArray(obj)) {\n    return obj.map(item => convertStringBooleans(item));\n  } else if (obj !== null && typeof obj === 'object') {\n    const newObj = {};\n    for (const key in obj) {\n      newObj[key] = convertStringBooleans(obj[key]);\n    }\n    return newObj;\n  } else if (obj === 'true') {\n    return true;\n  } else if (obj === 'false') {\n    return false;\n  }\n  return obj;\n}\n\n// Process all items\nreturn items.map(item => ({\n  json: convertStringBooleans(item.json)\n}));"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1792,
+        288
+      ],
+      "id": "c160e713-a33f-46f0-89da-915fde5a50b4",
+      "name": "Code in JavaScript18"
+    },
+    {
+      "parameters": {
+        "jsCode": "// n8n Code Node - Decode URL-encoded values and convert boolean strings\n// This code processes data from a previous node and decodes URL-encoded strings\n// Get input data from previous node\nconst items = $input.all();\n\n// Function to recursively decode URL-encoded values in an object\nfunction decodeObjectValues(obj) {\n  if (typeof obj !== 'object' || obj === null) {\n    return obj;\n  }\n  \n  if (Array.isArray(obj)) {\n    return obj.map(item => decodeObjectValues(item));\n  }\n  \n  const decodedObj = {};\n  for (const [key, value] of Object.entries(obj)) {\n    if (typeof value === 'string') {\n      // Decode URL-encoded string\n      let decodedValue = decodeURIComponent(value);\n      \n      // Convert boolean strings to actual booleans\n      if (decodedValue === 'true') {\n        decodedObj[key] = true;\n      } else if (decodedValue === 'false') {\n        decodedObj[key] = false;\n      } else {\n        decodedObj[key] = decodedValue;\n      }\n    } else if (typeof value === 'object' && value !== null) {\n      // Recursively decode nested objects\n      decodedObj[key] = decodeObjectValues(value);\n    } else {\n      decodedObj[key] = value;\n    }\n  }\n  \n  return decodedObj;\n}\n\n// Process each item and decode URL-encoded values\nconst processedItems = items.map(item => {\n  return {\n    json: decodeObjectValues(item.json)\n  };\n});\n\nreturn processedItems;"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1792,
+        1632
+      ],
+      "id": "aa7e0ff4-3d23-4979-bb50-8d60dff4aee6",
+      "name": "Code in JavaScript19"
+    },
+    {
+      "parameters": {
+        "jsCode": "const data = JSON.parse($input.first().json.data);\n\nreturn [{\n  json: {\n    leadId: data.id,\n    status: data.status,\n    source: data.source,\n    contactId: data.contactId,\n    listingId: data.listingId,\n    branchId: data.branchId,\n    requestViewing: data.requestViewing,\n    requestValuation: data.requestValuation,\n    requestListingDetails: data.requestListingDetails,\n    howDidYouHear: data.howDidYouHear,\n    createdAt: data.dtsCreated,\n    moveDate: data.notes.match(/Move Date:\\s*(.+)/i)?.[1]?.trim(),\n    preference: data.notes.match(/Preference:\\s*(.+)/i)?.[1]?.trim(),\n    occupants: data.notes.match(/Occupants:\\s*(.+)/i)?.[1]?.trim(),\n    employment: data.notes.match(/Employment:\\s*(.+)/i)?.[1]?.trim(),\n    adverseCredit: !/adverse credit.*none/i.test(data.notes),\n    pets: !/pets.*none/i.test(data.notes),\n    councilAssistance: !/council assistance.*no/i.test(data.notes),\n    callSummary: data.notes.match(/Call Summary:\\s*(.+)/i)?.[1]?.trim(),\n  }\n}];"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1984,
+        864
+      ],
+      "id": "44574971-0ff9-404e-8047-41d15dfecd1f",
+      "name": "Code in JavaScript20"
+    }
+  ],
+  "pinData": {
+    "Webhook": [
+      {
+        "json": {
+          "headers": {
+            "host": "n8n.srv1292639.hstgr.cloud",
+            "user-agent": "axios/0.30.2",
+            "accept": "application/json, text/plain, */*",
+            "traceparent": "00-96c6c1031c071da420f3f554d28a4ddc-f815d5305f762174-01",
+            "x-forwarded-for": "34.27.192.143",
+            "x-forwarded-host": "n8n.srv1292639.hstgr.cloud",
+            "x-forwarded-port": "443",
+            "x-forwarded-proto": "https",
+            "x-forwarded-server": "212732dc323a",
+            "x-real-ip": "34.27.192.143",
+            "accept-encoding": "gzip"
+          },
+          "params": {},
+          "query": {
+            "operation": "createLead",
+            "branchId": "3139",
+            "contactId": "5209907",
+            "listingId": "968571",
+            "status": "new",
+            "source": "Anna (AI Receptionist)",
+            "howDidYouHear": "12",
+            "requestViewing": "true",
+            "requestListingDetails": "true",
+            "adults": "2",
+            "children": "3",
+            "employment_status": "Full-time",
+            "occupations": "Car Dealership Manager",
+            "income_confirmed_30x": "Yes, confirmed",
+            "council_assistance": "No",
+            "adverse_credit": "None",
+            "pets_details": "None",
+            "ideal_move_date": "2026-04-01",
+            "furnished_unfurnished": "Unfurnished",
+            "call_summary": "Caller is interested in a 2-bedroom cottage in Lagos. Ideal move-in date is April. No pets, no adverse credit history, and prefers unfurnished property."
+          },
+          "body": {},
+          "webhookUrl": "https://n8n.srv1292639.hstgr.cloud/webhook/apex27_sharpes",
+          "executionMode": "production"
+        },
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ]
+  },
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Edit Fields2",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Edit Fields3",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Edit Fields4",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Edit Fields5",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Edit Fields6",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Input Working Time/Days",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Edit Fields7",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Edit Fields8",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Edit Fields9",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Edit Fields11",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "getBranches",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Edit Fields10",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript15",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript1": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript18",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields2": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript2": {
+      "main": [
+        [
+          {
+            "node": "updateContact",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields3": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript3": {
+      "main": [
+        [
+          {
+            "node": "searchListing",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields4": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript4": {
+      "main": [
+        [
+          {
+            "node": "createLead",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields5": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript5": {
+      "main": [
+        [
+          {
+            "node": "availabilityValuations",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields6": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript6": {
+      "main": [
+        [
+          {
+            "node": "availabilityViewings",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields7": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript7": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript19",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields8": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript8",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript8": {
+      "main": [
+        [
+          {
+            "node": "createTask",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields9": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript11",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields10": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript9",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Input Working Time/Days": {
+      "main": [
+        [
+          {
+            "node": "IsWorkingTimeTrue/False",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript9": {
+      "main": [
+        [
+          {
+            "node": "getUsers",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields11": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript10",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript10": {
+      "main": [
+        [
+          {
+            "node": "createNotification",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript11": {
+      "main": [
+        [
+          {
+            "node": "createContactCallLogs",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GetContacts": {
+      "main": [
+        [
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "CreateContact": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "updateContact": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "searchListing": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript16",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "createLead": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript20",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IsWorkingTimeTrue/False": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "availabilityValuations": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "createTask": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "createAppointment": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "createContactCallLogs": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "availabilityViewings": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "createNotification": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "getUsers": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "getBranches": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript12": {
+      "main": [
+        [
+          {
+            "node": "GetContacts",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript13": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript14",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript14": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript15": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Code in JavaScript12",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If1": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Code in JavaScript13",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript16": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript17",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript17": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript18": {
+      "main": [
+        [
+          {
+            "node": "CreateContact",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript19": {
+      "main": [
+        [
+          {
+            "node": "createAppointment",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript20": {
+      "main": [
+        [
+          {
+            "node": "Respond to Webhook",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false
+  },
+  "versionId": "69fcc0df-c5e1-473c-ad68-8d833816b54d",
+  "meta": {
+    "instanceId": "fec8a2f43c067a052602e271454fd28c0e5d5ae0230cbc76cf3d851ada81e0c3"
+  },
+  "id": "qKbsReAfCtcipKMeg5rp8",
+  "tags": []
+}
