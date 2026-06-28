@@ -1,0 +1,1816 @@
+{
+  "name": "Indeed Job Seeking",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {}
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -1456,
+        1024
+      ],
+      "id": "2d8ab275-a194-41d1-92d9-4f8f9ec0bff4",
+      "name": "Schedule Trigger"
+    },
+    {
+      "parameters": {
+        "operation": "appendOrUpdate",
+        "documentId": {
+          "__rl": true,
+          "value": "1Y1T3xIkmt6C5lz3StAwPk2XEbC0BOJj_yBBdgn6QuGo",
+          "mode": "list",
+          "cachedResultName": "Indeed Job Listings",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1Y1T3xIkmt6C5lz3StAwPk2XEbC0BOJj_yBBdgn6QuGo/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1eyeda4g5YNjR80tayNwZihv-_O7GY8jEGeHki7cCdAY/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Title": "={{ $('Get dataset items').item.json.title }}",
+            "Link": "={{ $('Get dataset items').item.json.jobUrl }}",
+            "Date": "={{ $('Get dataset items').item.json.datePublished }}",
+            "Company Name": "={{ $('Get dataset items').item.json.companyName }}",
+            "Job Description": "={{ $('Get dataset items').item.json.descriptionText }}",
+            "Rating": "={{ $('OpenAI1').item.json.choices[0].message.content.score }}",
+            "Cover Letter": "={{ $json.choices[0].message.content.cover_letter }}",
+            "Salary": "={{ $('Get dataset items').item.json.salary.salaryText }}",
+            "City": "={{ $('Get dataset items').item.json.location.city }}",
+            "Expired": "={{ $('Get dataset items').item.json.expired }}",
+            "Remote": "={{ $('Get dataset items').item.json.isRemote }}",
+            "Platform": "Indeed",
+            "Status": "To-Do"
+          },
+          "matchingColumns": [
+            "Link"
+          ],
+          "schema": [
+            {
+              "id": "Title",
+              "displayName": "Title",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Job Description",
+              "displayName": "Job Description",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Platform",
+              "displayName": "Platform",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Link",
+              "displayName": "Link",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Date",
+              "displayName": "Date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Rating",
+              "displayName": "Rating",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Company Name",
+              "displayName": "Company Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Job Description",
+              "displayName": "Job Description",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Cover Letter",
+              "displayName": "Cover Letter",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Salary",
+              "displayName": "Salary",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "City",
+              "displayName": "City",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Expired",
+              "displayName": "Expired",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Remote",
+              "displayName": "Remote",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Salary",
+              "displayName": "Salary",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Status",
+              "displayName": "Status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        176,
+        1024
+      ],
+      "id": "302c6dee-9f9d-4497-92cb-3a31701b2bc0",
+      "name": "Google Sheets",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "oHG2DldApzJrCoBY",
+          "name": "Jono"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-4o-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-4O-MINI"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "You're an intelligent bot perfect at creating cover letters for a job. Please take the candidates resume and create a customized cover letter to the job.",
+              "role": "system"
+            },
+            {
+              "content": "=Here's the job listing details:\nTitle: {{ $('Get dataset items').item.json.title }}\nDescription: {{ $('Get dataset items').item.json.descriptionText }}\nName: {{ $('Get dataset items').item.json.companyName }}\nLocation: {{ $('Get dataset items').item.json.location }}\n\nHere is the candidates skill set:\n📄 SAMPLE RESUME\n\nAlex Morgan\n📍 Toronto, ON, Canada | 📧 alex.morgan@email.com | 📞 (123) 456-7890 | 🌐 linkedin.com/in/alexmorgan | github.com/alexmseo (optional if portfolio on GitHub)\n\n🎓 Education\nBachelor of Business Administration – Marketing\nUniversity of Toronto, Toronto, ON\nGraduated: April 2025 | GPA: 3.7/4.0\n\nRelevant coursework:\n\nDigital Marketing Strategies\n\nData Analytics in Marketing\n\nConsumer Behaviour\n\nSEO & Content Marketing (elective)\n\n💼 Experience\nSEO Intern\nGrowthRocket Agency, Remote | Jan 2025 – Apr 2025\n\nConducted technical SEO audits for 10+ client websites using tools like Screaming Frog, Ahrefs, and Google Search Console.\n\nImplemented structured data (Schema.org) to improve click-through rates in search results.\n\nOptimized on-page elements such as meta titles, descriptions, H1-H3 tags, internal linking, and image alt text.\n\nCollaborated with the content team to develop keyword-rich blog content and updated outdated pages.\n\nImproved page speed performance using tools like PageSpeed Insights and GTmetrix.\n\nFreelance SEO Consultant\nSelf-Employed | May 2024 – Present\n\nHelped 3 small local businesses optimize their websites for search engines, increasing organic traffic by 30–70% within 3 months.\n\nConducted keyword research and competitive analysis to guide content creation.\n\nSet up Google Analytics 4 and Google Search Console for performance monitoring.\n\n🛠 Skills\nSEO Tools: Google Search Console, GA4, Ahrefs, Screaming Frog, SEMrush, Yoast SEO\nCMS: WordPress, Wix\nTechnical SEO: Site audits, page speed optimization, canonical tags, indexing & crawling\nOn-Page SEO: Meta tags, internal linking, content structure, image optimization\nSoft Skills: Communication, problem-solving, attention to detail, teamwork\n\n📚 Certifications\nGoogle Analytics Certification – Google\n\nSEO Fundamentals – Semrush Academy\n\nTechnical SEO Certification – Moz (or any other you’ve done)"
+            },
+            {
+              "content": "Please return JSON data structured the following way:\n{\n\"cover_letter\": \"\"\n}",
+              "role": "assistant"
+            }
+          ]
+        },
+        "simplify": false,
+        "jsonOutput": true,
+        "options": {}
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        -208,
+        1024
+      ],
+      "id": "11bfe94b-04a0-44cb-ad6f-adf3327193ac",
+      "name": "OpenAI2",
+      "credentials": {
+        "openAiApi": {
+          "id": "9RWAaaO3Wu3uNVX7",
+          "name": "n8n Jono"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "modelId": {
+          "__rl": true,
+          "value": "gpt-5-mini",
+          "mode": "list",
+          "cachedResultName": "GPT-5-MINI"
+        },
+        "messages": {
+          "values": [
+            {
+              "content": "=You're an intelligent bot rating how closely a job listing is to a candidates skill set, on a score of 10. Please add up all the points and create a total out of 10.\na) 4 points for my resume is an amazing fit for the job, 2 point for mostly matching\nb) 3 point if the job is paying over $25/hr, $4,000/month or $50,000/year\nc) 1 point for it being a remote position (should equal true)\ne) 1 point if the company offers benefits (any benefits)\nf) 1 point if it's full time (not contract or part-time)\n\nFor example:\nIf the job fits mostly, and pays over $25/hr, and is remote, but has no benefits and is not full-time, the total points would be: 6\n###\nIf the job fits perfectly, but is under $50,000/year, isn't a remote position, has a few benefits, and isn't full-time, the total points would be: 5",
+              "role": "system"
+            },
+            {
+              "content": "=Here's the job listing details:\nSalary: {{ $('Get dataset items').item.json.salary.salaryText }}\nRemote: {{ $('Get dataset items').item.json.isRemote }}\nBenefits: {{ $('Get dataset items').item.json.benefits }}\nJob type/term: {{ $json.jobType[0] }} (i.e. part time, full time, contract etc)\n{{ $json.descriptionText }}\n\n\n\nHere is the candidates skill set:\n📄 SAMPLE RESUME\n\nAlex Morgan\n📍 Toronto, ON, Canada | 📧 alex.morgan@email.com | 📞 (123) 456-7890 | 🌐 linkedin.com/in/alexmorgan | github.com/alexmseo (optional if portfolio on GitHub)\n\n🎓 Education\nBachelor of Business Administration – Marketing\nUniversity of Toronto, Toronto, ON\nGraduated: April 2025 | GPA: 3.7/4.0\n\nRelevant coursework:\n\nDigital Marketing Strategies\n\nData Analytics in Marketing\n\nConsumer Behaviour\n\nSEO & Content Marketing (elective)\n\n💼 Experience\nSEO Intern\nGrowthRocket Agency, Remote | Jan 2025 – Apr 2025\n\nConducted technical SEO audits for 10+ client websites using tools like Screaming Frog, Ahrefs, and Google Search Console.\n\nImplemented structured data (Schema.org) to improve click-through rates in search results.\n\nOptimized on-page elements such as meta titles, descriptions, H1-H3 tags, internal linking, and image alt text.\n\nCollaborated with the content team to develop keyword-rich blog content and updated outdated pages.\n\nImproved page speed performance using tools like PageSpeed Insights and GTmetrix.\n\nFreelance SEO Consultant\nSelf-Employed | May 2024 – Present\n\nHelped 3 small local businesses optimize their websites for search engines, increasing organic traffic by 30–70% within 3 months.\n\nConducted keyword research and competitive analysis to guide content creation.\n\nSet up Google Analytics 4 and Google Search Console for performance monitoring.\n\n🛠 Skills\nSEO Tools: Google Search Console, GA4, Ahrefs, Screaming Frog, SEMrush, Yoast SEO\nCMS: WordPress, Wix\nTechnical SEO: Site audits, page speed optimization, canonical tags, indexing & crawling\nOn-Page SEO: Meta tags, internal linking, content structure, image optimization\nSoft Skills: Communication, problem-solving, attention to detail, teamwork\n\n📚 Certifications\nGoogle Analytics Certification – Google\n\nSEO Fundamentals – Semrush Academy\n\nTechnical SEO Certification – Moz (or any other you’ve done)"
+            },
+            {
+              "content": "Please return JSON data structured the following way:\n{\n\"score\": 10, //please add up all points out of 10 and add the sum here\n\"reasoning\": \"\" //please calculate how you got to this total\n}",
+              "role": "assistant"
+            }
+          ]
+        },
+        "simplify": false,
+        "jsonOutput": true,
+        "options": {
+          "maxTokens": 4000
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.openAi",
+      "typeVersion": 1.8,
+      "position": [
+        -592,
+        1024
+      ],
+      "id": "60251043-7d9c-45e1-ba21-5cbcceeaf46f",
+      "name": "OpenAI1",
+      "credentials": {
+        "openAiApi": {
+          "id": "9RWAaaO3Wu3uNVX7",
+          "name": "n8n Jono"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "maxItems": 3
+      },
+      "type": "n8n-nodes-base.limit",
+      "typeVersion": 1,
+      "position": [
+        -816,
+        1024
+      ],
+      "id": "47439c02-b4db-4f9a-8b07-e8c73ac286d2",
+      "name": "Limit"
+    },
+    {
+      "parameters": {
+        "operation": "Run actor",
+        "actorId": {
+          "__rl": true,
+          "value": "MXLpngmVpE8WTESQr",
+          "mode": "list",
+          "cachedResultName": "🚀 Indeed jobs scraper [PPR]",
+          "cachedResultUrl": "https://console.apify.com/actors/MXLpngmVpE8WTESQr/input"
+        },
+        "customBody": "{\n    \"country\": \"us\",\n    \"enableUniqueJobs\": false,\n    \"location\": \"Toronto\",\n    \"maxRows\": 10,\n    \"query\": \"SEO\"\n}",
+        "waitForFinish": 60,
+        "authentication": "apifyOAuth2Api"
+      },
+      "type": "@apify/n8n-nodes-apify.apify",
+      "typeVersion": 1,
+      "position": [
+        -1248,
+        1024
+      ],
+      "id": "71e2a830-5c54-421d-bfd5-dc4cd02ab87a",
+      "name": "Run an Actor",
+      "credentials": {
+        "apifyOAuth2Api": {
+          "id": "819AXeSG9fpYWo0m",
+          "name": "n8n Personal"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "Datasets",
+        "operation": "Get items",
+        "datasetId": "={{ $json.defaultDatasetId }}",
+        "authentication": "apifyOAuth2Api"
+      },
+      "type": "@apify/n8n-nodes-apify.apify",
+      "typeVersion": 1,
+      "position": [
+        -1040,
+        1024
+      ],
+      "id": "9e320598-eec7-42b1-b115-fbe92510ace9",
+      "name": "Get dataset items",
+      "credentials": {
+        "apifyOAuth2Api": {
+          "id": "819AXeSG9fpYWo0m",
+          "name": "n8n Personal"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "## Limit Node\nThis is for testing purposes, just so you can build things faster. Remove when ready to run live",
+        "height": 448,
+        "width": 320
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -928,
+        816
+      ],
+      "typeVersion": 1,
+      "id": "27645483-bb24-4fe4-8797-05827eb8f136",
+      "name": "Sticky Note"
+    }
+  ],
+  "pinData": {
+    "Run an Actor": [
+      {
+        "json": {
+          "id": "WiUuhz2tyHUJYaEbb",
+          "actId": "MXLpngmVpE8WTESQr",
+          "userId": "TQKatf2dBS3vvFypv",
+          "startedAt": "2025-10-08T19:34:21.498Z",
+          "finishedAt": "2025-10-08T19:34:37.441Z",
+          "status": "SUCCEEDED",
+          "meta": {
+            "origin": "API",
+            "userAgent": "axios/1.12.0"
+          },
+          "stats": {
+            "inputBodyLen": 89,
+            "migrationCount": 0,
+            "rebootCount": 0,
+            "restartCount": 0,
+            "durationMillis": 15823,
+            "resurrectCount": 0,
+            "runTimeSecs": 15.823,
+            "metamorph": 0,
+            "computeUnits": 0.0010988194444444444,
+            "memAvgBytes": 48050095.937370926,
+            "memMaxBytes": 55537664,
+            "memCurrentBytes": 49479680,
+            "cpuAvgUsage": 1.5820857403515745,
+            "cpuMaxUsage": 83.01655860349128,
+            "cpuCurrentUsage": 0.03574468085106383,
+            "netRxBytes": 154121,
+            "netTxBytes": 57029
+          },
+          "options": {
+            "build": "latest",
+            "timeoutSecs": 1800,
+            "memoryMbytes": 256,
+            "maxItems": 11706,
+            "diskMbytes": 512
+          },
+          "buildId": "hID9NzZMNQOVTxRIg",
+          "exitCode": 0,
+          "defaultKeyValueStoreId": "euXdaF74Bokh4gcNo",
+          "defaultDatasetId": "IvAp3EZTTAFLUZD5v",
+          "defaultRequestQueueId": "WDdCpMCne0tZxdt6E",
+          "pricingInfo": {
+            "pricingModel": "PRICE_PER_DATASET_ITEM",
+            "reasonForChange": null,
+            "pricePerUnitUsd": 0.005,
+            "unitName": "Job",
+            "createdAt": "2024-12-19T01:37:11.763Z",
+            "startedAt": "2024-12-19T01:37:11.763Z",
+            "apifyMarginPercentage": 0.2
+          },
+          "platformUsageBillingModel": "DEVELOPER",
+          "generalAccess": "FOLLOW_USER_SETTING",
+          "buildNumber": "0.0.139",
+          "containerUrl": "https://cpty5o6fx1xv.runs.apify.net"
+        }
+      }
+    ],
+    "Get dataset items": [
+      {
+        "json": {
+          "jobKey": "9a91b2b8009340cc",
+          "scrapingInfo": {
+            "page": 1,
+            "index": 1
+          },
+          "title": "Commission-Based Marketing Representative",
+          "jobType": [
+            "Contract"
+          ],
+          "descriptionHtml": "<p><b>Job Overview</b><br/>We are seeking a dynamic and results-driven Marketing Representative to join our team. The ideal candidate will possess a strong understanding of various marketing strategies and techniques, including SEO, digital marketing, and content marketing. This role requires creativity, analytical skills, and the ability to manage multiple projects simultaneously. As a Marketing Representative, you will play a crucial role in promoting our brand and driving sales through effective marketing campaigns.</p><p><b>Job Description &amp; Responsibilities:</b></p><p>As a Marketing Representative, you will be the face of our firm in the community. You&rsquo;ll be responsible for driving client acquisition, building referral networks, and promoting our financial services to business owners, entrepreneurs, and professionals in the region.</p><p>Key responsibilities include:</p><ul><li>Prospect and generate leads through direct outreach, referrals, networking events, business meetups, cold calling, email outreach, and social platforms like LinkedIn</li></ul><ul><li>Educate and inform potential clients about the value of outsourced financial services (e.g., CFO services, tax planning, bookkeeping)</li></ul><ul><li>Develop and maintain strong relationships with local business owners, real estate professionals, attorneys, CPAs, and other potential referral sources</li></ul><ul><li>Schedule consultations or introductions for the internal team to close (you&rsquo;re the door-opener)</li></ul><ul><li>Collaborate with internal team members to refine messaging and target outreach strategies</li></ul><ul><li>Attend local business events, chamber of commerce meetings, and other networking opportunities to represent the firm professionally</li></ul><ul><li>Maintain a CRM or lead tracker to monitor outreach, follow-ups, and conversion metrics</li></ul><ul><li>Report weekly on outreach activity, lead progress, and marketing insights from the field</li></ul><ul><li>Stay informed on basic financial service offerings, market trends, and local business news to have informed conversations with prospects</li></ul><ul><li>Represent the brand with integrity and professionalism at all times</li></ul><p><b>What You&rsquo;ll Do:</b></p><ul><li>Promote our full suite of financial services to small businesses, entrepreneurs, and professionals</li></ul><ul><li>Identify and engage with potential clients through outreach, networking, referrals, and local events</li></ul><ul><li>Educate prospects on the benefits of working with a professional CFO/accounting team</li></ul><ul><li>Develop and execute simple local marketing strategies (digital or in-person)</li></ul><ul><li>Represent our brand professionally and ethically in all interactions</li></ul><ul><li>Report on lead generation and conversion activities</li></ul><p><b>Experience</b></p><ul><li>Proven experience in digital marketing, content marketing, or related fields.</li><li>Strong communication and interpersonal skills</li><li>Familiarity with SEO best practices and social media marketing strategies.</li><li>Knowledge of performance marketing techniques and analytics tools such as Google AdWords.</li><li>Proficiency in WordPress for website management and content updates.</li><li>Strong copywriting skills with the ability to create persuasive messaging for diverse audiences.</li><li>Experience in product management and budgeting for marketing initiatives is a plus.</li><li>Self-motivated, disciplined, and goal-oriented</li><li>Comfortable working independently with minimal supervision</li><li>Knowledge of the Pittsburgh small business landscape is a plus</li><li>Ability to work collaboratively in a fast-paced environment while managing multiple projects effectively. If you are passionate about marketing and eager to make an impact within our organization, we encourage you to apply for this exciting opportunity.</li></ul><p>Job Type: Contract</p><p>Pay: $3,000.00 - $5,000.00 per month</p><p>Benefits:</p><ul><li>Flexible schedule</li></ul><p>Work Location: Remote</p>",
+          "descriptionText": "*Job Overview*\nWe are seeking a dynamic and results-driven Marketing Representative to join our team. The ideal candidate will possess a strong understanding of various marketing strategies and techniques, including SEO, digital marketing, and content marketing. This role requires creativity, analytical skills, and the ability to manage multiple projects simultaneously. As a Marketing Representative, you will play a crucial role in promoting our brand and driving sales through effective marketing campaigns.\n\n*Job Description & Responsibilities:*\n\nAs a Marketing Representative, you will be the face of our firm in the community. You’ll be responsible for driving client acquisition, building referral networks, and promoting our financial services to business owners, entrepreneurs, and professionals in the region.\n\nKey responsibilities include:\n\n* Prospect and generate leads through direct outreach, referrals, networking events, business meetups, cold calling, email outreach, and social platforms like LinkedIn\n\n* Educate and inform potential clients about the value of outsourced financial services (e.g., CFO services, tax planning, bookkeeping)\n\n* Develop and maintain strong relationships with local business owners, real estate professionals, attorneys, CPAs, and other potential referral sources\n\n* Schedule consultations or introductions for the internal team to close (you’re the door-opener)\n\n* Collaborate with internal team members to refine messaging and target outreach strategies\n\n* Attend local business events, chamber of commerce meetings, and other networking opportunities to represent the firm professionally\n\n* Maintain a CRM or lead tracker to monitor outreach, follow-ups, and conversion metrics\n\n* Report weekly on outreach activity, lead progress, and marketing insights from the field\n\n* Stay informed on basic financial service offerings, market trends, and local business news to have informed conversations with prospects\n\n* Represent the brand with integrity and professionalism at all times\n\n*What You’ll Do:*\n\n* Promote our full suite of financial services to small businesses, entrepreneurs, and professionals\n\n* Identify and engage with potential clients through outreach, networking, referrals, and local events\n\n* Educate prospects on the benefits of working with a professional CFO/accounting team\n\n* Develop and execute simple local marketing strategies (digital or in-person)\n\n* Represent our brand professionally and ethically in all interactions\n\n* Report on lead generation and conversion activities\n\n*Experience*\n\n* Proven experience in digital marketing, content marketing, or related fields.\n* Strong communication and interpersonal skills\n* Familiarity with SEO best practices and social media marketing strategies.\n* Knowledge of performance marketing techniques and analytics tools such as Google AdWords.\n* Proficiency in WordPress for website management and content updates.\n* Strong copywriting skills with the ability to create persuasive messaging for diverse audiences.\n* Experience in product management and budgeting for marketing initiatives is a plus.\n* Self-motivated, disciplined, and goal-oriented\n* Comfortable working independently with minimal supervision\n* Knowledge of the Pittsburgh small business landscape is a plus\n* Ability to work collaboratively in a fast-paced environment while managing multiple projects effectively. If you are passionate about marketing and eager to make an impact within our organization, we encourage you to apply for this exciting opportunity.\n\nJob Type: Contract\n\nPay: $3,000.00 - $5,000.00 per month\n\nBenefits:\n* Flexible schedule\n\nWork Location: Remote",
+          "companyName": "Avotri Odoom & Co. LLC",
+          "companyUrl": "https://www.indeed.com/cmp/Avotri-Odoom-&-Co.-LLC",
+          "location": {
+            "city": "Pittsburgh",
+            "postalCode": null,
+            "country": "United States",
+            "countryCode": "US",
+            "formattedAddressLong": "Pittsburgh, PA",
+            "formattedAddressShort": "Pittsburgh, PA",
+            "latitude": 40.44062,
+            "longitude": -79.99589,
+            "streetAddress": null,
+            "fullAddress": "Pittsburgh, PA"
+          },
+          "salary": {
+            "salaryCurrency": "USD",
+            "salaryMax": 5000,
+            "salaryMin": 3000,
+            "salarySource": "EXTRACTION",
+            "salaryText": "$3,000 - $5,000 a month",
+            "salaryType": "monthly"
+          },
+          "rating": {
+            "rating": 0,
+            "count": 0
+          },
+          "benefits": [
+            "Flexible schedule"
+          ],
+          "occupation": [
+            "Digital Marketing Occupations",
+            "Marketing, Advertising & Public Relations Occupations",
+            "Marketing & Advertising Occupations"
+          ],
+          "attributes": [
+            "LinkedIn",
+            "Commission pay",
+            "Website maintenance",
+            "Website management",
+            "WordPress",
+            "Identifying new business opportunities",
+            "Content writing",
+            "Lead generation",
+            "Mid-level",
+            "Client relationship development",
+            "Marketing strategy development",
+            "Lead generation experience (1-2 years)",
+            "Digital campaign management",
+            "Social media platforms",
+            "Business development",
+            "Analysis skills",
+            "Product management",
+            "SEO",
+            "Content marketing",
+            "Copywriting experience (1-2 years)",
+            "Contract",
+            "Prospecting",
+            "Content marketing experience (1-2 years)",
+            "Financial services",
+            "Marketing analytics",
+            "Budgeting",
+            "CRM system proficiency",
+            "Outbound calling",
+            "Appointment scheduling",
+            "Digital marketing performance monitoring",
+            "Canvassing",
+            "Communication skills",
+            "Flexible schedule",
+            "Conducting sales calls",
+            "Customer acquisition",
+            "Copywriting",
+            "Analytics"
+          ],
+          "contacts": [],
+          "shifts": [],
+          "socialInsurance": [],
+          "workingSystem": [],
+          "shiftAndSchedule": [],
+          "postedToday": false,
+          "hiringDemand": {
+            "isHighVolumeHiring": false,
+            "isUrgentHire": false
+          },
+          "datePublished": "2025-09-18",
+          "expired": false,
+          "source": "Indeed",
+          "age": "20 days ago",
+          "isRemote": false,
+          "locale": "us",
+          "language": "en",
+          "jobUrl": "https://www.indeed.com/viewjob?jk=9a91b2b8009340cc",
+          "applyUrl": "http://www.indeed.com/job/commission-based-marketing-representative-9a91b2b8009340cc",
+          "emails": [],
+          "companyAddresses": [],
+          "companyLinks": {
+            "facebook": null,
+            "instagram": null,
+            "twitter": null,
+            "customLinks": [],
+            "corporateWebsite": null
+          },
+          "companyCeo": {
+            "name": null,
+            "photoUrl": null,
+            "startDate": null
+          },
+          "requirements": [
+            {
+              "label": "Marketing analytics",
+              "requirementSeverity": "REQUIRED"
+            },
+            {
+              "label": "WordPress",
+              "requirementSeverity": "REQUIRED"
+            },
+            {
+              "label": "Analytics",
+              "requirementSeverity": "REQUIRED"
+            },
+            {
+              "label": "Lead generation",
+              "requirementSeverity": "REQUIRED"
+            },
+            {
+              "label": "Analysis skills",
+              "requirementSeverity": "REQUIRED"
+            },
+            {
+              "label": "Content marketing",
+              "requirementSeverity": "REQUIRED"
+            },
+            {
+              "label": "Copywriting",
+              "requirementSeverity": "REQUIRED"
+            },
+            {
+              "label": "Lead generation experience (1-2 years)",
+              "requirementSeverity": "REQUIRED"
+            },
+            {
+              "label": "Content marketing experience (1-2 years)",
+              "requirementSeverity": "REQUIRED"
+            },
+            {
+              "label": "Copywriting experience (1-2 years)",
+              "requirementSeverity": "REQUIRED"
+            }
+          ]
+        }
+      },
+      {
+        "json": {
+          "jobKey": "62e5eec10b7f8bbd",
+          "scrapingInfo": {
+            "page": 1,
+            "index": 0
+          },
+          "title": "Real Estate Marketing Social Media Coordinator",
+          "jobType": [],
+          "descriptionHtml": "<div>Are you ready to take your marketing career to the next level? We have an exciting opportunity for a Marketing Coordinator to join our growing real estate business.\n<br>\n<br>\nThe ideal candidate will have a well-developed capacity for coordinating and implementing marketing communication projects with responsibilities in social media, public relations, search marketing, advertising, brand stewardship and special events management.\n<br>\n<br>\nIn addition to marketing, brand, and social media related work, this position will also share a role in tracking sales data; maintaining collateral and marketing materials inventory; maintaining databases; and preparing reports.<br>\n<br>\nWe offer a great laid-back working environment, weekly team building meetings and a creative, fun atmosphere. If you&rsquo;re ready to grow your career, come grow with us!<br>\n<b>Compensation:</b><p>\n$37,500</p><b>\nResponsibilities:</b><ul><li>\nCreate, deliver and edit marketing materials and advertising campaigns that are effective and timely</li>\n<li>Prepare signage and events for new community launches that will entice potential buyers\n</li><li>Plan and organize all team events, take photos, and then market on social media</li>\n<li>Deliver social media content with a fresh approach and respond to all followers</li>\n<li>Manage website design, content, SEO development and tracking analytics to ensure all content is up to date and relevant</li>\n</ul><b>Qualifications:</b><ul><li>\nB.A. or B.S. in Marketing, Journalism, Business or related major required\n</li><li>Must possess excellent communication skills and have a positive, upbeat attitude</li>\n<li>Expert in forward design concepts\n</li><li>Minimum 2 years of marketing/brand management experience in an agency or Real Estate sales environment\n</li><li>Maintains an open mind to new ideas and suggestions\n</li></ul><b>About Company</b><p><br>\nWe are an equal-opportunity employer. We welcome and encourage diversity in our workplace.</p></div>",
+          "descriptionText": "Are you ready to take your marketing career to the next level? We have an exciting opportunity for a Marketing Coordinator to join our growing real estate business.\n\nThe ideal candidate will have a well-developed capacity for coordinating and implementing marketing communication projects with responsibilities in social media, public relations, search marketing, advertising, brand stewardship and special events management.\n\nIn addition to marketing, brand, and social media related work, this position will also share a role in tracking sales data; maintaining collateral and marketing materials inventory; maintaining databases; and preparing reports.\n\nWe offer a great laid-back working environment, weekly team building meetings and a creative, fun atmosphere. If you’re ready to grow your career, come grow with us!\nCompensation:\n\n$37,500\n\nResponsibilities:\nCreate, deliver and edit marketing materials and advertising campaigns that are effective and timely\nPrepare signage and events for new community launches that will entice potential buyers\nPlan and organize all team events, take photos, and then market on social media\nDeliver social media content with a fresh approach and respond to all followers\nManage website design, content, SEO development and tracking analytics to ensure all content is up to date and relevant\nQualifications:\nB.A. or B.S. in Marketing, Journalism, Business or related major required\nMust possess excellent communication skills and have a positive, upbeat attitude\nExpert in forward design concepts\nMinimum 2 years of marketing/brand management experience in an agency or Real Estate sales environment\nMaintains an open mind to new ideas and suggestions\nAbout Company\n\nWe are an equal-opportunity employer. We welcome and encourage diversity in our workplace.",
+          "location": {
+            "city": "Pittsburgh",
+            "postalCode": null,
+            "country": "United States",
+            "countryCode": "US",
+            "formattedAddressLong": "Pittsburgh, PA",
+            "formattedAddressShort": "Pittsburgh, PA",
+            "latitude": 40.44062,
+            "longitude": -79.99589,
+            "streetAddress": null,
+            "fullAddress": "Pittsburgh, PA"
+          },
+          "salary": {
+            "salaryCurrency": "USD",
+            "salarySource": "EXTRACTION",
+            "salaryText": "$37,500 a year",
+            "salaryType": "yearly"
+          },
+          "rating": {},
+          "benefits": [],
+          "occupation": [
+            "Digital Marketing Occupations",
+            "Social Media Occupations",
+            "Marketing, Advertising & Public Relations Occupations",
+            "Marketing & Advertising Occupations"
+          ],
+          "attributes": [
+            "Website maintenance",
+            "Branding",
+            "Website management",
+            "Sales reporting",
+            "Marketing",
+            "Inventory management",
+            "Event coordination",
+            "Bachelor of Science",
+            "Content editing",
+            "Content writing",
+            "Bachelor's degree in business",
+            "Mid-level",
+            "Databases",
+            "Digital campaign management",
+            "Bachelor of Journalism",
+            "Bachelor's degree in journalism",
+            "Bachelor's degree",
+            "Social media content creation",
+            "Journalism",
+            "Search marketing",
+            "Marketing analytics",
+            "Public relations",
+            "Bachelor of Marketing",
+            "Digital marketing performance monitoring",
+            "Business",
+            "2 years",
+            "Bachelor of Arts",
+            "Communication skills",
+            "Analytics",
+            "Marketing collateral creation"
+          ],
+          "contacts": [],
+          "shifts": [],
+          "socialInsurance": [],
+          "workingSystem": [],
+          "shiftAndSchedule": [],
+          "postedToday": false,
+          "hiringDemand": {
+            "isHighVolumeHiring": false,
+            "isUrgentHire": false
+          },
+          "datePublished": "2025-09-22",
+          "expired": false,
+          "source": "Jordan Jankowski Team",
+          "age": "17 days ago",
+          "isRemote": false,
+          "locale": "us",
+          "language": "en",
+          "jobUrl": "https://www.indeed.com/viewjob?jk=62e5eec10b7f8bbd",
+          "applyUrl": "https://jobs.wizehire.com/job/real-estate-marketing-social-media-coordinator-in-pittsburgh-pa-us-385cf5d5e7689abc",
+          "emails": [],
+          "companyLinks": {},
+          "companyCeo": {},
+          "requirements": []
+        }
+      },
+      {
+        "json": {
+          "jobKey": "04cf4a88a85bfe29",
+          "scrapingInfo": {
+            "page": 1,
+            "index": 6
+          },
+          "title": "Marketing Manager",
+          "jobType": [],
+          "descriptionHtml": "<div><p><b>We&rsquo;re not your average real estate company.</b></p><p></p><p><br>\nAt <b>HomeBuyers of Pittsburgh</b>, we&rsquo;ve helped over 1,000 local families sell their homes with speed, trust, and care since 2015 &mdash; winning multiple local and national awards along the way while keeping the customer experience at the heart of everything we do.</p><p></p><p><br>\nAt our brokerage, we&rsquo;re redefining what it means to be a real estate agent. Our people get the tools, training, and culture to close more deals, earn more income, and love the work they do.</p><p></p><p><br>\nTogether, we&rsquo;re building brands that are shaking up the Pittsburgh market &mdash; and we&rsquo;re just getting started.</p><p></p><p><br>\nOur mission is simple: <b>help people win in real estate</b> &mdash; whether that&rsquo;s selling a house, building an investment portfolio, or launching a successful career. But just as important as <i>what</i> we do is <i>how</i> we do it.</p><p></p><p><br>\nWe live our values every day:</p><ul><li><b>\nBelieve in Yourself, Your Team, and the Process</b></li><li><b>\nOver-Deliver for Our Customers</b></li><li><b>\nBe a Problem Solver, Take Initiative</b></li><li><b>\nNo Bad Attitudes &mdash; Good Vibes Only</b></li><li><b>\nCollaboration Over Competition</b></li><li><b>\nKeep Learning and Improving</b></li><li><b>\nAlways Do the Right Thing</b></li></ul><p></p><p><br>\nWe&rsquo;re now hiring a <b>Marketing Manager</b> to bring energy, creativity, and organization to our growing brands. You&rsquo;ll lead campaigns that drive motivated seller leads, fuel RealtyCo&rsquo;s recruiting, and keep our personal brands front and center in Pittsburgh.</p><p></p><p><br>\nThis is the role for someone who loves real estate, thrives in a fast-paced environment, and wants to make a measurable impact where their work truly matters.</p><b>\nCompensation:</b><p>\n$55,000 - $70,000 yearly</p><b>\nResponsibilities:</b><ul><li>\nManage <b>direct mail campaigns</b>: pulling lists, coordinating design/printing, tracking ROI.</li><li>\nKeep <b>ads &amp; SEO vendors</b> accountable: review reports, flag issues, track KPIs.</li><li>\nHandle <b>retargeting and online campaign alignment</b> with offline marketing.</li><li>\nRun <b>email recruiting campaigns</b> (templates already built, just manage + improve).</li><li>\nFilm &amp; edit short-form content for Ryan &amp; Joey (phone-level edits, reels, posts).</li><li>\nMaintain <b>social media calendars</b> and consistent posting across brands.</li><li>\nCollect testimonials, success stories, and repurpose them into content.</li><li>\nCoordinate with inside sales callers and marketing team members as needed.</li></ul><b>\nQualifications:</b><ul><li>\n2&ndash;4 years of marketing experience (agency, small business, or real estate background a plus).</li><li>\nComfortable with social media, email tools, Canva, and basic video editing apps.</li><li>\nOrganized, detail-oriented, and proactive &mdash; you don&rsquo;t need hand-holding.</li><li>\nStrong writing skills (ads, posts, captions, emails).</li><li>\nAble to juggle multiple campaigns and vendors without losing quality.</li></ul><b>\nAbout Company</b><p><br>\nWe are the Home Buyers of Pittsburgh, a locally owned company that started in 2015 when two partners, Ryan Scialabba and Aaron Archibald, decided to join forces.</p><p>\nIn the last ten years, we have increased from two partners to a full staff of 30, have bought and sold over 1,000 homes, and now have built a 200+ property portfolio.</p><p>\nWe have a vertically integrated business that includes acquisitions, construction, financing, property management, and a brokerage.</p><p>\nFor five years running, we've won TRIB Live's Best of The Best Real Estate Companies, PBT Best Places to Work 2x, and in 2020, we ranked #541 on the INC. 5000 list. In 2019, we won #1 Fastest Growing Company in Pittsburgh on the PITTSBURGH FAST 50 List and landed at #747 on the INC. 5000 List.</p><p>\nWe're not just a company focused on revenue, but we're on a mission to help as many people as we can. We're a tight-knit, high-energy team that is always striving to get better.</p></div>",
+          "descriptionText": "We’re not your average real estate company.\n\nAt HomeBuyers of Pittsburgh, we’ve helped over 1,000 local families sell their homes with speed, trust, and care since 2015 — winning multiple local and national awards along the way while keeping the customer experience at the heart of everything we do.\n\nAt our brokerage, we’re redefining what it means to be a real estate agent. Our people get the tools, training, and culture to close more deals, earn more income, and love the work they do.\n\nTogether, we’re building brands that are shaking up the Pittsburgh market — and we’re just getting started.\n\nOur mission is simple: help people win in real estate — whether that’s selling a house, building an investment portfolio, or launching a successful career. But just as important as what we do is how we do it.\n\nWe live our values every day:\n\nBelieve in Yourself, Your Team, and the Process\nOver-Deliver for Our Customers\nBe a Problem Solver, Take Initiative\nNo Bad Attitudes — Good Vibes Only\nCollaboration Over Competition\nKeep Learning and Improving\nAlways Do the Right Thing\n\nWe’re now hiring a Marketing Manager to bring energy, creativity, and organization to our growing brands. You’ll lead campaigns that drive motivated seller leads, fuel RealtyCo’s recruiting, and keep our personal brands front and center in Pittsburgh.\n\nThis is the role for someone who loves real estate, thrives in a fast-paced environment, and wants to make a measurable impact where their work truly matters.\n\nCompensation:\n\n$55,000 - $70,000 yearly\n\nResponsibilities:\nManage direct mail campaigns: pulling lists, coordinating design/printing, tracking ROI.\nKeep ads & SEO vendors accountable: review reports, flag issues, track KPIs.\nHandle retargeting and online campaign alignment with offline marketing.\nRun email recruiting campaigns (templates already built, just manage + improve).\nFilm & edit short-form content for Ryan & Joey (phone-level edits, reels, posts).\nMaintain social media calendars and consistent posting across brands.\nCollect testimonials, success stories, and repurpose them into content.\nCoordinate with inside sales callers and marketing team members as needed.\nQualifications:\n2–4 years of marketing experience (agency, small business, or real estate background a plus).\nComfortable with social media, email tools, Canva, and basic video editing apps.\nOrganized, detail-oriented, and proactive — you don’t need hand-holding.\nStrong writing skills (ads, posts, captions, emails).\nAble to juggle multiple campaigns and vendors without losing quality.\nAbout Company\n\nWe are the Home Buyers of Pittsburgh, a locally owned company that started in 2015 when two partners, Ryan Scialabba and Aaron Archibald, decided to join forces.\n\nIn the last ten years, we have increased from two partners to a full staff of 30, have bought and sold over 1,000 homes, and now have built a 200+ property portfolio.\n\nWe have a vertically integrated business that includes acquisitions, construction, financing, property management, and a brokerage.\n\nFor five years running, we've won TRIB Live's Best of The Best Real Estate Companies, PBT Best Places to Work 2x, and in 2020, we ranked #541 on the INC. 5000 list. In 2019, we won #1 Fastest Growing Company in Pittsburgh on the PITTSBURGH FAST 50 List and landed at #747 on the INC. 5000 List.\n\nWe're not just a company focused on revenue, but we're on a mission to help as many people as we can. We're a tight-knit, high-energy team that is always striving to get better.",
+          "location": {
+            "city": "Pittsburgh",
+            "postalCode": null,
+            "country": "United States",
+            "countryCode": "US",
+            "formattedAddressLong": "Pittsburgh, PA",
+            "formattedAddressShort": "Pittsburgh, PA",
+            "latitude": 40.44062,
+            "longitude": -79.99589,
+            "streetAddress": null,
+            "fullAddress": "Pittsburgh, PA"
+          },
+          "salary": {
+            "salaryCurrency": "USD",
+            "salaryMax": 70000,
+            "salaryMin": 55000,
+            "salarySource": "EXTRACTION",
+            "salaryText": "$55,000 - $70,000 a year",
+            "salaryType": "yearly"
+          },
+          "rating": {},
+          "benefits": [],
+          "occupation": [
+            "Marketing, Advertising & Public Relations Occupations",
+            "Marketing & Advertising Occupations"
+          ],
+          "attributes": [
+            "Branding",
+            "Content writing",
+            "Email marketing campaigns",
+            "Video shooting",
+            "Lead generation",
+            "Mid-level",
+            "ROI",
+            "Digital campaign management",
+            "Key Performance Indicators",
+            "Canva",
+            "Social media content creation",
+            "Direct mail",
+            "SEO",
+            "Recruiting",
+            "Content scheduling",
+            "Digital marketing performance monitoring",
+            "Copywriting",
+            "10 years"
+          ],
+          "contacts": [],
+          "shifts": [],
+          "socialInsurance": [],
+          "workingSystem": [],
+          "shiftAndSchedule": [],
+          "postedToday": false,
+          "hiringDemand": {
+            "isHighVolumeHiring": false,
+            "isUrgentHire": false
+          },
+          "datePublished": "2025-10-01",
+          "expired": false,
+          "source": "Home Buyers Of Pittsburgh",
+          "age": "8 days ago",
+          "isRemote": false,
+          "locale": "us",
+          "language": "en",
+          "jobUrl": "https://www.indeed.com/viewjob?jk=04cf4a88a85bfe29",
+          "applyUrl": "https://jobs.wizehire.com/job/marketing-manager-in-pittsburgh-pa-us-f40edf72929566e0",
+          "emails": [],
+          "companyLinks": {},
+          "companyCeo": {},
+          "requirements": []
+        }
+      },
+      {
+        "json": {
+          "jobKey": "4a137cf2a25425dc",
+          "scrapingInfo": {
+            "page": 1,
+            "index": 7
+          },
+          "title": "E-Commerce Manager",
+          "jobType": [
+            "Full-time"
+          ],
+          "descriptionHtml": "<div><p>The <b>E-Commerce Manager</b> will be responsible for driving growth and delivering revenue goals for GAMMA Sports&rsquo; DTC business. This role will oversee the entire digital consumer journey, from building awareness at the top of the funnel with paid social and digital advertising, to optimizing conversions on the GAMMA Sports website. The ideal candidate is both strategic and hands-on, able to set an annual promotional and digital marketing strategy while also managing day-to-day execution, analytics, and cross-functional collaboration.</p><p></p><p><b><br>\nKey Responsibilities</b></p><ul><li><p>\nManage daily operations for Shopify and B2B digital storefronts.</p></li><li><p>\nOversee full product setup: imagery, copy, SEO, tags, pricing, promotions.</p></li><li><p>\nBuild and optimize collections, navigation, and landing pages for discoverability and conversion.</p></li><li><p>\nOwn promotional strategy, execution and analytics.</p></li><li><p>\nRun QA across devices/browsers to ensure site speed, functionality, and accessibility.</p></li><li><p>\nDevelop upsell, cross-sell, and bundling experiences to grow AOV and repeat rate.</p></li><li><p>\nConduct keyword research and execute SEO strategies to improve rankings.</p></li><li><p>\nOptimize product listings and site content for search and conversion.</p></li><li><p>\nTrack performance with GA4, Shopify Analytics, and SEO tools.</p></li><li><p>\nOwn Klaviyo campaigns and automation: strategy, segmentation, testing, deliverability</p></li><li><p>\nBuild and maintain automated email and SMS flows.</p></li><li><p>\nPartner with Marketing Coordinator on email/SMS content to drive engagement and revenue.</p></li><li><p>\nDevelop digital ad strategies and oversee execution.</p></li><li><p>\nManage loyalty programs to increase LTV.</p></li><li><p>\nSupport affiliate programs through code development and management.</p></li><li><p>\nTrack KPIs (traffic, conversion, AOV, retention, category performance) to deliver insights and recommendations to Marketing and Executive Leadership.</p></li><li><p>\nTranslate data into strategies for site, CRM, promotions, and campaign optimization.</p></li><li><p>\nDirectly manage a Marketing Coordinator to support campaign execution, merchandising, and content.</p></li><li><p>\nCollaborate cross-functionally with Marketing, Creative, Operations, and Sales to align DTC and B2B initiatives.</p></li><li><p>\nManage external agencies/contractors (development, paid digital advertising).</p></li></ul><p></p><p><b>\nQualifications</b></p><ul><li><p>\n3-5 years of Shopify &amp; CRM experience in a DTC brand or agency</p></li><li><p>\nBachelor&rsquo;s degree in Marketing, Communications, or related field.</p></li><li><p>\nStrong knowledge and hands-on experience in retail/digital marketing, including email campaigns, social media advertising, SEO, and conversion optimization.</p></li><li><p>\nStrong understanding of e-commerce metrics, product data, and customer behavior analytics.</p></li><li><p>\nProficiency in Shopify, Klaviyo, GA4, and Excel</p></li><li><p>\nNetSuite ERP and/or Suite Commerce Experience a plus</p></li><li><p>\nStrong knowledge of HTML and CSS coding.</p></li><li><p>\nData-driven mindset with the ability to translate analytics into strategy.</p></li><li><p>\nExperience managing direct reports.</p></li><li><p>\nHighly organized, detail-oriented, and adaptable in a fast-paced environment.</p></li><li><p>\nExcellent communication and cross-functional collaboration skills.</p></li><li><p>\nPassion for sports &ndash; especially tennis, pickleball or padel &ndash; is a big plus</p></li></ul><p></p><p><b>\nWhat We Offer</b></p><ul><li><p>\nCompetitive salary</p></li><li><p>\nComprehensive benefits package (health, dental, vision, 401k with match).</p></li><li><p>\nPaid Time Off</p></li><li><p>\nParental Leave</p></li><li><p>\nHybrid work environment with flexibility</p></li><li><p>\nEmployee discounts on GAMMA Sports products.</p></li><li><p>\nOpportunity for professional growth in a dynamic, sports-focused company.</p></li></ul><p><b><br>\nAbout GAMMA Sports</b></p><p>\nGAMMA Sports is a Pittsburgh-based, family-owned manufacturer with a 50-year legacy of innovating in racquet sport equipment, including tennis and pickleball. Best known for its patented breakthrough string technologies, GAMMA has leveraged its racquet sports expertise to develop high-quality paddles, balls, grips, and accessories that empower people who love to play at all levels. Providing equipment and education to help improve your game, the brand has become a trusted name among coaches, trainers, and racquet sport enthusiasts around the world.</p><p>\n</p><p>oyZjNnSDMw</p></div>",
+          "descriptionText": "The E-Commerce Manager will be responsible for driving growth and delivering revenue goals for GAMMA Sports’ DTC business. This role will oversee the entire digital consumer journey, from building awareness at the top of the funnel with paid social and digital advertising, to optimizing conversions on the GAMMA Sports website. The ideal candidate is both strategic and hands-on, able to set an annual promotional and digital marketing strategy while also managing day-to-day execution, analytics, and cross-functional collaboration.\n\nKey Responsibilities\n\nManage daily operations for Shopify and B2B digital storefronts.\n\nOversee full product setup: imagery, copy, SEO, tags, pricing, promotions.\n\nBuild and optimize collections, navigation, and landing pages for discoverability and conversion.\n\nOwn promotional strategy, execution and analytics.\n\nRun QA across devices/browsers to ensure site speed, functionality, and accessibility.\n\nDevelop upsell, cross-sell, and bundling experiences to grow AOV and repeat rate.\n\nConduct keyword research and execute SEO strategies to improve rankings.\n\nOptimize product listings and site content for search and conversion.\n\nTrack performance with GA4, Shopify Analytics, and SEO tools.\n\nOwn Klaviyo campaigns and automation: strategy, segmentation, testing, deliverability\n\nBuild and maintain automated email and SMS flows.\n\nPartner with Marketing Coordinator on email/SMS content to drive engagement and revenue.\n\nDevelop digital ad strategies and oversee execution.\n\nManage loyalty programs to increase LTV.\n\nSupport affiliate programs through code development and management.\n\nTrack KPIs (traffic, conversion, AOV, retention, category performance) to deliver insights and recommendations to Marketing and Executive Leadership.\n\nTranslate data into strategies for site, CRM, promotions, and campaign optimization.\n\nDirectly manage a Marketing Coordinator to support campaign execution, merchandising, and content.\n\nCollaborate cross-functionally with Marketing, Creative, Operations, and Sales to align DTC and B2B initiatives.\n\nManage external agencies/contractors (development, paid digital advertising).\n\nQualifications\n\n3-5 years of Shopify & CRM experience in a DTC brand or agency\n\nBachelor’s degree in Marketing, Communications, or related field.\n\nStrong knowledge and hands-on experience in retail/digital marketing, including email campaigns, social media advertising, SEO, and conversion optimization.\n\nStrong understanding of e-commerce metrics, product data, and customer behavior analytics.\n\nProficiency in Shopify, Klaviyo, GA4, and Excel\n\nNetSuite ERP and/or Suite Commerce Experience a plus\n\nStrong knowledge of HTML and CSS coding.\n\nData-driven mindset with the ability to translate analytics into strategy.\n\nExperience managing direct reports.\n\nHighly organized, detail-oriented, and adaptable in a fast-paced environment.\n\nExcellent communication and cross-functional collaboration skills.\n\nPassion for sports – especially tennis, pickleball or padel – is a big plus\n\nWhat We Offer\n\nCompetitive salary\n\nComprehensive benefits package (health, dental, vision, 401k with match).\n\nPaid Time Off\n\nParental Leave\n\nHybrid work environment with flexibility\n\nEmployee discounts on GAMMA Sports products.\n\nOpportunity for professional growth in a dynamic, sports-focused company.\n\nAbout GAMMA Sports\n\nGAMMA Sports is a Pittsburgh-based, family-owned manufacturer with a 50-year legacy of innovating in racquet sport equipment, including tennis and pickleball. Best known for its patented breakthrough string technologies, GAMMA has leveraged its racquet sports expertise to develop high-quality paddles, balls, grips, and accessories that empower people who love to play at all levels. Providing equipment and education to help improve your game, the brand has become a trusted name among coaches, trainers, and racquet sport enthusiasts around the world.\noyZjNnSDMw",
+          "companyName": "Gamma Sports",
+          "companyUrl": "https://www.indeed.com/cmp/Gamma-Sports",
+          "location": {
+            "city": "Pittsburgh",
+            "postalCode": "15222",
+            "country": "United States",
+            "countryCode": "US",
+            "formattedAddressLong": "Pittsburgh, PA 15222",
+            "formattedAddressShort": "Pittsburgh, PA",
+            "latitude": 40.4674,
+            "longitude": -79.97466,
+            "streetAddress": null,
+            "fullAddress": "Pittsburgh, PA 15222"
+          },
+          "salary": {},
+          "rating": {
+            "rating": 4,
+            "count": 5
+          },
+          "benefits": [
+            "Health insurance",
+            "Dental insurance",
+            "Paid time off",
+            "Parental leave",
+            "Vision insurance",
+            "401(k) matching",
+            "Employee discount"
+          ],
+          "occupation": [
+            "Digital Marketing Occupations",
+            "Marketing, Advertising & Public Relations Occupations",
+            "Marketing & Advertising Occupations"
+          ],
+          "attributes": [
+            "Web accessibility",
+            "Social media advertising",
+            "Website management",
+            "Customer retention",
+            "CSS",
+            "Operations management",
+            "Bachelor's degree in communications",
+            "Loyalty marketing",
+            "Web development",
+            "Marketing",
+            "Paid advertising campaign management",
+            "Merchandising",
+            "Email marketing campaigns",
+            "Leading organic search traffic initiatives",
+            "Full-time",
+            "NetSuite",
+            "Shopify",
+            "Mid-level",
+            "Marketing strategy development",
+            "Affiliate marketing campaigns",
+            "E-commerce",
+            "Quality assurance within IT",
+            "3 years",
+            "Health insurance",
+            "Cross-selling",
+            "Dental insurance",
+            "Customer segmentation",
+            "Website traffic metrics analysis",
+            "Key Performance Indicators",
+            "Bachelor's degree",
+            "Paid time off",
+            "Team management",
+            "Klaviyo",
+            "Loyalty programs",
+            "Content development",
+            "Revenue target achievement",
+            "CRM systems",
+            "Conversion optimization",
+            "Parental leave",
+            "Hybrid work",
+            "Software testing",
+            "Communications",
+            "Marketing analytics",
+            "Vision insurance",
+            "Website analysis",
+            "401(k) matching",
+            "Employee discount",
+            "Bachelor of Marketing",
+            "Brand awareness campaigns",
+            "Cross-functional collaboration",
+            "B2B marketing",
+            "Data-driven decision making",
+            "Communication skills",
+            "HTML",
+            "Cross-functional communication"
+          ],
+          "contacts": [],
+          "shifts": [],
+          "socialInsurance": [
+            "Health insurance"
+          ],
+          "workingSystem": [],
+          "shiftAndSchedule": [],
+          "postedToday": false,
+          "hiringDemand": {
+            "isHighVolumeHiring": false,
+            "isUrgentHire": false
+          },
+          "datePublished": "2025-10-03",
+          "expired": false,
+          "source": "GAMMA Sports",
+          "age": "6 days ago",
+          "isRemote": false,
+          "locale": "us",
+          "language": "en",
+          "jobUrl": "https://www.indeed.com/viewjob?jk=4a137cf2a25425dc",
+          "applyUrl": "https://gammasports.applytojob.com/apply/oyZjNnSDMw/ECommerce-Manager?source=INDE&~",
+          "emails": [],
+          "companyAddresses": [
+            "Pittsburgh"
+          ],
+          "companyNumEmployees": "11 to 50",
+          "companyLinks": {
+            "facebook": null,
+            "instagram": null,
+            "twitter": null,
+            "customLinks": [],
+            "corporateWebsite": "https://www.gammasports.com"
+          },
+          "companyCeo": {
+            "name": null,
+            "photoUrl": null,
+            "startDate": null
+          },
+          "requirements": []
+        }
+      },
+      {
+        "json": {
+          "jobKey": "c6c09145c98b6572",
+          "scrapingInfo": {
+            "page": 1,
+            "index": 3
+          },
+          "title": "Digital Marketing Manager",
+          "jobType": [
+            "Full-time"
+          ],
+          "descriptionHtml": "<div><p>Loudon Motors Ford is seeking a creative, motivated, and results-driven Digital Marketing Manager to join our team. This role is ideal for someone who thrives on storytelling, analytics, and driving growth through engaging digital strategies.</p><br>\n<p></p>\n<p>\nIf you are passionate about marketing, content creation, and community engagement and want to make an impact at a family-owned dealership with nearly 100 years of history, this may be the perfect fit.</p><br>\n<p></p>\n<div>\nResponsibilities:<br>\n<ul><li>Develop and manage the dealership&rsquo;s digital marketing strategy across social media, website, email, and paid advertising</li><li>Create engaging content including graphics, videos, and copy for promotions, sales events, and community initiatives</li><li>Manage the dealership&rsquo;s online reputation through customer reviews, Google Business Profile, and social engagement</li><li>Track and analyze marketing performance metrics to measure ROI and optimize campaigns</li><li>Support the sales team with lead generation, follow-up content, and promotional materials</li><li>Organize and promote dealership events including sales promotions, community drives, and seasonal campaigns</li><li>Maintain brand consistency while ensuring compliance with Ford Motor Company guidelines</li><li>Collaborate with leadership to develop creative campaigns that drive traffic and sales</li></ul></div><br>\n<p></p>\n<div>\nQualifications:<br>\n<ul><li>Experience in digital marketing, social media, or content creation (automotive experience a plus)</li><li>Bachelor's Degree in marketing, communications, journalism or related field</li><li>Strong skills in content writing, social media management, and brand storytelling</li><li>Experience with photo/video editing using Adobe, Canva, or similar tools</li><li>Familiarity with SEO, SEM, and Google Analytics</li><li>Strong organizational skills and ability to manage multiple projects at once</li><li>Creative mindset with the ability to generate fresh ideas and campaigns</li><li>A passion for customer engagement, community involvement, and automotive retail</li></ul></div><br>\n<p></p>\n<div>\nBenefits:<br>\n<ul><li>Competitive pay based on experience</li><li>Health, dental, and vision insurance</li><li>401(k) retirement plan</li><li>Paid time off and holidays</li><li>Employee discounts</li><li>Opportunity to be part of a long-standing, community-focused dealership</li></ul></div></div>",
+          "companyLogoUrl": "https://d2q79iu7y748jz.cloudfront.net/s/_squarelogo/256x256/8b06014c9d38a6d2f85d133b76dba151",
+          "descriptionText": "Loudon Motors Ford is seeking a creative, motivated, and results-driven Digital Marketing Manager to join our team. This role is ideal for someone who thrives on storytelling, analytics, and driving growth through engaging digital strategies.\n\nIf you are passionate about marketing, content creation, and community engagement and want to make an impact at a family-owned dealership with nearly 100 years of history, this may be the perfect fit.\n\nResponsibilities:\n• Develop and manage the dealership’s digital marketing strategy across social media, website, email, and paid advertising\n• Create engaging content including graphics, videos, and copy for promotions, sales events, and community initiatives\n• Manage the dealership’s online reputation through customer reviews, Google Business Profile, and social engagement\n• Track and analyze marketing performance metrics to measure ROI and optimize campaigns\n• Support the sales team with lead generation, follow-up content, and promotional materials\n• Organize and promote dealership events including sales promotions, community drives, and seasonal campaigns\n• Maintain brand consistency while ensuring compliance with Ford Motor Company guidelines\n• Collaborate with leadership to develop creative campaigns that drive traffic and sales\n\nQualifications:\n• Experience in digital marketing, social media, or content creation (automotive experience a plus)\n• Bachelor's Degree in marketing, communications, journalism or related field\n• Strong skills in content writing, social media management, and brand storytelling\n• Experience with photo/video editing using Adobe, Canva, or similar tools\n• Familiarity with SEO, SEM, and Google Analytics\n• Strong organizational skills and ability to manage multiple projects at once\n• Creative mindset with the ability to generate fresh ideas and campaigns\n• A passion for customer engagement, community involvement, and automotive retail\n\nBenefits:\n• Competitive pay based on experience\n• Health, dental, and vision insurance\n• 401(k) retirement plan\n• Paid time off and holidays\n• Employee discounts\n• Opportunity to be part of a long-standing, community-focused dealership",
+          "companyName": "Loudon Motors Ford",
+          "companyUrl": "https://www.indeed.com/cmp/Loudon-Motors-Ford",
+          "companyHeaderUrl": "https://d2q79iu7y748jz.cloudfront.net/s/_headerimage/1960x400/ab6a14b1a278dcf5879540ea064d2899",
+          "location": {
+            "city": "Minerva",
+            "postalCode": "44657",
+            "country": "United States",
+            "countryCode": "US",
+            "formattedAddressLong": "Minerva, OH 44657",
+            "formattedAddressShort": "Minerva, OH",
+            "latitude": 40.75003,
+            "longitude": -81.09139,
+            "streetAddress": "3476 Union Avenue SE",
+            "fullAddress": "3476 Union Avenue SE, Minerva, OH 44657"
+          },
+          "salary": {},
+          "rating": {
+            "rating": 3.3,
+            "count": 3
+          },
+          "benefits": [
+            "Paid holidays",
+            "Dental insurance",
+            "401(k)",
+            "Paid time off",
+            "Vision insurance",
+            "Employee discount"
+          ],
+          "occupation": [
+            "Digital Marketing Occupations",
+            "Marketing, Advertising & Public Relations Occupations",
+            "Marketing & Advertising Occupations"
+          ],
+          "attributes": [
+            "Website management",
+            "Community outreach programs",
+            "Reputation management",
+            "Bachelor's degree in communications",
+            "Sales",
+            "Dealership",
+            "Marketing",
+            "Event coordination",
+            "Paid holidays",
+            "Content writing",
+            "Social media marketing strategy development",
+            "Email marketing campaigns",
+            "Full-time",
+            "Lead generation",
+            "Mid-level",
+            "SEM campaigns",
+            "Marketing strategy development",
+            "ROI",
+            "Compliance management implementation",
+            "Graphic design",
+            "Dental insurance",
+            "Bachelor of Journalism",
+            "401(k)",
+            "Bachelor's degree in journalism",
+            "Key Performance Indicators",
+            "Canva",
+            "Photo editing",
+            "Bachelor's degree",
+            "Paid time off",
+            "Brand messaging",
+            "Journalism",
+            "Organizational skills",
+            "Video production",
+            "Communications",
+            "Marketing analytics",
+            "SEO tools",
+            "Vision insurance",
+            "Employee discount",
+            "Bachelor of Marketing",
+            "Data analytics tools",
+            "Paid search marketing",
+            "Dealership experience",
+            "Campaign performance reporting",
+            "Copywriting",
+            "Paid search advertising campaigns",
+            "Marketing collateral creation"
+          ],
+          "contacts": [],
+          "shifts": [],
+          "socialInsurance": [],
+          "workingSystem": [],
+          "shiftAndSchedule": [],
+          "postedToday": false,
+          "hiringDemand": {
+            "isHighVolumeHiring": false,
+            "isUrgentHire": false
+          },
+          "datePublished": "2025-08-18",
+          "expired": false,
+          "source": "Loudon Motors Ford, LLC",
+          "age": "2 months ago",
+          "isRemote": false,
+          "locale": "us",
+          "language": "en",
+          "jobUrl": "https://www.indeed.com/viewjob?jk=c6c09145c98b6572",
+          "applyUrl": "https://careers.hireology.com/loudonmotorsfordllc/2472859/description?ref=indeed.com&source=indeed",
+          "emails": [],
+          "companyAddresses": [
+            "3476 Union Avenue SE , Minerva, OH 44657"
+          ],
+          "companyDescription": "At Loudon Motors Ford, whether you are a customer or employee, you are treated like family the minute you walk through our doors. Being a family owned dealership since 1926, family is a value that we hold near to our hearts, as we have been serving our community for almost a century. We are different than dealerships that have multiple rooftops, as we only have one and it is our home. \r\n\r\nWe are committed to customer satisfaction, which means having knowledgeable and comprehensive sales and service departments staffed by certified professionals.\r\n\r\nOur sales reps and service technicians undergo continuous training to keep their Ford Certified statuses. We are proud to offer paid training to keep our team up to date on the newest technologies and procedures, so that we can deliver a great experience for our customers.\r\n\r\nPromotions most often from within here at Loudon Ford. We have staff members who have been with us for 10, 20, and even 30+ years. The opportunities to learn and grow are limitless.\r\n\r\nAt Loudon's, we are passionate about our town and surrounding community. We strive not only to support our community through the automobile-related work that we do, but in other ways that impact local families – through scholarships for students, hosting food drives, sponsoring historic building restoration projects, and numerous other charitable efforts.\r\n\r\nIt is the engagement of all our teams and leadership, both at work and in the community, that makes Loudon Motors Ford a great place to work.\r\n\r\nWe are always looking for talented people to join our team. Visit the career section on our website to learn about current openings and apply today!\r\n\r\n\r\n",
+          "companyBriefDescription": "At Loudon's, we are committed to providing great experiences for our customers and our community. We are different than dealerships that have multiple rooftops, as we only have one and it is our home.",
+          "companyLinks": {
+            "facebook": "https://www.facebook.com/loudonmotorsford",
+            "instagram": "https://www.instagram.com/LoudonFord",
+            "twitter": "https://twitter.com/LoudonFord",
+            "customLinks": [
+              {
+                "name": "TikTok",
+                "url": "https://www.tiktok.com/@loudonford"
+              }
+            ],
+            "corporateWebsite": "http://www.loudonmotorsford.net"
+          },
+          "companyCeo": {
+            "name": "Greg Loudon",
+            "photoUrl": "https://d2q79iu7y748jz.cloudfront.net/s/_ceophoto/512x512/9fd5de7e52c3fb52212b08dc433af1ef",
+            "startDate": null
+          },
+          "requirements": []
+        }
+      },
+      {
+        "json": {
+          "jobKey": "1dd08bec8e84371b",
+          "scrapingInfo": {
+            "page": 1,
+            "index": 8
+          },
+          "title": "Analyst - Organic Growth and Content (SEO)",
+          "jobType": [
+            "Full-time"
+          ],
+          "descriptionHtml": "<div><p>Title: Analyst - Organic Growth and Content (Aerie / Offline)\n</p><p><b>Overview - </b>The Analyst - Organic Growth &amp; Content is responsible for analyzing trends and developing content with the ultimate goal of increasing the impact of organic marketing. A writer at heart, this Analyst will have a strong understanding of SEO and Answer Engine best practices, a knack for creating engaging and informative content, a strong analytical orientation and a proven track record of optimizing content for various digital platforms.\n</p><p><b>Responsibilities:\n</b></p><p><b>Content Creation:\n</b></p><ul><li>Draft high-quality content for websites, blogs, social media, and other digital platforms, maintaining a consistent brand voice\n</li><li>Perform ongoing content gap analyses, reviewing the competitive landscape to provide trending recommendations for site improvements and content expansion that tie back to marketing strategies (audience, messaging, seasonal &amp; annual goals).\n</li><li>Regularly audit and optimize existing content to ensure it remains relevant, up-to-date, and aligned with evolving marketing strategies.\n</li></ul><p><b>SEO and AEO Optimization:\n</b></p><ul><li>Conduct keyword and &ldquo;answer engine&rdquo; research to identify relevant topics and optimize content for search engines.\n</li><li>Implement on-page SEO best practices, including meta descriptions, headers, copy block creation, and internal linking.\n</li><li>Monitor and analyze content performance, adjusting strategies to improve search engine rankings and drive organic traffic.\n</li><li>Stay up-to-date with SEO trends, algorithm updates, and industry news to ensure content strategies remain effective.\n</li></ul><p><b>Performance Analysis:\n</b></p><ul><li>Use tools like Google Analytics, SEMrush, or BrightEdge to track and report on content performance.\n</li><li>Analyze metrics and make data-driven recommendations for content improvements and organic strategies.\n</li></ul><p><b>Qualifications:\n</b></p><ul><li>2+ years of relevant experience in SEO and content writing, bonus point for retail subject matter\n</li><li>Proven ability to create engaging, well-written, well-researched content.\n</li><li>Strong understanding of SEO principles, including keyword research, on-page SEO, and link building.\n</li><li>Proficiency with SEO tools such as Google Analytics, SEMrush, BrightEdge, or similar.\n</li><li>Excellent writing, editing, and proofreading skills.\n</li><li>Familiarity with content management systems (CMS) such as WordPress.\n</li></ul><p><b>Education:\n</b></p><ul><li>Bachelor&rsquo;s degree in Marketing, English, Journalism, or a related field is preferred\n</li></ul><p><b>PAY/BENEFITS INFORMATION:\n</b></p><ul><li>Actual starting pay is determined by various factors, including but not limited to relevant experience and location.\n</li><li>Subject to eligibility requirements, associates may receive health care benefits (including medical, vision, and dental); wellness benefits; 401(k) retirement benefits; life and disability insurance; employee stock purchase program; paid time off; paid sick leave; and parental leave and benefits.\n</li>Paid Time Off, paid sick leave, and holiday pay vary by job level and type, job location, employment classification (part-time or full-time / exempt or non-exempt), and years of service.<li>\n</li><li>AEO may also provide discretionary bonuses and other incentives at its discretion.\n</li></ul><p><b>PAY/BENEFITS INFORMATION:\n</b></p><ul><li>Actual starting pay is determined by various factors, including but not limited to relevant experience and location.\n</li><li>Subject to eligibility requirements, associates may receive health care benefits (including medical, vision, and dental); wellness benefits; 401(k) retirement benefits; life and disability insurance; employee stock purchase program; paid time off; paid sick leave; and parental leave and benefits.\n</li>Paid Time Off, paid sick leave, and holiday pay vary by job level and type, job location, employment classification (part-time or full-time / exempt or non-exempt), and years of service.<li>\n</li><li>AEO may also provide discretionary bonuses and other incentives at its discretion.</li></ul></div>\n<br><div><div><div>American Eagle Outfitters (NYSE: AEO) is a portfolio of unique, loved and enduring brands with merchandise assortments that consist of high-quality, on-trend apparel, intimates, activewear, accessories, and personal care products.\n</div><div>AEO operates stores in the United States, Canada, Mexico, and Hong Kong, and ships to approximately 80 countries worldwide through its websites. American Eagle and Aerie merchandise also is available at more than 300 international locations operated by licensees in approximately 30 countries.\n</div></div><div><i>AEO is an Equal Opportunity Employer and is committed to complying with all federal, state and local equal employment opportunity (&quot;EEO&quot;) laws. AEO prohibits discrimination against associates and applicants for employment because of the individual's race or color, religion or creed, alienage or citizenship status, sex (including pregnancy), national origin, age, sexual orientation, disability, gender identity or expression, marital or partnership status, domestic violence or stalking victim status, genetic information or predisposing genetic characteristics, military or veteran status, or any other characteristic protected by law. This applies to all AEO activities, including, but not limited to, recruitment, hiring, compensation, assignment, training, promotion, performance evaluation, discipline and discharge. AEO also provides reasonable accommodation of religion and disability in accordance with applicable law.\n</i></div><div>Applications will be accepted until the Apply Before date (if applicable), but may be extended based on applicant volume.</div></div>\n<br>Job Identification 17541\n<br>Job Category Marketing\n<br>Posting Date 2025-08-27\n<br>Job Schedule Full time\n<br>Locations Pittsburgh, PA, United States",
+          "companyLogoUrl": "https://d2q79iu7y748jz.cloudfront.net/s/_squarelogo/256x256/6fb93e631cb5726941d0b14a4c87d4e3",
+          "descriptionText": "Title: Analyst - Organic Growth and Content (Aerie / Offline)\n\nOverview - The Analyst - Organic Growth & Content is responsible for analyzing trends and developing content with the ultimate goal of increasing the impact of organic marketing. A writer at heart, this Analyst will have a strong understanding of SEO and Answer Engine best practices, a knack for creating engaging and informative content, a strong analytical orientation and a proven track record of optimizing content for various digital platforms.\n\nResponsibilities:\n\nContent Creation:\n\nDraft high-quality content for websites, blogs, social media, and other digital platforms, maintaining a consistent brand voice\nPerform ongoing content gap analyses, reviewing the competitive landscape to provide trending recommendations for site improvements and content expansion that tie back to marketing strategies (audience, messaging, seasonal & annual goals).\nRegularly audit and optimize existing content to ensure it remains relevant, up-to-date, and aligned with evolving marketing strategies.\n\nSEO and AEO Optimization:\n\nConduct keyword and “answer engine” research to identify relevant topics and optimize content for search engines.\nImplement on-page SEO best practices, including meta descriptions, headers, copy block creation, and internal linking.\nMonitor and analyze content performance, adjusting strategies to improve search engine rankings and drive organic traffic.\nStay up-to-date with SEO trends, algorithm updates, and industry news to ensure content strategies remain effective.\n\nPerformance Analysis:\n\nUse tools like Google Analytics, SEMrush, or BrightEdge to track and report on content performance.\nAnalyze metrics and make data-driven recommendations for content improvements and organic strategies.\n\nQualifications:\n\n2+ years of relevant experience in SEO and content writing, bonus point for retail subject matter\nProven ability to create engaging, well-written, well-researched content.\nStrong understanding of SEO principles, including keyword research, on-page SEO, and link building.\nProficiency with SEO tools such as Google Analytics, SEMrush, BrightEdge, or similar.\nExcellent writing, editing, and proofreading skills.\nFamiliarity with content management systems (CMS) such as WordPress.\n\nEducation:\n\nBachelor’s degree in Marketing, English, Journalism, or a related field is preferred\n\nPAY/BENEFITS INFORMATION:\n\nActual starting pay is determined by various factors, including but not limited to relevant experience and location.\nSubject to eligibility requirements, associates may receive health care benefits (including medical, vision, and dental); wellness benefits; 401(k) retirement benefits; life and disability insurance; employee stock purchase program; paid time off; paid sick leave; and parental leave and benefits.\nPaid Time Off, paid sick leave, and holiday pay vary by job level and type, job location, employment classification (part-time or full-time / exempt or non-exempt), and years of service.\nAEO may also provide discretionary bonuses and other incentives at its discretion.\n\nPAY/BENEFITS INFORMATION:\n\nActual starting pay is determined by various factors, including but not limited to relevant experience and location.\nSubject to eligibility requirements, associates may receive health care benefits (including medical, vision, and dental); wellness benefits; 401(k) retirement benefits; life and disability insurance; employee stock purchase program; paid time off; paid sick leave; and parental leave and benefits.\nPaid Time Off, paid sick leave, and holiday pay vary by job level and type, job location, employment classification (part-time or full-time / exempt or non-exempt), and years of service.\nAEO may also provide discretionary bonuses and other incentives at its discretion.\nAmerican Eagle Outfitters (NYSE: AEO) is a portfolio of unique, loved and enduring brands with merchandise assortments that consist of high-quality, on-trend apparel, intimates, activewear, accessories, and personal care products.\nAEO operates stores in the United States, Canada, Mexico, and Hong Kong, and ships to approximately 80 countries worldwide through its websites. American Eagle and Aerie merchandise also is available at more than 300 international locations operated by licensees in approximately 30 countries.\nAEO is an Equal Opportunity Employer and is committed to complying with all federal, state and local equal employment opportunity (\"EEO\") laws. AEO prohibits discrimination against associates and applicants for employment because of the individual's race or color, religion or creed, alienage or citizenship status, sex (including pregnancy), national origin, age, sexual orientation, disability, gender identity or expression, marital or partnership status, domestic violence or stalking victim status, genetic information or predisposing genetic characteristics, military or veteran status, or any other characteristic protected by law. This applies to all AEO activities, including, but not limited to, recruitment, hiring, compensation, assignment, training, promotion, performance evaluation, discipline and discharge. AEO also provides reasonable accommodation of religion and disability in accordance with applicable law.\nApplications will be accepted until the Apply Before date (if applicable), but may be extended based on applicant volume.\nJob Identification 17541\nJob Category Marketing\nPosting Date 2025-08-27\nJob Schedule Full time\nLocations Pittsburgh, PA, United States",
+          "companyName": "American Eagle Outfitters",
+          "companyUrl": "https://www.indeed.com/cmp/American-Eagle-Outfitters",
+          "companyHeaderUrl": "https://d2q79iu7y748jz.cloudfront.net/s/_headerimage/1960x400/a54cf33e2f45cc7ed57298c6a07ec3cb",
+          "location": {
+            "city": "Pittsburgh",
+            "postalCode": null,
+            "country": "United States",
+            "countryCode": "US",
+            "formattedAddressLong": "Pittsburgh, PA",
+            "formattedAddressShort": "Pittsburgh, PA",
+            "latitude": 40.44062,
+            "longitude": -79.99589,
+            "streetAddress": null,
+            "fullAddress": "Pittsburgh, PA"
+          },
+          "salary": {},
+          "rating": {
+            "rating": 3.7,
+            "count": 8603
+          },
+          "benefits": [
+            "Employee stock purchase plan",
+            "Paid holidays",
+            "Disability insurance",
+            "Health insurance",
+            "Dental insurance",
+            "401(k)",
+            "Paid time off",
+            "Parental leave",
+            "Vision insurance",
+            "Paid sick time"
+          ],
+          "occupation": [
+            "Digital Marketing Occupations",
+            "Search Marketing Occupations",
+            "Search Engine Optimization Specialists",
+            "Marketing, Advertising & Public Relations Occupations",
+            "Marketing & Advertising Occupations"
+          ],
+          "attributes": [
+            "WordPress",
+            "Marketing",
+            "Employee stock purchase plan",
+            "Competitive analysis",
+            "Paid holidays",
+            "Content editing",
+            "Content writing",
+            "Full-time",
+            "Disability insurance",
+            "Gap analysis",
+            "Mid-level",
+            "Health insurance",
+            "Dental insurance",
+            "Bachelor of Journalism",
+            "401(k)",
+            "Bachelor's degree in journalism",
+            "Link building",
+            "Analysis skills",
+            "Online blogs",
+            "Bachelor's degree in English",
+            "Bachelor's degree",
+            "Social media content creation",
+            "Paid time off",
+            "Parental leave",
+            "Journalism",
+            "Marketing analytics",
+            "Vision insurance",
+            "Bachelor of Marketing",
+            "English",
+            "Data analytics tools",
+            "Digital marketing performance monitoring",
+            "Keyword topic research",
+            "2 years",
+            "Data-driven decision making",
+            "Marketing",
+            "Paid sick time"
+          ],
+          "contacts": [],
+          "shifts": [],
+          "socialInsurance": [
+            "Health insurance"
+          ],
+          "workingSystem": [],
+          "shiftAndSchedule": [],
+          "postedToday": false,
+          "hiringDemand": {
+            "isHighVolumeHiring": false,
+            "isUrgentHire": false
+          },
+          "datePublished": "2025-08-27",
+          "expired": false,
+          "source": "American Eagle Outfitters",
+          "age": "a month ago",
+          "isRemote": false,
+          "locale": "us",
+          "language": "en",
+          "jobUrl": "https://www.indeed.com/viewjob?jk=1dd08bec8e84371b",
+          "applyUrl": "https://hcml.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_2/requisitions/preview/17541",
+          "emails": [],
+          "companyAddresses": [],
+          "companyNumEmployees": "Decline to state",
+          "companyRevenue": "Decline to state",
+          "companyDescription": "American Eagle Outfitters® (NYSE: AEO) is a leading global specialty retailer offering high-quality, on-trend clothing, accessories and personal care products at affordable prices under its American Eagle® and Aerie® brands. The company operates more than 1,000 stores in the United States, Canada, Mexico, China and Hong Kong, and ships to 81 countries worldwide through its websites. American Eagle Outfitters and Aerie merchandise also is available at more than 200 international locations operated by licensees in 25 countries.",
+          "companyLinks": {
+            "facebook": "https://www.facebook.com/americaneagle",
+            "instagram": "https://www.instagram.com/americaneagle",
+            "twitter": "https://twitter.com/AEO",
+            "customLinks": [],
+            "corporateWebsite": "https://www.aeo-inc.com/"
+          },
+          "companyCeo": {
+            "name": "Jay Schottenstein",
+            "photoUrl": "https://d2q79iu7y748jz.cloudfront.net/s/_ceophoto/512x512/2d812a739f53f55476a45c71222bf2c6",
+            "startDate": null
+          },
+          "requirements": []
+        }
+      },
+      {
+        "json": {
+          "jobKey": "6d25f35c0ac4af2f",
+          "scrapingInfo": {
+            "page": 1,
+            "index": 2
+          },
+          "title": "Digital Marketing Assistant",
+          "jobType": [
+            "Full-time"
+          ],
+          "descriptionHtml": "<p></p><div><h4 class=\"jobSectionHeader\"><b>Overview</b></h4><p>\nThe Digital Marketing Specialist is responsible for leading integrated digital marketing campaigns from concept to execution. The Digital Marketing Specialist will work with the marketing team, sales team, other internal teams, such as programmers, and vendors to launch campaigns on time and within budget.</p>\n<h4 class=\"jobSectionHeader\"><b>\nResponsibilities</b></h4><h4 class=\"jobSectionHeader\"><b>\nEssential Duties &amp; Responsibilities</b></h4><ul><li>\nPlans and executes all digital marketing, including SEO/SEM, marketing database, email, social media, and display advertising campaigns.</li><li>\nCreates and maintains the digital marketing calendar.</li><li>\nDesigns, builds, and maintains our social media presence.</li><li>\nMeasures and reports performance of all digital marketing campaigns and assesses against goals (ROI and KPI).</li><li>\nIdentifies trends and insights and optimizes spend and performance based on the insights.</li><li>\nBrainstorms new and creative growth strategies.</li><li>\nCollaborates with internal teams to create landing pages and optimize user experience.</li><li>\nUtilizes strong analytical ability to evaluate endtoend customer experience across multiple channels and customer touch points.</li><li>\nCollaborates with business and technology partners.</li><li>\nEvaluates emerging technologies.</li><li>\nProvides thought leadership and perspective for adoption where appropriate.</li><li>\nSees projects through from concept to completion within assigned timelines and meets quality expectations.</li></ul><h4 class=\"jobSectionHeader\"><b>\nAdditional and/or Specific Skills</b></h4><ul><li>\nProficient in MS Office Suite.</li><li>\nStrong oral and written communication skills.</li><li>\nMust be highly organized demonstrated success managing multiple tasks with a laser focus on detail as well as proven project management experience with the ability to establish and meet objectives on time.</li><li>\nDetail oriented and able to work independently or as part of a team.</li><li>\nWorks well under pressure and can work extended hours to meet tight deadlines.</li></ul><h4 class=\"jobSectionHeader\"><b>\nEducation/Experience</b></h4><ul><li>\nBachelor&rsquo;s Degree from an accredited school in Marketing or a related field.</li><li>\nProven digital marketing work experience.</li><li>\nDemonstrable experience leading and managing SEO/SEM, marketing database, email, social media and/or display advertising campaigns.</li><li>\nSolid knowledge of website analytics tools (Google Analytics), certification a plus.</li><li>\nExperience in setting up and optimizing Google AdWords, Facebook, and LinkedIn campaigns, Google AdWords, and Facebook Blueprint certifications a plus.</li><li>\nExperience using CRM, CMS, and ESP tools.</li><li>\nHighly creative with experience in identifying target audiences and devising digital campaigns that engage, inform, and motivate.</li><li>\nWorking knowledge of media, HTML, CSS and JavaScript development and constraints.</li><li>\nStrong analytical skills and datadriven thinking.</li><li>\nUp to date with the latest trends and best practices of online marketing and measurement.</li><li>\nExperience promoting technology products a plus.</li></ul><h4 class=\"jobSectionHeader\"><b>\nPhysical Requirements</b></h4><ul><li>\nLong periods of sitting.</li><li>\nCall Center Noise.</li><li>\nLight to Medium phone exposure.</li><li>\nRepetitive Typing and use of a mouse.</li></ul></div><p></p>",
+          "descriptionText": "Overview\n\nThe Digital Marketing Specialist is responsible for leading integrated digital marketing campaigns from concept to execution. The Digital Marketing Specialist will work with the marketing team, sales team, other internal teams, such as programmers, and vendors to launch campaigns on time and within budget.\n\nResponsibilities\nEssential Duties & Responsibilities\nPlans and executes all digital marketing, including SEO/SEM, marketing database, email, social media, and display advertising campaigns.\nCreates and maintains the digital marketing calendar.\nDesigns, builds, and maintains our social media presence.\nMeasures and reports performance of all digital marketing campaigns and assesses against goals (ROI and KPI).\nIdentifies trends and insights and optimizes spend and performance based on the insights.\nBrainstorms new and creative growth strategies.\nCollaborates with internal teams to create landing pages and optimize user experience.\nUtilizes strong analytical ability to evaluate endtoend customer experience across multiple channels and customer touch points.\nCollaborates with business and technology partners.\nEvaluates emerging technologies.\nProvides thought leadership and perspective for adoption where appropriate.\nSees projects through from concept to completion within assigned timelines and meets quality expectations.\nAdditional and/or Specific Skills\nProficient in MS Office Suite.\nStrong oral and written communication skills.\nMust be highly organized demonstrated success managing multiple tasks with a laser focus on detail as well as proven project management experience with the ability to establish and meet objectives on time.\nDetail oriented and able to work independently or as part of a team.\nWorks well under pressure and can work extended hours to meet tight deadlines.\nEducation/Experience\nBachelor’s Degree from an accredited school in Marketing or a related field.\nProven digital marketing work experience.\nDemonstrable experience leading and managing SEO/SEM, marketing database, email, social media and/or display advertising campaigns.\nSolid knowledge of website analytics tools (Google Analytics), certification a plus.\nExperience in setting up and optimizing Google AdWords, Facebook, and LinkedIn campaigns, Google AdWords, and Facebook Blueprint certifications a plus.\nExperience using CRM, CMS, and ESP tools.\nHighly creative with experience in identifying target audiences and devising digital campaigns that engage, inform, and motivate.\nWorking knowledge of media, HTML, CSS and JavaScript development and constraints.\nStrong analytical skills and datadriven thinking.\nUp to date with the latest trends and best practices of online marketing and measurement.\nExperience promoting technology products a plus.\nPhysical Requirements\nLong periods of sitting.\nCall Center Noise.\nLight to Medium phone exposure.\nRepetitive Typing and use of a mouse.",
+          "companyName": "Petrosoft, Inc.",
+          "companyUrl": "https://www.indeed.com/cmp/Petrosoft,-Inc.",
+          "companyHeaderUrl": "https://d2q79iu7y748jz.cloudfront.net/s/_headerimage/1960x400/7443f812e54384b9512be287c635ec0e",
+          "location": {
+            "city": "Pittsburgh",
+            "postalCode": "15205",
+            "country": "United States",
+            "countryCode": "US",
+            "formattedAddressLong": "Pittsburgh, PA 15205",
+            "formattedAddressShort": "Pittsburgh, PA",
+            "latitude": 40.437057,
+            "longitude": -80.074135,
+            "streetAddress": null,
+            "fullAddress": "Pittsburgh, PA 15205"
+          },
+          "salary": {
+            "salaryCurrency": "USD",
+            "salaryMax": 23,
+            "salaryMin": 21,
+            "salarySource": "EXTRACTION",
+            "salaryText": "$21 - $23 an hour",
+            "salaryType": "hourly"
+          },
+          "rating": {
+            "rating": 3.4,
+            "count": 50
+          },
+          "benefits": [],
+          "occupation": [
+            "Digital Marketing Occupations",
+            "Marketing, Advertising & Public Relations Occupations",
+            "Marketing & Advertising Occupations"
+          ],
+          "attributes": [
+            "LinkedIn",
+            "Social media advertising",
+            "Extended hours",
+            "CSS",
+            "Marketing",
+            "Call center experience",
+            "Writing skills",
+            "Content management systems",
+            "Email marketing campaigns",
+            "Full-time",
+            "Digital marketing budget management",
+            "Mid-level",
+            "SEM campaigns",
+            "Marketing strategy development",
+            "ROI",
+            "Databases",
+            "Key Performance Indicators",
+            "Analysis skills",
+            "Bachelor's degree",
+            "JavaScript",
+            "Calendar management",
+            "UX",
+            "Front-end development",
+            "Facebook",
+            "Marketing analytics",
+            "Typing",
+            "Budgeting",
+            "Website analysis",
+            "CRM system proficiency",
+            "Database marketing",
+            "Productivity software",
+            "Bachelor of Marketing",
+            "Cross-functional collaboration",
+            "Project leadership",
+            "Leadership",
+            "Paid search marketing",
+            "Communication skills",
+            "HTML",
+            "Campaign performance reporting",
+            "Paid search advertising campaigns"
+          ],
+          "contacts": [],
+          "shifts": [],
+          "socialInsurance": [],
+          "workingSystem": [],
+          "shiftAndSchedule": [
+            "Extended hours"
+          ],
+          "postedToday": false,
+          "hiringDemand": {
+            "isHighVolumeHiring": false,
+            "isUrgentHire": false
+          },
+          "datePublished": "2025-09-02",
+          "expired": false,
+          "source": "Petrosoft LLC",
+          "age": "a month ago",
+          "isRemote": false,
+          "locale": "us",
+          "language": "en",
+          "jobUrl": "https://www.indeed.com/viewjob?jk=6d25f35c0ac4af2f",
+          "applyUrl": "https://apply.appone.com:443/job/68b6ebc839544949f1844866?utm_source=INDEED",
+          "emails": [],
+          "companyAddresses": [
+            "Pittsburgh"
+          ],
+          "companyNumEmployees": "51 to 200",
+          "companyRevenue": "$1M to $5M (USD)",
+          "companyDescription": "Founded in 2002, Petrosoft LLC is a leader in cloud-based retail solutions with innovative tools that enable retail executives and managers to track sales and profits in real time. The company provides a seamless interface from the point of sale (cash registers) to popular financial tools such as QuickBooks by Intuit and Microsoft Dynamics. The solutions offered by Petrosoft can increase store automation, productivity and margins. Petrosoft maintains its headquarters in Pittsburgh, PA. The company also maintains a global network of technical development and support resources, dedicated to continually improving Petrosoft products and services.",
+          "companyFounded": {
+            "year": 2002
+          },
+          "companyLinks": {
+            "facebook": "https://www.facebook.com/PetrosoftLLC",
+            "instagram": null,
+            "twitter": "https://twitter.com/petrosoft_inc",
+            "customLinks": [],
+            "corporateWebsite": "http://www.petrosoftinc.com"
+          },
+          "companyCeo": {
+            "name": null,
+            "photoUrl": null,
+            "startDate": null
+          },
+          "requirements": []
+        }
+      },
+      {
+        "json": {
+          "jobKey": "cd5bc0ce4e4d7c41",
+          "scrapingInfo": {
+            "page": 1,
+            "index": 9
+          },
+          "title": "Analyst - Organic Growth and Content",
+          "jobType": [
+            "Full-time"
+          ],
+          "descriptionHtml": "<div><p>Title: Analyst - Organic Growth and Content (Aerie / Offline)\n</p><p><b>Overview - </b>The Analyst - Organic Growth &amp; Content is responsible for analyzing trends and developing content with the ultimate goal of increasing the impact of organic marketing. A writer at heart, this Analyst will have a strong understanding of SEO and Answer Engine best practices, a knack for creating engaging and informative content, a strong analytical orientation and a proven track record of optimizing content for various digital platforms.\n</p><p><b>Responsibilities:\n</b></p><p><b>Content Creation:\n</b></p><ul><li>Draft high-quality content for websites, blogs, social media, and other digital platforms, maintaining a consistent brand voice\n</li><li>Perform ongoing content gap analyses, reviewing the competitive landscape to provide trending recommendations for site improvements and content expansion that tie back to marketing strategies (audience, messaging, seasonal &amp; annual goals).\n</li><li>Regularly audit and optimize existing content to ensure it remains relevant, up-to-date, and aligned with evolving marketing strategies.\n</li></ul><p><b>SEO and AEO Optimization:\n</b></p><ul><li>Conduct keyword and &ldquo;answer engine&rdquo; research to identify relevant topics and optimize content for search engines.\n</li><li>Implement on-page SEO best practices, including meta descriptions, headers, copy block creation, and internal linking.\n</li><li>Monitor and analyze content performance, adjusting strategies to improve search engine rankings and drive organic traffic.\n</li><li>Stay up-to-date with SEO trends, algorithm updates, and industry news to ensure content strategies remain effective.\n</li></ul><p><b>Performance Analysis:\n</b></p><ul><li>Use tools like Google Analytics, SEMrush, or BrightEdge to track and report on content performance.\n</li><li>Analyze metrics and make data-driven recommendations for content improvements and organic strategies.\n</li></ul><p><b>Qualifications:\n</b></p><ul><li>2+ years of relevant experience in SEO and content writing, bonus point for retail subject matter\n</li><li>Proven ability to create engaging, well-written, well-researched content.\n</li><li>Strong understanding of SEO principles, including keyword research, on-page SEO, and link building.\n</li><li>Proficiency with SEO tools such as Google Analytics, SEMrush, BrightEdge, or similar.\n</li><li>Excellent writing, editing, and proofreading skills.\n</li><li>Familiarity with content management systems (CMS) such as WordPress.\n</li></ul><p><b>Education:\n</b></p><ul><li>Bachelor&rsquo;s degree in Marketing, English, Journalism, or a related field is preferred\n</li></ul><p><b>PAY/BENEFITS INFORMATION:\n</b></p><ul><li>Actual starting pay is determined by various factors, including but not limited to relevant experience and location.\n</li><li>Subject to eligibility requirements, associates may receive health care benefits (including medical, vision, and dental); wellness benefits; 401(k) retirement benefits; life and disability insurance; employee stock purchase program; paid time off; paid sick leave; and parental leave and benefits.\n</li><li>Paid Time Off, paid sick leave, and holiday pay vary by job level and type, job location, employment classification (part-time or full-time / exempt or non-exempt), and years of service. For additional information, please click here .\n</li><li>AEO may also provide discretionary bonuses and other incentives at its discretion.\n</li></ul><p><b>PAY/BENEFITS INFORMATION:\n</b></p><ul><li>Actual starting pay is determined by various factors, including but not limited to relevant experience and location.\n</li><li>Subject to eligibility requirements, associates may receive health care benefits (including medical, vision, and dental); wellness benefits; 401(k) retirement benefits; life and disability insurance; employee stock purchase program; paid time off; paid sick leave; and parental leave and benefits.\n</li><li>Paid Time Off, paid sick leave, and holiday pay vary by job level and type, job location, employment classification (part-time or full-time / exempt or non-exempt), and years of service. For additional information, please click here .\n</li><li>AEO may also provide discretionary bonuses and other incentives at its discretion.</li></ul></div>",
+          "companyLogoUrl": "https://d2q79iu7y748jz.cloudfront.net/s/_squarelogo/256x256/6fb93e631cb5726941d0b14a4c87d4e3",
+          "descriptionText": "Title: Analyst - Organic Growth and Content (Aerie / Offline)\n\nOverview - The Analyst - Organic Growth & Content is responsible for analyzing trends and developing content with the ultimate goal of increasing the impact of organic marketing. A writer at heart, this Analyst will have a strong understanding of SEO and Answer Engine best practices, a knack for creating engaging and informative content, a strong analytical orientation and a proven track record of optimizing content for various digital platforms.\n\nResponsibilities:\n\nContent Creation:\n\nDraft high-quality content for websites, blogs, social media, and other digital platforms, maintaining a consistent brand voice\nPerform ongoing content gap analyses, reviewing the competitive landscape to provide trending recommendations for site improvements and content expansion that tie back to marketing strategies (audience, messaging, seasonal & annual goals).\nRegularly audit and optimize existing content to ensure it remains relevant, up-to-date, and aligned with evolving marketing strategies.\n\nSEO and AEO Optimization:\n\nConduct keyword and “answer engine” research to identify relevant topics and optimize content for search engines.\nImplement on-page SEO best practices, including meta descriptions, headers, copy block creation, and internal linking.\nMonitor and analyze content performance, adjusting strategies to improve search engine rankings and drive organic traffic.\nStay up-to-date with SEO trends, algorithm updates, and industry news to ensure content strategies remain effective.\n\nPerformance Analysis:\n\nUse tools like Google Analytics, SEMrush, or BrightEdge to track and report on content performance.\nAnalyze metrics and make data-driven recommendations for content improvements and organic strategies.\n\nQualifications:\n\n2+ years of relevant experience in SEO and content writing, bonus point for retail subject matter\nProven ability to create engaging, well-written, well-researched content.\nStrong understanding of SEO principles, including keyword research, on-page SEO, and link building.\nProficiency with SEO tools such as Google Analytics, SEMrush, BrightEdge, or similar.\nExcellent writing, editing, and proofreading skills.\nFamiliarity with content management systems (CMS) such as WordPress.\n\nEducation:\n\nBachelor’s degree in Marketing, English, Journalism, or a related field is preferred\n\nPAY/BENEFITS INFORMATION:\n\nActual starting pay is determined by various factors, including but not limited to relevant experience and location.\nSubject to eligibility requirements, associates may receive health care benefits (including medical, vision, and dental); wellness benefits; 401(k) retirement benefits; life and disability insurance; employee stock purchase program; paid time off; paid sick leave; and parental leave and benefits.\nPaid Time Off, paid sick leave, and holiday pay vary by job level and type, job location, employment classification (part-time or full-time / exempt or non-exempt), and years of service. For additional information, please click here .\nAEO may also provide discretionary bonuses and other incentives at its discretion.\n\nPAY/BENEFITS INFORMATION:\n\nActual starting pay is determined by various factors, including but not limited to relevant experience and location.\nSubject to eligibility requirements, associates may receive health care benefits (including medical, vision, and dental); wellness benefits; 401(k) retirement benefits; life and disability insurance; employee stock purchase program; paid time off; paid sick leave; and parental leave and benefits.\nPaid Time Off, paid sick leave, and holiday pay vary by job level and type, job location, employment classification (part-time or full-time / exempt or non-exempt), and years of service. For additional information, please click here .\nAEO may also provide discretionary bonuses and other incentives at its discretion.",
+          "companyName": "American Eagle Outfitters",
+          "companyUrl": "https://www.indeed.com/cmp/American-Eagle-Outfitters",
+          "companyHeaderUrl": "https://d2q79iu7y748jz.cloudfront.net/s/_headerimage/1960x400/a54cf33e2f45cc7ed57298c6a07ec3cb",
+          "location": {
+            "city": "Pittsburgh",
+            "postalCode": null,
+            "country": "United States",
+            "countryCode": "US",
+            "formattedAddressLong": "Pittsburgh, PA",
+            "formattedAddressShort": "Pittsburgh, PA",
+            "latitude": 40.44062,
+            "longitude": -79.99589,
+            "streetAddress": null,
+            "fullAddress": "Pittsburgh, PA"
+          },
+          "salary": {},
+          "rating": {
+            "rating": 3.7,
+            "count": 8603
+          },
+          "benefits": [
+            "Employee stock purchase plan",
+            "Paid holidays",
+            "Disability insurance",
+            "Health insurance",
+            "Dental insurance",
+            "401(k)",
+            "Paid time off",
+            "Parental leave",
+            "Vision insurance",
+            "Paid sick time"
+          ],
+          "occupation": [
+            "Digital Marketing Occupations",
+            "Content Marketing Occupations",
+            "Search Marketing Occupations",
+            "Search Engine Optimization Specialists",
+            "Marketing, Advertising & Public Relations Occupations",
+            "Marketing & Advertising Occupations"
+          ],
+          "attributes": [
+            "WordPress",
+            "Marketing",
+            "Employee stock purchase plan",
+            "Competitive analysis",
+            "Paid holidays",
+            "Content editing",
+            "Content writing",
+            "Full-time",
+            "Disability insurance",
+            "Gap analysis",
+            "Mid-level",
+            "Health insurance",
+            "Dental insurance",
+            "Bachelor of Journalism",
+            "401(k)",
+            "Bachelor's degree in journalism",
+            "Link building",
+            "Analysis skills",
+            "Online blogs",
+            "Bachelor's degree in English",
+            "Bachelor's degree",
+            "Social media content creation",
+            "Paid time off",
+            "Parental leave",
+            "Journalism",
+            "Marketing analytics",
+            "Vision insurance",
+            "Bachelor of Marketing",
+            "English",
+            "Data analytics tools",
+            "Digital marketing performance monitoring",
+            "Keyword topic research",
+            "2 years",
+            "Data-driven decision making",
+            "Marketing",
+            "Paid sick time"
+          ],
+          "contacts": [],
+          "shifts": [],
+          "socialInsurance": [
+            "Health insurance"
+          ],
+          "workingSystem": [],
+          "shiftAndSchedule": [],
+          "postedToday": false,
+          "hiringDemand": {
+            "isHighVolumeHiring": false,
+            "isUrgentHire": false
+          },
+          "datePublished": "2025-08-27",
+          "expired": false,
+          "source": "American Eagle Outfitters",
+          "age": "a month ago",
+          "isRemote": false,
+          "locale": "us",
+          "language": "en",
+          "jobUrl": "https://www.indeed.com/viewjob?jk=cd5bc0ce4e4d7c41",
+          "applyUrl": "https://hcml.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_2/requisitions/preview/17541",
+          "emails": [],
+          "companyAddresses": [],
+          "companyNumEmployees": "Decline to state",
+          "companyRevenue": "Decline to state",
+          "companyDescription": "American Eagle Outfitters® (NYSE: AEO) is a leading global specialty retailer offering high-quality, on-trend clothing, accessories and personal care products at affordable prices under its American Eagle® and Aerie® brands. The company operates more than 1,000 stores in the United States, Canada, Mexico, China and Hong Kong, and ships to 81 countries worldwide through its websites. American Eagle Outfitters and Aerie merchandise also is available at more than 200 international locations operated by licensees in 25 countries.",
+          "companyLinks": {
+            "facebook": "https://www.facebook.com/americaneagle",
+            "instagram": "https://www.instagram.com/americaneagle",
+            "twitter": "https://twitter.com/AEO",
+            "customLinks": [],
+            "corporateWebsite": "https://www.aeo-inc.com/"
+          },
+          "companyCeo": {
+            "name": "Jay Schottenstein",
+            "photoUrl": "https://d2q79iu7y748jz.cloudfront.net/s/_ceophoto/512x512/2d812a739f53f55476a45c71222bf2c6",
+            "startDate": null
+          },
+          "requirements": []
+        }
+      },
+      {
+        "json": {
+          "jobKey": "6bd5f4a4535475a1",
+          "scrapingInfo": {
+            "page": 1,
+            "index": 4
+          },
+          "title": "Client Content Manager",
+          "jobType": [
+            "Full-time"
+          ],
+          "descriptionHtml": "<div>Our Life Science Connect Client Content Team plays a pivotal role in connecting our clients and our readers. The Client Content Managers are responsible for the production and optimization of content for an assigned set of customers. In addition, the Client Content Manager, manage the promotion of client content in our regular and custom newsletters. When done right, we are viewed as a partner, an extension of our clients' marketing and sales enablement team. We seek to understand, work unbelievably hard to learn what is needed, and then are relentless in our pursuit of providing real help.<br>\n<br>\nContinuous investment in our products, services, and technical infrastructure has us well-positioned to achieve real results for our clients, leading to tremendous growth. To provide the highest level of support to our ever growing list of clients, we need to add a Client Content Manager to our team in Cranberry, PA.<br>\n<br>\nThe ideal candidate will possess a fluency in digital tools and website management frameworks such as WordPress. To be successful in this role, you will need a history of progressively responsible experience in managing digital content related to the following: content management for a highly visible website, social media, and web publishing. This position will report to our Cranberry Township, PA location<br>\n<br>\nEssential Job Duties:<br>\nClient Administration and Communications:<ul><li>\nBuild and maintain relationships with client contacts for the collection and administration of the client's Audience Access programs</li><li>\nAssist the Business Development team with the client onboarding process, gathering company information and content</li><li>\nEnsure client Audience Access programs start on-time operate without issue throughout</li><li>\nExplain production procedures and best practices to clients and internal stakeholders</li><li>\nHelp Business Development Reps identify accounts that are in need of varied or new content</li></ul>\nClient Content Posting and Optimization:<ul><li>\nPopulate email newsletters monthly to ensure clients receive Audience Access inclusions. May include working directly with clients by setting deadlines and collecting specific content.</li><li>\nAlign content to themed newsletter sends through the mapping of content across the upcoming month.\n</li><li>Collaborate with the editorial team to identify timely and applicable editorial content.</li><li>\nHelp Business Development Reps select and schedule content for quarterly Sourcing Center newsletters and other special edition themed or product newsletters.</li><li>\nEdit and optimize all content titles and summaries within general and custom newsletters for formatting, spacing, and reader engagement.\n</li><li>Create subject lines, pre-headers, and newsletter titles for a variety of newsletter types.</li><li>\nWrite and optimize unique emails as part of lead nurturing or ABM campaigns. May include web page introductions, newsletter introductions/footers, or full messaging from site partnership teams or individuals related to content themes, portfolios, or individual content pieces.</li><li>\nProject Management and reporting as needed</li></ul>\nREQUIRED EXPERIENCE / SKILLS<ul><li>\nBachelor's degree (Equivalent work experience will be considered in place of degree)</li><li>\n3-5 years of work experience in a content production or customer service role</li><li>\nExcellent communicator - written and verbal</li><li>\nGood proofreading and copy-editing skills</li><li>\n1-3 years of experience with HTML, extremely comfortable with web and social media</li><li>\nBasic understand of Google search rankings</li><li>\nHigh attention to detail</li><li>\nCapable working alone or within a small team</li></ul>\nPREFERRED EXPERIENCE / SKILLS<ul><li>\nTechnical background in communications or life sciences</li><li>\nPrior SEO training and experience</li><li>\nKnowledge of SEO copy writing</li><li>\nExperience writing original copy for the web</li></ul>\nBENEFITS<br>\nLife Science Connect offers a generous compensation package. In addition to a competitive salary, you'll enjoy:<ul><li>\nMedical/vision/prescription/dental coverage for you and your family</li><li>\n100% company-paid short- and long-term disability insurance</li><li>\n100% company-paid life insurance</li><li>\n401(k) with dollar-for-dollar company match up to 6%</li><li>\n15 vacation days and 6 personal days on day 1</li><li>\n13 company-paid holidays</li></ul>\nWe do not offer visa sponsorship for this role<p>\n</p><p>LIy1zcCeGA</p></div>",
+          "companyLogoUrl": "https://d2q79iu7y748jz.cloudfront.net/s/_squarelogo/256x256/a273fccff3da4fada24a0e14f8f6e3b3",
+          "descriptionText": "Our Life Science Connect Client Content Team plays a pivotal role in connecting our clients and our readers. The Client Content Managers are responsible for the production and optimization of content for an assigned set of customers. In addition, the Client Content Manager, manage the promotion of client content in our regular and custom newsletters. When done right, we are viewed as a partner, an extension of our clients' marketing and sales enablement team. We seek to understand, work unbelievably hard to learn what is needed, and then are relentless in our pursuit of providing real help.\n\nContinuous investment in our products, services, and technical infrastructure has us well-positioned to achieve real results for our clients, leading to tremendous growth. To provide the highest level of support to our ever growing list of clients, we need to add a Client Content Manager to our team in Cranberry, PA.\n\nThe ideal candidate will possess a fluency in digital tools and website management frameworks such as WordPress. To be successful in this role, you will need a history of progressively responsible experience in managing digital content related to the following: content management for a highly visible website, social media, and web publishing. This position will report to our Cranberry Township, PA location\n\nEssential Job Duties:\nClient Administration and Communications:\nBuild and maintain relationships with client contacts for the collection and administration of the client's Audience Access programs\nAssist the Business Development team with the client onboarding process, gathering company information and content\nEnsure client Audience Access programs start on-time operate without issue throughout\nExplain production procedures and best practices to clients and internal stakeholders\nHelp Business Development Reps identify accounts that are in need of varied or new content\nClient Content Posting and Optimization:\nPopulate email newsletters monthly to ensure clients receive Audience Access inclusions. May include working directly with clients by setting deadlines and collecting specific content.\nAlign content to themed newsletter sends through the mapping of content across the upcoming month.\nCollaborate with the editorial team to identify timely and applicable editorial content.\nHelp Business Development Reps select and schedule content for quarterly Sourcing Center newsletters and other special edition themed or product newsletters.\nEdit and optimize all content titles and summaries within general and custom newsletters for formatting, spacing, and reader engagement.\nCreate subject lines, pre-headers, and newsletter titles for a variety of newsletter types.\nWrite and optimize unique emails as part of lead nurturing or ABM campaigns. May include web page introductions, newsletter introductions/footers, or full messaging from site partnership teams or individuals related to content themes, portfolios, or individual content pieces.\nProject Management and reporting as needed\nREQUIRED EXPERIENCE / SKILLS\nBachelor's degree (Equivalent work experience will be considered in place of degree)\n3-5 years of work experience in a content production or customer service role\nExcellent communicator - written and verbal\nGood proofreading and copy-editing skills\n1-3 years of experience with HTML, extremely comfortable with web and social media\nBasic understand of Google search rankings\nHigh attention to detail\nCapable working alone or within a small team\nPREFERRED EXPERIENCE / SKILLS\nTechnical background in communications or life sciences\nPrior SEO training and experience\nKnowledge of SEO copy writing\nExperience writing original copy for the web\nBENEFITS\nLife Science Connect offers a generous compensation package. In addition to a competitive salary, you'll enjoy:\nMedical/vision/prescription/dental coverage for you and your family\n100% company-paid short- and long-term disability insurance\n100% company-paid life insurance\n401(k) with dollar-for-dollar company match up to 6%\n15 vacation days and 6 personal days on day 1\n13 company-paid holidays\nWe do not offer visa sponsorship for this role\nLIy1zcCeGA",
+          "companyName": "Life Science Connect",
+          "companyUrl": "https://www.indeed.com/cmp/Life-Science-Connect-1",
+          "companyHeaderUrl": "https://d2q79iu7y748jz.cloudfront.net/s/_headerimage/1960x400/154d4802ac3079be4921c3f3d4da462e",
+          "location": {
+            "city": "Cranberry Township",
+            "postalCode": "16066",
+            "country": "United States",
+            "countryCode": "US",
+            "formattedAddressLong": "Cranberry Township, PA 16066",
+            "formattedAddressShort": "Cranberry Township, PA",
+            "latitude": 40.70744,
+            "longitude": -80.107216,
+            "streetAddress": null,
+            "fullAddress": "Cranberry Township, PA 16066"
+          },
+          "salary": {
+            "salaryCurrency": "USD",
+            "salaryMax": 75000,
+            "salaryMin": 55000,
+            "salarySource": "EXTRACTION",
+            "salaryText": "$55,000 - $75,000 a year",
+            "salaryType": "yearly"
+          },
+          "rating": {
+            "rating": 3.8,
+            "count": 10
+          },
+          "benefits": [
+            "Paid holidays",
+            "Disability insurance",
+            "Health insurance",
+            "Dental insurance",
+            "Vision insurance",
+            "Life insurance"
+          ],
+          "occupation": [
+            "Digital Marketing Occupations",
+            "Content Marketing Occupations",
+            "Marketing, Advertising & Public Relations Occupations",
+            "Marketing & Advertising Occupations"
+          ],
+          "attributes": [
+            "Project reporting",
+            "Website management",
+            "Customer relationship building",
+            "Client onboarding",
+            "WordPress",
+            "Customer service",
+            "Paid holidays",
+            "Content editing",
+            "Content writing",
+            "Email marketing campaigns",
+            "Full-time",
+            "Disability insurance",
+            "Mid-level",
+            "3 years",
+            "Health insurance",
+            "Copy editing",
+            "Dental insurance",
+            "Project management",
+            "Bachelor's degree",
+            "Social media content creation",
+            "SEO",
+            "Content scheduling",
+            "Newsletters (communication methods)",
+            "Experience equivalent to degree accepted",
+            "Vision insurance",
+            "Life insurance",
+            "HTML",
+            "Copywriting"
+          ],
+          "contacts": [],
+          "shifts": [],
+          "socialInsurance": [
+            "Health insurance"
+          ],
+          "workingSystem": [],
+          "shiftAndSchedule": [],
+          "postedToday": false,
+          "hiringDemand": {
+            "isHighVolumeHiring": false,
+            "isUrgentHire": false
+          },
+          "datePublished": "2025-06-18",
+          "expired": false,
+          "source": "Life Science Connect",
+          "age": "4 months ago",
+          "isRemote": false,
+          "locale": "us",
+          "language": "en",
+          "jobUrl": "https://www.indeed.com/viewjob?jk=6bd5f4a4535475a1",
+          "applyUrl": "https://lifescienceconnect.applytojob.com/apply/LIy1zcCeGA/Client-Content-Manager?source=INDE&~",
+          "emails": [],
+          "companyIndustry": "MEDIA_NEWS_AND_PUBLISHING",
+          "companyAddresses": [
+            "210 West Kensinger Drive\r\nSuite 500\r\nCranberry Township, PA 16066"
+          ],
+          "companyNumEmployees": "51 to 200",
+          "companyDescription": "Life Science Connect facilitates mutually beneficial connections between our audiences and strategic partners that accelerate the advancement of life-improving, life-extending, and life-saving therapies and devices. We serve a loyal, satisfied readership that demands original, compelling content with utility.\r\n\r\nOur suite of capabilities for B2B sales and marketing enablement contributes to the creation and maintenance of robust business development pipelines for our partners.",
+          "companyBriefDescription": "Life Science Connect is a pioneering B2B media services company devoted to the creation of valuable long-term professional relationships.",
+          "companyLinks": {
+            "facebook": "https://www.facebook.com/lifescienceconnect",
+            "instagram": null,
+            "twitter": "",
+            "customLinks": [],
+            "corporateWebsite": "https://www.lifescienceconnect.com/"
+          },
+          "companyCeo": {
+            "name": "Jon Howland",
+            "photoUrl": null,
+            "startDate": null
+          },
+          "requirements": []
+        }
+      },
+      {
+        "json": {
+          "jobKey": "d4938ee55cde2cd1",
+          "scrapingInfo": {
+            "page": 1,
+            "index": 5
+          },
+          "title": "Acquisitions Content Editor",
+          "jobType": [
+            "Full-time"
+          ],
+          "descriptionHtml": "<div><div>The landscape of the life sciences industry is as vast and varied as the professionals who work in it. Our goal is to be the most valuable resource for a specific segment of the industry &ndash; Drug Delivery &ndash; and the professionals who make their living there. They&rsquo;re specialists, like us. We deliver in-depth content from authoritative authors and sources because that&rsquo;s what our community demands.<br>\n<br>\nThe primary role of the Life Science Connect Acquisitions Editor, is the recruitment of guest content contributors with expertise in the Drug Delivery arena. The Acquisitions Editor is responsible for establishing and maintaining mutually beneficial relationships with these experts&mdash;relationships that yield high-value content for our readers. The Acquisitions Editor will be responsible for managing, editing, optimizing, and tagging contributed content for publication. This position will be at our Cranberry Township, PA location<br>\n<br>\nEssential Job Duties\n<ul><li>Grow and manage our network of content contributors for Drug Delivery.</li><li>\nWork with editorial and business development teams to determine target article topics, contributor profiles, and appropriate volume of coverage by topic.</li><li>\nIdentify and connect with industry experts &mdash; through direct outreach (email/phone), social media, industry events, PR firms, etc. &mdash; who fit the target contributor profiles and are capable of writing original articles on target topics, developing infographics, producing written or audio/video-recorded Q&amp;As, or other content formats deemed valuable.</li><li>\nGuide each contributor through the process of determining the highest value content topic, angle, and scope for the Drug Delivery audience.</li><li>\nOversee the publication schedule of each contributed piece, setting appropriate deadlines for contributors, ensuring they submit all necessary materials (abstract/outline, draft, bio, headshot, images, etc.) on time, and submitting work orders for tagging and publication.</li><li>\nEdit each contributed article for grammar, adherence with our editorial style guide, general readability, SEO optimization, and reader engagement (e.g., attention-grabbing headlines).</li><li>\nSelect a feature graphic for each article from our stock image catalog.</li><li>\nGrow relationships with contributors through regular interaction (email, social media, phone, etc.) to encourage their continued participation.</li><li>\nOptimize Drug Delivery newsletters.</li><li>\nSchedule all articles written by contributors for promotion in relevant newsletters.</li><li>\nReview newsletter proofs, ensuring all content is relevant, recent, grammatically correct, and optimized for performance (e.g. headline and summary check).</li><li>\nPromote contributed content to ensure engagement by target reader personas via:<ul><li><ul><li>Social media &mdash; directly and via Product Pages on LinkedIn.</li><li>Partner referrals.</li><li>Direct email messages to relevant groups, contacts, or agencies.</li><li>Merchandising of content across all relevant LSC sites and throughout each site in relevant buckets and centers.\n</li></ul></li></ul></li></ul>Additional Job Duties<ul><li>\nSupport additional editorial and engagement initiatives for LSC products.</li><li>\nLeverage network of contributors for other initiatives that require SMEs (e.g. webinars and expo participants, editorial interview subjects).</li><li>\nSelect articles to be aggregated into topic-specific ebooks.</li><li>\nActively contribute in weekly editorial staff meetings.</li></ul>\nRequired Skills / Experience<ul><li>\n3+ or more years of professional work experience in editorial or communications.</li><li>\nTechnical aptitude (the ability to understand and communicate technical concepts).</li><li>\nProfessional presentation.</li><li>\nWillingness to interact with the business development team.</li><li>\nBusiness acumen.</li><li>\nProven examples of hardiness, initiative, critical thinking, and acting with urgency.</li><li>\nCapable of establishing and maintaining professional relationships.</li><li>\nStrong written and oral communication (including demonstrated phone skills).</li><li>\nDemonstrated persuasion, influence.</li><li>\nProficient use of: Word, Excel, E-mail, the Internet.</li><li>\nExperience hitting goals and deadlines.</li></ul>\nPreferred Skills / Experience<ul><li><div><ul><li>\nFive or more years of professional work experience in media/communications.</li><li>\nExperience in the life sciences industry.</li><li>\nAbility to travel up to 10 days per year.</li><li>\nExcellent communicator &ndash; written and verbal.</li><li>\nDemonstrates entrepreneurial traits and characteristics.</li><li>\nComfortable in highly structured environment.</li><li>\nMarketing knowledge, skills, and experience.</li></ul></div></li></ul>\nLife Science Connect offers a generous compensation package. In addition to a competitive salary, you'll enjoy:</div><ul><li>\nMedical/vision/prescription/dental coverage for you and your family</li><li>\n100% company-paid short- and long-term disability insurance</li><li>\n100% company-paid life insurance</li><li>\n401(k) with dollar-for-dollar company match up to 6%</li><li>\n15 vacation days and 6 personal days on day 1</li><li>\n13 company-paid holidays</li></ul>\nWe do not offer visa sponsorship for this role<p>\nTo view all our job postings and showcases for some of our employees, visit: https://lifescienceconnect.com/careers/.</p><p>\n</p><p>0XAcieGRU9</p></div>",
+          "companyLogoUrl": "https://d2q79iu7y748jz.cloudfront.net/s/_squarelogo/256x256/a273fccff3da4fada24a0e14f8f6e3b3",
+          "descriptionText": "The landscape of the life sciences industry is as vast and varied as the professionals who work in it. Our goal is to be the most valuable resource for a specific segment of the industry – Drug Delivery – and the professionals who make their living there. They’re specialists, like us. We deliver in-depth content from authoritative authors and sources because that’s what our community demands.\n\nThe primary role of the Life Science Connect Acquisitions Editor, is the recruitment of guest content contributors with expertise in the Drug Delivery arena. The Acquisitions Editor is responsible for establishing and maintaining mutually beneficial relationships with these experts—relationships that yield high-value content for our readers. The Acquisitions Editor will be responsible for managing, editing, optimizing, and tagging contributed content for publication. This position will be at our Cranberry Township, PA location\n\nEssential Job Duties\nGrow and manage our network of content contributors for Drug Delivery.\nWork with editorial and business development teams to determine target article topics, contributor profiles, and appropriate volume of coverage by topic.\nIdentify and connect with industry experts — through direct outreach (email/phone), social media, industry events, PR firms, etc. — who fit the target contributor profiles and are capable of writing original articles on target topics, developing infographics, producing written or audio/video-recorded Q&As, or other content formats deemed valuable.\nGuide each contributor through the process of determining the highest value content topic, angle, and scope for the Drug Delivery audience.\nOversee the publication schedule of each contributed piece, setting appropriate deadlines for contributors, ensuring they submit all necessary materials (abstract/outline, draft, bio, headshot, images, etc.) on time, and submitting work orders for tagging and publication.\nEdit each contributed article for grammar, adherence with our editorial style guide, general readability, SEO optimization, and reader engagement (e.g., attention-grabbing headlines).\nSelect a feature graphic for each article from our stock image catalog.\nGrow relationships with contributors through regular interaction (email, social media, phone, etc.) to encourage their continued participation.\nOptimize Drug Delivery newsletters.\nSchedule all articles written by contributors for promotion in relevant newsletters.\nReview newsletter proofs, ensuring all content is relevant, recent, grammatically correct, and optimized for performance (e.g. headline and summary check).\nPromote contributed content to ensure engagement by target reader personas via:\n- Social media — directly and via Product Pages on LinkedIn.\n- Partner referrals.\n- Direct email messages to relevant groups, contacts, or agencies.\n- Merchandising of content across all relevant LSC sites and throughout each site in relevant buckets and centers.\nAdditional Job Duties\nSupport additional editorial and engagement initiatives for LSC products.\nLeverage network of contributors for other initiatives that require SMEs (e.g. webinars and expo participants, editorial interview subjects).\nSelect articles to be aggregated into topic-specific ebooks.\nActively contribute in weekly editorial staff meetings.\nRequired Skills / Experience\n3+ or more years of professional work experience in editorial or communications.\nTechnical aptitude (the ability to understand and communicate technical concepts).\nProfessional presentation.\nWillingness to interact with the business development team.\nBusiness acumen.\nProven examples of hardiness, initiative, critical thinking, and acting with urgency.\nCapable of establishing and maintaining professional relationships.\nStrong written and oral communication (including demonstrated phone skills).\nDemonstrated persuasion, influence.\nProficient use of: Word, Excel, E-mail, the Internet.\nExperience hitting goals and deadlines.\nPreferred Skills / Experience\nFive or more years of professional work experience in media/communications.\nExperience in the life sciences industry.\nAbility to travel up to 10 days per year.\nExcellent communicator – written and verbal.\nDemonstrates entrepreneurial traits and characteristics.\nComfortable in highly structured environment.\nMarketing knowledge, skills, and experience.\nLife Science Connect offers a generous compensation package. In addition to a competitive salary, you'll enjoy:\nMedical/vision/prescription/dental coverage for you and your family\n100% company-paid short- and long-term disability insurance\n100% company-paid life insurance\n401(k) with dollar-for-dollar company match up to 6%\n15 vacation days and 6 personal days on day 1\n13 company-paid holidays\nWe do not offer visa sponsorship for this role\n\nTo view all our job postings and showcases for some of our employees, visit: https://lifescienceconnect.com/careers/.\n0XAcieGRU9",
+          "companyName": "Life Science Connect",
+          "companyUrl": "https://www.indeed.com/cmp/Life-Science-Connect-1",
+          "companyHeaderUrl": "https://d2q79iu7y748jz.cloudfront.net/s/_headerimage/1960x400/154d4802ac3079be4921c3f3d4da462e",
+          "location": {
+            "city": "Cranberry Township",
+            "postalCode": "16066",
+            "country": "United States",
+            "countryCode": "US",
+            "formattedAddressLong": "Cranberry Township, PA 16066",
+            "formattedAddressShort": "Cranberry Township, PA",
+            "latitude": 40.70744,
+            "longitude": -80.107216,
+            "streetAddress": null,
+            "fullAddress": "Cranberry Township, PA 16066"
+          },
+          "salary": {
+            "salaryCurrency": "USD",
+            "salaryMax": 85000,
+            "salaryMin": 75000,
+            "salarySource": "EXTRACTION",
+            "salaryText": "$75,000 - $85,000 a year",
+            "salaryType": "yearly"
+          },
+          "rating": {
+            "rating": 3.8,
+            "count": 10
+          },
+          "benefits": [
+            "Paid holidays",
+            "Disability insurance",
+            "Health insurance",
+            "Dental insurance",
+            "Vision insurance",
+            "Life insurance"
+          ],
+          "occupation": [
+            "Digital Marketing Occupations",
+            "Content Marketing Occupations",
+            "Writers & Editors",
+            "Media & Communications Occupations",
+            "Media, Arts & Design Occupations",
+            "Marketing, Advertising & Public Relations Occupations",
+            "Marketing & Advertising Occupations"
+          ],
+          "attributes": [
+            "LinkedIn",
+            "Microsoft Word",
+            "Microsoft Excel",
+            "Phone communication",
+            "5 years",
+            "Writing skills",
+            "Merchandising",
+            "Paid holidays",
+            "Content writing",
+            "Full-time",
+            "Disability insurance",
+            "Mid-level",
+            "Science",
+            "Health insurance",
+            "Dental insurance",
+            "Social media platforms",
+            "Schedule management",
+            "Entrepreneurship",
+            "Infographic graphic design",
+            "Travel",
+            "SEO",
+            "Content scheduling",
+            "Newsletters (communication methods)",
+            "Networking through strategic partnership building",
+            "Vision insurance",
+            "Grammar Experience",
+            "Communication skills",
+            "Technical Proficiency",
+            "Life insurance"
+          ],
+          "contacts": [],
+          "shifts": [],
+          "socialInsurance": [
+            "Health insurance"
+          ],
+          "workingSystem": [],
+          "shiftAndSchedule": [],
+          "postedToday": false,
+          "hiringDemand": {
+            "isHighVolumeHiring": false,
+            "isUrgentHire": false
+          },
+          "datePublished": "2025-05-31",
+          "expired": false,
+          "source": "Life Science Connect",
+          "age": "4 months ago",
+          "isRemote": false,
+          "locale": "us",
+          "language": "en",
+          "jobUrl": "https://www.indeed.com/viewjob?jk=d4938ee55cde2cd1",
+          "applyUrl": "https://lifescienceconnect.applytojob.com/apply/0XAcieGRU9/Acquisitions-Content-Editor?source=INDE&~",
+          "emails": [],
+          "companyIndustry": "MEDIA_NEWS_AND_PUBLISHING",
+          "companyAddresses": [
+            "210 West Kensinger Drive\r\nSuite 500\r\nCranberry Township, PA 16066"
+          ],
+          "companyNumEmployees": "51 to 200",
+          "companyDescription": "Life Science Connect facilitates mutually beneficial connections between our audiences and strategic partners that accelerate the advancement of life-improving, life-extending, and life-saving therapies and devices. We serve a loyal, satisfied readership that demands original, compelling content with utility.\r\n\r\nOur suite of capabilities for B2B sales and marketing enablement contributes to the creation and maintenance of robust business development pipelines for our partners.",
+          "companyBriefDescription": "Life Science Connect is a pioneering B2B media services company devoted to the creation of valuable long-term professional relationships.",
+          "companyLinks": {
+            "facebook": "https://www.facebook.com/lifescienceconnect",
+            "instagram": null,
+            "twitter": "",
+            "customLinks": [],
+            "corporateWebsite": "https://www.lifescienceconnect.com/"
+          },
+          "companyCeo": {
+            "name": "Jon Howland",
+            "photoUrl": null,
+            "startDate": null
+          },
+          "requirements": []
+        }
+      }
+    ]
+  },
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Run an Actor",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI2": {
+      "main": [
+        [
+          {
+            "node": "Google Sheets",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI1": {
+      "main": [
+        [
+          {
+            "node": "OpenAI2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Limit": {
+      "main": [
+        [
+          {
+            "node": "OpenAI1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Run an Actor": {
+      "main": [
+        [
+          {
+            "node": "Get dataset items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get dataset items": {
+      "main": [
+        [
+          {
+            "node": "Limit",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "11dcab31-b48a-4b9f-919e-99c30270237e",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "d2017cc6d1e4b956d269a8123bffa72fb7aaa41ad37a73b7c0fb64c7d0e2edae"
+  },
+  "id": "PBqpR11o6U4r3joR",
+  "tags": []
+}
