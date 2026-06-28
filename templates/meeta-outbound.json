@@ -1,0 +1,346 @@
+{
+  "name": "Meeta outbound",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        -104
+      ],
+      "id": "af7b16eb-0a34-4d17-8a52-c2adf8987992",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "id": "64cf16c8-5cc4-4438-bb7c-d15aa9e03526",
+              "leftValue": "={{ $json[\"Phone Number Called\"] }}",
+              "rightValue": "",
+              "operator": {
+                "type": "number",
+                "operation": "notExists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.3,
+      "position": [
+        448,
+        -104
+      ],
+      "id": "0eaa3c76-b0cc-4056-9cea-04417738e4e7",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        896,
+        -104
+      ],
+      "id": "e67621c7-6f45-4215-b9dd-a6b87e1d6e5c",
+      "name": "Loop Over Items"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "name": "Replace Me",
+      "typeVersion": 1,
+      "position": [
+        1792,
+        -104
+      ],
+      "id": "bd05edce-481f-4348-9770-9fa83bec124e"
+    },
+    {
+      "parameters": {
+        "jsCode": "for (const item of $input.all()) {\n  const data = item.json;\n\n  // 1. Format Phone Number\n  if (data[\"Phone Numbers\"]) {\n    let p = data[\"Phone Numbers\"].toString().trim();\n    data[\"formattedPhone\"] = p.startsWith('+') ? p : (p.startsWith('44') ? '+' + p : '+44' + p);\n  }\n\n  // 2. Format Date\n  if (typeof data[\"Date Added\"] === 'number') {\n    data[\"formattedDate\"] = new Date(Math.round((data[\"Date Added\"] - 25569) * 86400 * 1000)).toISOString().split('T')[0];\n  }\n\n  // 3. Clean up Name and Company for JSON (remove quotes/newlines)\n  const cleanName = (data[\"Full Name\"] || \"the customer\").replace(/\"/g, \"'\").replace(/\\n/g, \" \");\n  const cleanCompany = (data[\"Company\"] || \"their company\").replace(/\"/g, \"'\").replace(/\\n/g, \" \");\n\n  // 4. Create TwiML using SINGLE QUOTES for attributes\n  data[\"debbieTwiML\"] = `<Say voice='Polly.Amy'>Hello Debbie, you have a lead on the line named ${cleanName} from ${cleanCompany}. Press 1 to accept.</Say><Gather numDigits='1' timeout='10'><Say>Press 1 now.</Say></Gather>`;\n  \n  data[\"meetaTwiML\"] = `<Say voice='Polly.Amy'>Hello Meeta, Debbie was unavailable. The caller is ${cleanName} from ${cleanCompany}. Press 1 to connect.</Say><Gather numDigits='1' timeout='10'><Say>Press 1 now.</Say></Gather>`;\n}\nreturn $input.all();"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        672,
+        -104
+      ],
+      "id": "ef6fde5a-b42e-4813-a636-1ea3b85a9d68",
+      "name": "Code in JavaScript"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.vapi.ai/call",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer a11c9351-a2d4-4fc0-be19-aaff10a7ea4f"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"assistantId\": \"f6b726a3-ae8e-4665-907e-14f6565773fb\",\n  \"phoneNumberId\": \"27a25291-67eb-495d-9bcc-90ba62837282\",\n  \"customer\": {\n    \"number\": \"{{ $('Loop Over Items').item.json.formattedPhone }}\",\n    \"name\": \"{{ $('Loop Over Items').item.json['Full Name'] }}\"\n  },\n  \"assistantOverrides\": {\n    \"variableValues\": {\n      \"firstName\": \"{{ $('Loop Over Items').item.json['First Name'] }}\",\n      \"fullName\": \"{{ $('Loop Over Items').item.json['Full Name'] }}\",\n      \"companyName\": \"{{ $('Loop Over Items').item.json.Company }}\"\n    }\n  }\n}",
+        "options": {
+          "redirect": {
+            "redirect": {}
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        1568,
+        -176
+      ],
+      "id": "8d04e9a6-f2c9-4380-b41f-293b87d81ef7",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "resource": "worksheet",
+        "operation": "readRows",
+        "workbook": {
+          "__rl": true,
+          "mode": "list",
+          "value": "34d38c3d-d745-4522-9d1e-3cb24702c5e0"
+        },
+        "worksheet": {
+          "__rl": true,
+          "value": "{995280A8-4C5B-41E5-A4F7-DD072C750D1B}",
+          "mode": "list",
+          "cachedResultName": "Test"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.microsoftExcel",
+      "typeVersion": 2.2,
+      "position": [
+        224,
+        -104
+      ],
+      "id": "a64d1c7f-28c6-4c5c-b898-083980a2d491",
+      "name": "Get rows from sheet",
+      "credentials": {
+        "microsoftExcelOAuth2Api": {
+          "id": "MYvcITI3BjJ9NjGm",
+          "name": "Microsoft Excel account 3"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "PATCH",
+        "url": "https://api.vapi.ai/assistant/f6b726a3-ae8e-4665-907e-14f6565773fb",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer a11c9351-a2d4-4fc0-be19-aaff10a7ea4f"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"model\": {\n    \"model\": \"gpt-4o\",\n    \"provider\": \"openai\",\n    \"tools\": [],\n    \"messages\": [\n      {\n        \"role\": \"system\",\n        \"content\": \"# IDENTITY\\nYou are Anna, executive assistant to Debbie Baker at The Maine Group. You are calling from .\\n\\n# GOAL\\nYour goal is to speak with the lead and handle the inquiry professionally. \\n\\n# IVR / AUTOMATED MENUS (LEAD SIDE)\\n- If the outbound call hits an automated menu (e.g., \\\"Press 1 for Sales\\\"), listen for the operator or receptionist option.\\n- Use the 'dtmf' tool immediately to press the correct digit to reach a human.\\n- Do NOT speak while the IVR is playing or while you are pressing buttons.\\n- Stay silent and wait for the human to answer.\\n\\n# VOICEMAIL RULES\\n- LEAD SIDE: If you hear a voicemail on the outbound call, hang up immediately.\\n\\n# STYLE\\n- Be brief and professional.\\n- No emojis. \\n- Use the name .\\n- NEVER narrate your tool calls.\"\n      }\n    ]\n  }\n}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        0,
+        120
+      ],
+      "id": "2a9e5d3b-b2e0-4d80-97f7-fe6977c7bea6",
+      "name": "HTTP Request1"
+    },
+    {
+      "parameters": {
+        "method": "PATCH",
+        "url": "https://api.vapi.ai/assistant/f6b726a3-ae8e-4665-907e-14f6565773fb",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer a11c9351-a2d4-4fc0-be19-aaff10a7ea4f"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ $json.assistant }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        1344,
+        -176
+      ],
+      "id": "08c4b7b0-1f99-4134-86b0-98394e413c0a",
+      "name": "HTTP Request2"
+    },
+    {
+      "parameters": {
+        "jsCode": "// This code goes inside an n8n Code Node\nconst assistantConfig = {\n  \"name\": \"Meeta The Maine Group\",\n  \"voice\": {\n    \"model\": \"eleven_turbo_v2\",\n    \"voiceId\": \"X5gGKB97vhrZhE6AgMYI\",\n    \"provider\": \"11labs\",\n    \"stability\": 0.5,\n    \"similarityBoost\": 0.75\n  },\n  \"model\": {\n    \"provider\": \"openai\",\n    \"model\": \"gpt-4o\",\n    \"messages\": [\n      {\n        \"role\": \"system\",\n        \"content\": \"# IDENTITY\\nYou are Anna, executive assistant to Debbie Baker at The Maine Group. You are calling {{fullName}} from {{companyName}}.\\n\\n# CRITICAL TRANSFER PROTOCOL\\n1. GET PERMISSION: Ask \\\"Do you have a quick moment to speak with Debbie now?\\\"\\n2. IF YES: Say \\\"Perfect, let me connect you with her right now.\\\"\\n3. TRIGGER TRANSFER: Call the `transferCall` tool for \\\"Debbie\\\".\\n4. IF DEBBIE IS UNAVAILABLE (You get a 'transfer_failed' or she doesn't answer):\\n   - Immediately say: \\\"It looks like Debbie's line is busy. Let me try Meeta for you instead.\\\"\\n   - Trigger the `transferCall` tool again for \\\"Meeta\\\".\\n5. IF BOTH FAIL: Say \\\"I'm so sorry, both lines are currently busy. Can I have one of them call you back in 10 minutes?\\\"\\n\\n# STYLE\\n- Be brief and professional.\\n- Use the name {{firstName}}.\\n- DO NOT wait for silence during transfers. If the tool fails, speak immediately.\"\n      }\n    ],\n    \"tools\": [\n      {\n        \"type\": \"transferCall\",\n        \"destinations\": [\n          {\n            \"type\": \"number\",\n            \"number\": \"+441394432013\",\n            \"description\": \"Debbie\",\n            \"transferPlan\": {\n              \"mode\": \"warm-transfer-experimental\",\n              \"voicemailDetectionType\": \"audio\",\n              \"timeout\": 10,\n              \"message\": \"Hi Debbie, I have {{fullName}} on the line for you. Connecting now.\",\n              \"fallbackPlan\": {\n                \"message\": \"Transfer failed.\",\n                \"endCallEnabled\": false\n              }\n            }\n          },\n          {\n            \"type\": \"number\",\n            \"number\": \"+447894553145\",\n            \"description\": \"Meeta\",\n            \"transferPlan\": {\n              \"mode\": \"warm-transfer-experimental\",\n              \"voicemailDetectionType\": \"audio\",\n              \"timeout\": 10,\n              \"message\": \"Hi Meeta, I'm transferring {{fullName}} to you as Debbie is unavailable.\",\n              \"fallbackPlan\": {\n                \"message\": \"Transfer failed.\",\n                \"endCallEnabled\": false\n              }\n            }\n          }\n        ]\n      }\n    ]\n  },\n  \"firstMessage\": \"Hi {{firstName}}? This is Anna calling from Debbie Baker's office over at The Maine Group. How are you doing today?\",\n  \"transcriber\": {\n    \"model\": \"flux-general-en\",\n    \"language\": \"en\",\n    \"provider\": \"deepgram\"\n  },\n  \"voicemailDetection\": {\n    \"type\": \"audio\",\n    \"provider\": \"vapi\"\n  },\n  \"server\": {\n    \"url\": \"https://n8n.srv1292639.hstgr.cloud/webhook/meeta-end-of-call\",\n    \"timeoutSeconds\": 20\n  }\n};\n\nreturn { assistant: assistantConfig };"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1120,
+        -176
+      ],
+      "id": "1e2c5069-01f3-4127-a346-a44f1e028d09",
+      "name": "Code in JavaScript1"
+    }
+  ],
+  "pinData": {
+    "When clicking ‘Execute workflow’": [
+      {
+        "json": {},
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ]
+  },
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Get rows from sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Code in JavaScript1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Replace Me": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Replace Me",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get rows from sheet": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request1": {
+      "main": [
+        []
+      ]
+    },
+    "HTTP Request2": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript1": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "availableInMCP": false
+  },
+  "versionId": "567845c8-1f27-4a51-ad31-d4450c732c1f",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "fec8a2f43c067a052602e271454fd28c0e5d5ae0230cbc76cf3d851ada81e0c3"
+  },
+  "id": "bG9S8LJ5RVvLmBqSRID4X",
+  "tags": []
+}
